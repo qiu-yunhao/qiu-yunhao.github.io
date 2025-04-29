@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>C语言指针（代传） | Hexo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="C语言指针">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言指针（代传）">
+<meta property="og:url" content="http://example.com/2021/10/30/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="C语言指针">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://z3.ax1x.com/2021/10/27/5bDivj.jpg">
+<meta property="og:image" content="https://z3.ax1x.com/2021/10/28/5OuxJ0.jpg">
+<meta property="og:image" content="https://z3.ax1x.com/2021/10/28/5OlJYR.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/10/28/5O8oAe.jpg">
+<meta property="og:image" content="https://z3.ax1x.com/2021/10/28/5O1vxP.jpg">
+<meta property="og:image" content="https://z3.ax1x.com/2021/10/28/5OtpND.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/10/28/5OYhn0.jpg">
+<meta property="og:image" content="https://z3.ax1x.com/2021/10/28/5OtnUS.png">
+<meta property="article:published_time" content="2021-10-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-08-15T08:09:58.910Z">
+<meta property="article:author" content="qiu-yunhao">
+<meta property="article:tag" content="C 帮大佬代传">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/10/27/5bDivj.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">qiu-yunhao</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/%E5%AF%86%E7%A0%81/" style="font-size: 10px;">-密码</a> <a href="/tags/Android-%E8%87%AA%E5%AE%9A%E4%B9%89View/" style="font-size: 10px;">Android&&自定义View</a> <a href="/tags/C-%E5%B8%AE%E5%A4%A7%E4%BD%AC%E4%BB%A3%E4%BC%A0/" style="font-size: 10px;">C 帮大佬代传</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/c-android/" style="font-size: 10px;">c android</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/%E5%AF%86%E7%A0%81/" style="font-size: 20px;">密码</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-C语言指针" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/10/30/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88/" class="article-date">
+  	<time datetime="2021-10-29T16:00:00.000Z" itemprop="datePublished">2021-10-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C语言指针（代传）
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-%E5%B8%AE%E5%A4%A7%E4%BD%AC%E4%BB%A3%E4%BC%A0/" rel="tag">C 帮大佬代传</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="C语言指针"><a href="#C语言指针" class="headerlink" title="C语言指针"></a>C语言指针</h1><span id="more"></span>
+
+
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="什么是字节？什么是内存？什么是地址？什么是指针？什么是指针变量？"><a href="#什么是字节？什么是内存？什么是地址？什么是指针？什么是指针变量？" class="headerlink" title="什么是字节？什么是内存？什么是地址？什么是指针？什么是指针变量？"></a>什么是字节？什么是内存？什么是地址？什么是指针？什么是指针变量？</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/5bDivj"><img src="https://z3.ax1x.com/2021/10/27/5bDivj.jpg" alt="5bDivj.jpg"></a></p>
+<h3 id="为什么需要指针？"><a href="#为什么需要指针？" class="headerlink" title="为什么需要指针？"></a>为什么需要指针？</h3><ul>
+<li><p>指针的使用使得不同区域的代码可以轻易的访问内存数据（主要体现在参数传递上）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">soBigStruct</span>&#123;</span></span><br><span class="line">	<span class="type">int</span> a,b,c,d,e;</span><br><span class="line">&#125;soBig;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Function</span><span class="params">(soBig sb)</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">Function2</span><span class="params">(soBig *sb)</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	soBig sb;</span><br><span class="line">	soBig *psb = &amp;sb;</span><br><span class="line">    Function(sb);</span><br><span class="line">    Function2(<span class="number">2</span>sb);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为函数参数传递时是需要在<strong>栈内存</strong>里新分配相应大小的区域，相较于直接传入占用空间较大的变量，不如传入占用空间较小的指针。</p>
+</li>
+<li><p>指针使得一些复杂的链接性的数据结构的构建成为可能</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LinkList</span>&#123;</span></span><br><span class="line">	<span class="type">int</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">LinkList</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;LinkList;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>C语言是传值调用，而有些操作传值调用是无法完成的</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> *b)</span>&#123;</span><br><span class="line">    <span class="type">int</span> temp = *a;</span><br><span class="line">    *a = *b;</span><br><span class="line">    *b = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="什么是变量？"><a href="#什么是变量？" class="headerlink" title="什么是变量？"></a>什么是变量？</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/5OuxJ0"><img src="https://z3.ax1x.com/2021/10/28/5OuxJ0.jpg" alt="5OuxJ0.jpg"></a></p>
+<h3 id="为什么会有多种类型的指针？"><a href="#为什么会有多种类型的指针？" class="headerlink" title="为什么会有多种类型的指针？"></a>为什么会有多种类型的指针？</h3><h2 id="两个重要符号"><a href="#两个重要符号" class="headerlink" title="两个重要符号"></a>两个重要符号</h2><p>*: 取值符，用在指针变量上（通过地址拿取值的方法叫做<strong>解引用</strong>）</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/5OlJYR"><img src="https://z3.ax1x.com/2021/10/28/5OlJYR.png" alt="5OlJYR.png"></a></p>
+<p>&amp;：取地址符，用在普通变量上</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="type">int</span> *p1 = &amp;a;</span><br><span class="line"><span class="type">int</span> p2 = &amp;a;</span><br><span class="line"><span class="type">int</span> *p3 = a;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d %d&quot;</span>,a,*p1);   <span class="comment">//a称为直接访问，*p称为间接访问</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="type">int</span> *p = a;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="type">int</span> f = <span class="number">1</span>;</span><br><span class="line">	<span class="type">short</span> c = *(<span class="type">short</span>*)&amp;f;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%hd&quot;</span>,c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/5O8oAe"><img src="https://z3.ax1x.com/2021/10/28/5O8oAe.jpg" alt="5O8oAe.jpg"></a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="type">short</span> f = <span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> c = *(<span class="type">int</span>*)&amp;f;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>*(int*)&amp;f</code>会让我们从<code>f</code> 的首地址开始取四个字节，然后按照 int的编码方式去解释。</p>
+<p>但是<code>f</code>是 short类型只占两个字节，那肯定会访问到相邻后面两个字节，这时候就发生了内存访问越界。</p>
+<h3 id="多级指针"><a href="#多级指针" class="headerlink" title="多级指针"></a>多级指针</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="type">int</span> *p1 = &amp;a;</span><br><span class="line"><span class="type">int</span> **p2 = &amp;p1;</span><br><span class="line"><span class="type">int</span> ***p3 = &amp;p2;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d %d %d %d %d %d %d %d %d %d&quot;</span>, a, p1, *p1, p2, *p2, **p2, p3, *p3, **p3, ***p3);</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/5O1vxP"><img src="https://z3.ax1x.com/2021/10/28/5O1vxP.jpg" alt="5O1vxP.jpg"></a></p>
+<p><code>int **p</code>可以把它分为两部分看，即 <code>int* </code>和 <code>*p</code>，后面 <code>*p</code> 中的<code>*</code>表示 <code>p</code> 是一个指针变量，前面的 <code>int*</code> 表示指针变量<code>p</code></p>
+<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><h3 id="野指针"><a href="#野指针" class="headerlink" title="野指针"></a>野指针</h3><p>本节中，把没有合法指向的指针称为“野”指针。因为“野”指针随机指向一块空间，该空间中存储的可能是其他程序的数据甚至是系统数据，故不能对“野”指针所指向的空间进行存取操作，否则轻者会引起程序崩溃，严重的可能导致整个系统崩溃。</p>
+<p>例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *pi,a; <span class="comment">//pi未初始化，无合法指向，为“野”指针</span></span><br><span class="line">*pi=<span class="number">3</span>; <span class="comment">//运行时错误，不能对”野”指针指向的空间做存入操作。该语句试图把 3 存入“野”指针pi所指的随机空间中，会产生运行时错误。</span></span><br><span class="line">a=*pi; <span class="comment">//运行时错误，不能对”野”指针指向的空间取操作。该语句试图从“野”指针pi所指的空间中取出数据，然后赋给变量a同样会产生运行时错误。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="数组与指针"><a href="#数组与指针" class="headerlink" title="数组与指针"></a>数组与指针</h3><p>数组名其实也可以写作指针的形式，在内存中数组是一块连续的内存空间</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="type">int</span> *p = a;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d %d&quot;</span>, a[<span class="number">0</span>], *(a+<span class="number">0</span>));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d %d&quot;</span>, a[<span class="number">1</span>], *(a+<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：a+1指的是下一个元素，而不是下一个地址</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;p = %d, p + 1 = %d\n&quot;</span>, p, p+<span class="number">1</span>);    <span class="comment">//用十进制格式输出</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">输出结果为： p = 1638196, p + 1 = 1638200</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="指针求差："><a href="#指针求差：" class="headerlink" title="指针求差："></a>指针求差：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *p1 = a;</span><br><span class="line"><span class="type">int</span> *p2 = &amp;a[<span class="number">3</span>];</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,p2-p1);</span><br></pre></td></tr></table></figure>
+
+<h4 id="多维数组（以二维数组举例）："><a href="#多维数组（以二维数组举例）：" class="headerlink" title="多维数组（以二维数组举例）："></a>多维数组（以二维数组举例）：</h4><p>从图形上理解：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/5OtpND"><img src="https://z3.ax1x.com/2021/10/28/5OtpND.png" alt="5OtpND.png"></a></p>
+<p>本质上：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/5OYhn0"><img src="https://z3.ax1x.com/2021/10/28/5OYhn0.jpg" alt="5OYhn0.jpg"></a></p>
+<p>C语言允许把一个二维数组分解成多个一维数组来处理。对于数组 a，它可以分解成三个一维数组，即 a[0]、a[1]、a[2]。每一个一维数组又包含了 4 个元素，例如 a[0] 包含<code> a[0][0]、a[0][1]、a[0][2]、a[0][3]</code>。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/5OtnUS"><img src="https://z3.ax1x.com/2021/10/28/5OtnUS.png" alt="5OtnUS.png"></a></p>
+<p>  <strong>按照指针访问数组元素</strong>：</p>
+<ul>
+<li><p>先将每行的首元素取出：<code>*(a+1)</code></p>
+</li>
+<li><p>在取出第一行首元素的基础上，再访问第一行第一个元素的地址：<code>*(a+1)+1</code></p>
+<p><code>*(p+1)</code>单独使用时表示的是第 1 行数据，放在表达式中会被转换为第 1 行数据的首地址，也就是第 1 行第 0 个元素的地址，因为使用整行数据没有实际的含义，编译器遇到这种情况都会转换为指向该行第 0 个元素的指针。所以在此基础上+1便指向了第一行第一个元素的地址</p>
+</li>
+<li><p>然后再加上取值符*即可：<code>*(*(a+1)+1)</code></p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * a[i][j] 等价于 *(*(a+i)+j)</span></span><br><span class="line"><span class="comment">    * &amp;a[i][j] 等价于 *(a+i)+j</span></span><br><span class="line"><span class="comment">    * a[i] 等价于 *(a+i) &amp;a[i]</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//根据指针遍历输出二维数组</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;<span class="number">3</span>;j++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot; %d &quot;</span>,*(*(a+i)+j));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/02/25/%E8%87%AA%E5%AE%9A%E4%B9%89View%E6%B5%85%E6%9E%90%EF%BC%881%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          Android 自定义View--定制图表
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/10/30/%E6%9D%82%E4%B9%B1%E6%97%A0%E7%AB%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">杂乱无章</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2025 qiu-yunhao
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

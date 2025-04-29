@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="tag : crypto title :  积分攻击的概念汇总 date : 2025-4-29 什么是积分此积分非彼积分，我感觉它即是乘积运算和分割&#x2F;分组的性质的一个统称。 需要理解的前置概念 $F_2^n$表示n-比特的二元域 汉明重量$w_a &#x3D; \sum_{i&#x3D;1}^n a[i]$, 其中$a \in F_2^n$, a[i]表示a的第i位 $S_k^n &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2025/04/29/%E7%A7%AF%E5%88%86%E6%94%BB%E5%87%BB/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="tag : crypto title :  积分攻击的概念汇总 date : 2025-4-29 什么是积分此积分非彼积分，我感觉它即是乘积运算和分割&#x2F;分组的性质的一个统称。 需要理解的前置概念 $F_2^n$表示n-比特的二元域 汉明重量$w_a &#x3D; \sum_{i&#x3D;1}^n a[i]$, 其中$a \in F_2^n$, a[i]表示a的第i位 $S_k^n &amp;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745673978428.png">
+<meta property="og:image" content="c:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745844190556.png">
+<meta property="og:image" content="c:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745844285156.png">
+<meta property="og:image" content="c:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745844309907.png">
+<meta property="og:image" content="c:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745844335385.png">
+<meta property="og:image" content="c:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745848329352.png">
+<meta property="og:image" content="c:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745850552280.png">
+<meta property="og:image" content="c:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745850648537.png">
+<meta property="og:image" content="c:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745855827617.png">
+<meta property="og:image" content="c:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745857432204.png">
+<meta property="og:image" content="c:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745858818211.png">
+<meta property="og:image" content="c:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745862165861.png">
+<meta property="article:published_time" content="2025-04-29T02:10:41.602Z">
+<meta property="article:modified_time" content="2025-04-29T02:15:07.248Z">
+<meta property="article:author" content="qiu-yunhao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745673978428.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">qiu-yunhao</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/%E5%AF%86%E7%A0%81/" style="font-size: 10px;">-密码</a> <a href="/tags/Android-%E8%87%AA%E5%AE%9A%E4%B9%89View/" style="font-size: 10px;">Android&&自定义View</a> <a href="/tags/C-%E5%B8%AE%E5%A4%A7%E4%BD%AC%E4%BB%A3%E4%BC%A0/" style="font-size: 10px;">C 帮大佬代传</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/c-android/" style="font-size: 10px;">c android</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/%E5%AF%86%E7%A0%81/" style="font-size: 20px;">密码</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-积分攻击" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/04/29/%E7%A7%AF%E5%88%86%E6%94%BB%E5%87%BB/" class="article-date">
+  	<time datetime="2025-04-29T02:10:41.602Z" itemprop="datePublished">2025-04-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>tag : crypto</p>
+<p>title :  积分攻击的概念汇总</p>
+<p>date : 2025-4-29</p>
+<h2 id="什么是积分"><a href="#什么是积分" class="headerlink" title="什么是积分"></a>什么是积分</h2><p>此积分非彼积分，我感觉它即是乘积运算和分割&#x2F;分组的性质的一个统称。</p>
+<h3 id="需要理解的前置概念"><a href="#需要理解的前置概念" class="headerlink" title="需要理解的前置概念"></a>需要理解的前置概念</h3><ul>
+<li>$F_2^n$表示<em>n</em>-比特的二元域</li>
+<li>汉明重量$w_a &#x3D; \sum_{i&#x3D;1}^n a[i]$, 其中$a \in F_2^n$, a[i]表示a的第i位</li>
+<li>$S_k^n &#x3D; {a \in F_2^n | k \leq w_a}, S_k^n$是汉明重量至少为k的向量集合</li>
+<li>$S_k^{n,m} &#x3D; {(a_1,a_2,…,a_m) \in (F_2^n)^m | k_i \leq w_{a_i} }, S_k^{n,m}$则是将$S_k^n$扩张到了$k &#x3D; (k_1,k_2,…,k_m)$这种多向量上，也就是说$S_k^{n,m}$表示m个二进制序列构成的向量，其中每一个分量的汉明重量至少为$k_i$</li>
+</ul>
+<!-- 以下是更多内容 -->
+
+<h3 id="位乘积函数"><a href="#位乘积函数" class="headerlink" title="位乘积函数"></a>位乘积函数</h3><h4 id="1-单变量位乘积函数"><a href="#1-单变量位乘积函数" class="headerlink" title="1.单变量位乘积函数"></a>1.单变量位乘积函数</h4><p>对于任意的$u \in F_2^n ​$, 有函数$\pi_u:F_2^n \rightarrow F_2^n​$表示u中值为1的位进行逻辑与运算：<br>$$<br>\pi_u(x) &#x3D; \prod_{i&#x3D;1}^n x[i]^{u[i]}<br>$$<br>例如对于$u &#x3D; {1010}$,则$\pi_u(x) &#x3D; x[0] * x[2]$，具体的运算方式类似与向量的点成，只是将最后合并运算的方法由加法改为了乘法。正如上面表达是所述的那样，u用来选定x的参与运算的位数，对于$u[i] &#x3D; 1$的第i位,对应的$x[i]$参与运算，即$x[i]^1 &#x3D; x[i]^{u[i]}$,对于$u[i] &#x3D; 0$也是同理</p>
+<h4 id="2-多变量位乘积函数"><a href="#2-多变量位乘积函数" class="headerlink" title="2.多变量位乘积函数"></a>2.多变量位乘积函数</h4><p>对于向量$u  &#x3D; (u_1, u_2, u_3,…, u_m) \in (F_2^n)^m$, 函数$\pi_u:（F_2^n）^m \rightarrow (F_2^n)^m$为各个分量的位乘积运算：<br>$$<br>\pi_u(x) &#x3D; \prod_{i &#x3D; 1} ^ m \pi_{u_i}(x_i)<br>$$<br>也就是说，对于$u_i\in F_2^n$，我们可以将其是为一个数，只是它的表现形式为2进制</p>
+<h3 id="布尔函数与代数正规形式"><a href="#布尔函数与代数正规形式" class="headerlink" title="布尔函数与代数正规形式"></a><strong>布尔函数与代数正规形式</strong></h3><h4 id="1-布尔函数"><a href="#1-布尔函数" class="headerlink" title="1.布尔函数"></a>1.布尔函数</h4><p>函数$f:F_2^n\rightarrow F_2$,其代数次数$def(f)$为多项式表示中最高单项式的次数</p>
+<h4 id="2-代数正规形式-ANF"><a href="#2-代数正规形式-ANF" class="headerlink" title="2.代数正规形式(ANF)"></a>2.代数正规形式(ANF)</h4><p>任何布尔函数均可唯一表示为：<br>$$<br>f(x) &#x3D; \oplus_{u\in F_2^n}a_u^f \cdot \pi_u(x)<br>$$<br>若$deg(f) \leq d​$，则对任意的$d &lt; w_u​$的u都有$a_u^f &#x3D; 0​$,其中$a\in F_2^n​$是系数，由f和u共同决定</p>
+<h5 id="具体事例"><a href="#具体事例" class="headerlink" title="具体事例"></a>具体事例</h5><p>假设有一个布尔函数 $f:F_2^3→F_2$，其代数正规形式（ANF）为：<br>$$<br>f(x_1,x_2,x_3)&#x3D;x_1⊕x_1x_2⊕x_2x_3<br>$$<br>这里的多项式包含了3个单项式，分别是$x_1,x_1x_2,x_2x_3$,其中</p>
+<table>
+<thead>
+<tr>
+<th>单项式</th>
+<th>向量u</th>
+<th>汉明重量$w_u$</th>
+<th>对应系数$a_u^f$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$x_1$</td>
+<td>$u &#x3D; (1,0,0)$</td>
+<td>$w_u &#x3D; 1$</td>
+<td>$a_u^f &#x3D; 1 $</td>
+</tr>
+<tr>
+<td>$x_1x_2$</td>
+<td>$u &#x3D; (1,1,0)$</td>
+<td>$w_u &#x3D; 2$</td>
+<td>$a_u^f &#x3D; 1$</td>
+</tr>
+<tr>
+<td>$x_2x_3$</td>
+<td>$u &#x3D; (0,1,1)$</td>
+<td>$w_u &#x3D; 2$</td>
+<td>$a_u^f &#x3D; 1$</td>
+</tr>
+</tbody></table>
+<p>上述$f(x_1,x_2,x_3)$函数的最高单项式的次数为2，对应为$x_1x_2或x_2x_3$,即$deg(f) &#x3D; 2$。也就是对于形如$x_1x_2x_3$这样的3次单项式而言，它们的系数为0。</p>
+<p>如此，对于选定的位数向量$u$而言,其汉明重量$w_u$则表示从$x​$中选中的位数的总数。</p>
+<h3 id="积分区分器"><a href="#积分区分器" class="headerlink" title="积分区分器"></a>积分区分器</h3><p>它使用一组选定的明文，其中某些位包含所有可能的值，而另一些位具有一个常量值。相应的密文是通过使用一个加密预言机从该组中的明文中计算出来的。如果多重集的XOR总是为0，我们说这个密码具有积分区分器。</p>
+<h4 id="原始积分性质"><a href="#原始积分性质" class="headerlink" title="原始积分性质"></a>原始积分性质</h4><p>ALL(A): 多重集中每个值都会出现且出现次数相同</p>
+<p>BALANCE(B)：每一个在多重集的文本他们的异或结果为0</p>
+<p>CONSTANT(C)：对于多重集的所有文本，该值为固定常数</p>
+<p>UNKNOWN(U)：无法将多重集与随机对进行区别</p>
+<p>ALL应当式要求在多重集中，选定的位上0和1的出现<strong>次数</strong>相同，即表现为强规律，必须严格遵守。而UNKNOWN则是在表示0与1的出现<strong>概率</strong>相同, 即在多重集中的表现上0与1出现的次数会有不同。</p>
+<h4 id="新的积分性质"><a href="#新的积分性质" class="headerlink" title="新的积分性质"></a>新的积分性质</h4><p>具体定义请参照[1]的3 Division Property - Redefinition of Integral Property部分</p>
+<h5 id="扩展定义ALL-A"><a href="#扩展定义ALL-A" class="headerlink" title="扩展定义ALL(A):"></a>扩展定义ALL(A):</h5><p>对于多重集$X$满足$A$,其包含所有可能的n-bit的值。对于任意$u$满足$w_u&lt;n$,有<br>$$<br>\oplus_{x\in X}\pi_u(x) &#x3D; 0<br>$$<br>但是当$w_u &#x3D; n​$时，异或和转变为1。考虑$\pi_u(x)​$的奇偶校验, 对于满足$w_u &lt; n​$，其奇偶性为均匀的, 而对于$w_u &#x3D; n​$，其奇偶性校验变为未知。</p>
+<h5 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h5><p>简单考虑集合$X$，其中的元素由$0^n$到$1^n$，每个值都只出现一次，集合元素个数记为$N &#x3D; 2^n$, </p>
+<p>从n-bit的随机选取一位， 则 0 和 1的个数都是 $\frac N 2$,则异或和为0</p>
+<p>从n-bit中选取n-1位（这里列举[1,n-1]这种情况，其他情况同理）记多重集合为$X’$，其中$\pi_u(x) &#x3D; 1$,此时x为$1^{n-1}$,对应n-bit数据中的$1^{n-1}0以及{1^n}$,也就是$\pi_u(x) &#x3D; 1$出现了2次, 其他的x中含有0位，所以$\pi_u(x) &#x3D; 0$,出现$N-2$次，两种情况都是偶数次出现个数，总体的异或值为0, 即$\oplus_{x\in X’}\pi_u(x) &#x3D; 0$</p>
+<p>从n-bit 选取$n$位时, 集合即为$X$ , 此时$\pi_u(x) &#x3D; 1$的情况仅对应$1^n$，总数为1， 而$\pi_u(x) &#x3D; 0$，则为含有0位的情况，共有$N-1$次。故最后的$\oplus_{x \in X}\pi_u(x) &#x3D; 1$ </p>
+<h5 id="扩展定义BALANCE-B"><a href="#扩展定义BALANCE-B" class="headerlink" title="扩展定义BALANCE(B):"></a>扩展定义BALANCE(B):</h5><p>对于多重集$X满足$B$,其中集合 $$X$ 的异或和为 0。对于任意$u$满足$w_u &lt;2$有:<br>$$<br>\oplus_{x \in X } \pi_u(x) &#x3D; 0<br>$$<br>而当$w_u \ge 2​$ 其奇偶校验性则为未知</p>
+<h5 id="举例说明"><a href="#举例说明" class="headerlink" title="举例说明"></a>举例说明</h5><p>选择符合传统定义B的集合X &#x3D; {000,001,010,011}, 它们的整体异或和为0</p>
+<p>对于选定的单个元素，每一位的异或和为，而选定2位时，$u &#x3D; 011$, $\oplus_{x \in X}\pi_u(x) &#x3D; 1$</p>
+<h4 id="分割性质"><a href="#分割性质" class="headerlink" title="分割性质"></a>分割性质</h4><p>设$X$是一个多元集($X &#x3D; {x \in F_2^n }$), 并且有一个数字$k$满足$0 \le k \le n $, 当多元集$X$拥有分割性质的时候（符号记为$D_k^n$），他有以下性质：当$w_u &lt; k$时, 对所有的$x \in X$， 它们的奇偶校验性为偶,即$\oplus_{x \in X}\pi_u(x) &#x3D; 0, u \in {F_2^n &#x2F; S_k^n}$, 也就是说对于$u \in S_k^n$, 他们的奇偶校验性为未知。</p>
+<p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745673978428.png" alt="1745673978428"></p>
+<p>也就是说$\pi_u(x)$和的奇偶性，可以用对应的异或和来代替，正如上文所解释的，异或和为0，其奇偶性对应为偶，异或和为1，对应奇偶性为奇。</p>
+<p>$B和U$的基本性质与$D_2^n和D_1^n$,定义相同。但是$A与D_n^n$的定义却不相同；满足$A$的多重集，一定满足$D_n^n$，反之则不然。参考文章[1]使用A来代替$D_n^n$, 这在构造积分算子方面已经足够了。</p>
+<h5 id="相关证明"><a href="#相关证明" class="headerlink" title="相关证明"></a>相关证明</h5><p>关于$U &#x3D; D_1^n$,则 $w_u &lt; 1$, 即$u &#x3D; 0^n$, 因为​$0^0 &#x3D; 1^0 &#x3D; 1$,所以​$\pi_{0^n}(x) &#x3D; \prod x[i] ^ 0 &#x3D; 1$,说明$\pi_u(x)$的取值在$u &#x3D; 0^n$时与$x$无关,故而$\oplus_{x \in X} \pi_u(x) &#x3D; |X| mod2$，呈现出随机的性质</p>
+<p>对于多重集$X &#x3D; {0 {01}^{n-1}} *2$，它仍然满足$D_n^n$的性质，但不包含所有值，不满足A</p>
+<h4 id="分组性质的传播特性"><a href="#分组性质的传播特性" class="headerlink" title="分组性质的传播特性"></a>分组性质的传播特性</h4><p>设S-box的度为d，$X$是一个多重集，其元素的取值为$F_2^n$, $Y$是一个多元的输出集，由$S(x)$计算得到，其中$x\in X$（可以将S盒设为S（x）这样的函数表达式, 它的度就是$d &#x3D; deg(S)$, 具体的计算要使用对应工具）</p>
+<p>若$X​$具有$D_k^n​$的性质，则$u​$被分成了两种子集，一种是$\oplus_{x\in X} \pi_u(x) &#x3D; 0​$，即校验奇偶性为偶；另一种则是$\oplus_{x\in X} \pi_u(x) &#x3D;UNKOWN ​$，即校验奇偶性为奇。若要计算$Y​$的分割性质，也就是计算$\oplus_{s(x) \in Y} \pi_v(S(x))​$的奇偶校验情况。计算$\oplus_{S(x)\in Y}\pi_v(S(x))​$, 等效于$\oplus_{x \in X}{\pi_v∘S}(x)​$, $(π_v∘s) ​$表示函数复合。</p>
+<h5 id="单S盒的分割的传播特性"><a href="#单S盒的分割的传播特性" class="headerlink" title="单S盒的分割的传播特性"></a>单S盒的分割的传播特性</h5><p>对于n-bit的S盒其度为d，记为符号$S(x)$, 输入多重集$X$具有可分性质$D_k^n$, 则输出多重集$Y$也具有可分性质$D_{\lceil \frac k d\rceil}^n$, 特别的，对于输入集$X$具有可分性质$D_n^n$时，输出集$Y$则具有$D_n^n$。</p>
+<h6 id="证明-1"><a href="#证明-1" class="headerlink" title="证明"></a>证明</h6><p>在上面由提到,对于函数$f:F_2^n\rightarrow F_2$,<br>$$<br>f(x) &#x3D; \oplus_{u\in F_2^n}a_u^f \cdot \pi_u(x)<br>$$<br>同理对于${\pi_v∘S}(x)​$也可使使用ANF来表示<br>$$<br>{\pi_v∘S}(x) &#x3D; \oplus_{u \in F_2^n}a_u^{\pi_v∘S}\cdot \pi_u(x)<br>$$<br>所以<br>$$<br>\oplus_{x \in X}{\pi_v∘S}(x) &#x3D; \oplus_{x \in X}(\oplus_{u \in F_2^n}a_u^{\pi_v∘S}\cdot \pi_u(x))<br>$$<br>而u可以依据分割性分成${S_k^n},{F_2^n &#x2F; S_k^n} $ ，对于 $u \in {F_2^n &#x2F; S_k^ n}, \oplus_{x \in X}\pi_u(x) &#x3D; 0$<br>$$<br>\oplus_{x \in X}(\oplus_{u \in F_2^n}a_u^{\pi_v∘S}\cdot\pi_u(x))  &#x3D; \oplus_{u \in F_2^n&#x2F;s_k^n}{a_u^{\pi_v∘S}}(\oplus_{x \in X}\pi_u(x)) \oplus \oplus_{u \in s_k^n}{a_u^{\pi_v∘S}}(\oplus_{x \in X}\pi_u(x)) \<br>&#x3D; 0 \oplus \oplus_{u \in s_k^n}{a_u^{\pi_v∘S}}(\oplus_{x \in X}\pi_u(x)) \<br>&#x3D; \oplus_{u \in s_k^n}{a_u^{\pi_v∘S}}(\oplus_{x \in X}\pi_u(x))<br>$$<br>即<br>$$<br>\oplus_{x \in X}{\pi_v∘S}(x) &#x3D; \oplus_{u \in s_k^n}{a_u^{\pi_v∘S}}(\oplus_{x \in X}\pi_u(x))<br>$$<br>如果对于所有的$u \in S_k^n ​$, 都有$a_u^{\pi_v∘S} &#x3D; 0​$，则$\oplus_{x \in A}{\pi_v∘S}(x) &#x3D; 0​$ , 也就是说，若存在$u \in S_k^n​$, 有$a_u^{\pi_v∘S} &#x3D; 1​$, 会使得$\oplus_{x \in X}{\pi_v∘S}(x) ​$变为UNKOWN</p>
+<p>满足以下性质:</p>
+<ul>
+<li><p>$deg({\pi_v∘S}) \le min{ n-1, w_v \times d }$</p>
+</li>
+<li><p>对于$w_v &lt; n​$， S盒时一个双射置换，则$deg({\pi_v∘S}) \leq n-1​$</p>
+</li>
+</ul>
+<p>对于$\oplus_{x \in X}{\pi_v∘S}(x) &#x3D; \oplus_{u \in s_k^n}{a_u^{\pi_v∘S}}(\oplus_{x \in X}\pi_u(x))​$,  $S_k^n​$就表示汉明重量至少为k,所以就要用考虑满足$w_u\ge k​$的$u​$,  当$w_v \times d &lt; k​$成立时，$a_u^{\pi_v∘S} &#x3D; 0(u \in S_k^n)​$ , 这是因为$deg({\pi_v∘S}) \leq w_v \times d &lt; k​$, 而我们要考虑的$u​$满足$w_u \ge k​$也就是说${\pi_v∘S}​$函数的最高次单项式中参与运算的x的位数是不足k的，也就是无法选出u对应个数的x位所表示的项，故$a_u^{\pi_v∘S} &#x3D; 0(u \in S_k^n)​$</p>
+<p> 所以对于$u \in S_n^k$, ${a_u^{\pi_v∘S}} &#x3D; 1$的必要条件是 $w_v \times d \ge k, 即 w_v \ge \lceil \frac k d \rceil$, 此时$ \oplus_{u \in s_k^n}{a_u^{\pi_v∘S}}(\oplus_{x \in X}\pi_u(x)) &#x3D; UNKNOWN$, 也就是对于输出集$Y$拥有可分性质$D_{\lceil \frac k d \rceil} ^ k$</p>
+<p>现在来考虑对于$u &#x3D; 1 ^ n$的情况，当$w_v &lt; n$时, 因为 $deg({\pi_v∘S}) \leq n-1$, $a_u^{\pi_v∘S} &#x3D; 0, \oplus_{x \in X}{\pi_v∘S}(x)  &#x3D; 0$,所以仅当$v &#x3D; 1^n$的时候 $a_u^{\pi_v∘S} &#x3D;1 , \oplus_{u \in s_k^n}{a_u^{\pi_v∘S}}(\oplus_{x \in X}\pi_u(x)) &#x3D; UNKNOWN$，所以$Y$有可分性质$D_n^n$</p>
+<h6 id="事例说明"><a href="#事例说明" class="headerlink" title="事例说明"></a>事例说明</h6><p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745844190556.png" alt="1745844190556"></p>
+<p>这个S盒的$n &#x3D; 4$， 度$d &#x3D; 2$</p>
+<p>输入集$X$输出集$Y$</p>
+<p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745844285156.png" alt="1745844285156"></p>
+<p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745844309907.png" alt="1745844309907"></p>
+<p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745844335385.png" alt="1745844335385"></p>
+<p>此时我们可以观察到，对于输入集$X​$而言，$\bigoplus_{x \in X} \pi_u(x)  &#x3D; UNKnown​$的划分是很小一部分，但是经过S-box后</p>
+<p>$\bigoplus_{S(x) \in Y} \pi_v(S(x)) &#x3D; Unknown$这个划分已经扩大了。当这个集合扩大到除$u &#x3D; 0^n$以外的泛集时, 即可分性质变成$D_1^n$时，我们无法区分加密文本以及随机对了</p>
+<h5 id="向量化的分割属性"><a href="#向量化的分割属性" class="headerlink" title="向量化的分割属性"></a>向量化的分割属性</h5><p>上节只给出了一个S盒的可除性，但由于实际密码在每一轮中使用多个S盒，仅利用单S盒的性质不能构造整数密码，因此我们将可分性向量化。</p>
+<p>设一个S层是由m个n位d次S盒并行组成的函数，我们考虑了可分性质对S层的传播特性，设X是S层的输入多集，$x ∈ X取（F^n_2)^m​$，向量化是可分性质的自然推广，即u的集合被分成$\bigoplus <em>{x∈X} π_u（x &#x3D; Unknown)​$的子集和$\bigoplus</em>{x∈ X} π_u(x) &#x3D; 0​$子集，其中$u​$是一个m维向量，其元素的值为$F^n_2​$。</p>
+<p>设X是其元素取值为$(F^n_2)^m$的多重集，k是其元素取值在0和n之间的m维向量。当多重集X具有可除性$D^{n，m}<em>k$时，有<br>$$<br>\bigoplus</em>{x \in X}\pi_u(x) &#x3D; \begin {cases} 0 &amp;\text u \notin S_k^{n,m} \ unknown &amp; u \in S_k^{n,m} \end{cases}<br>$$</p>
+<h6 id="传播性"><a href="#传播性" class="headerlink" title="传播性"></a>传播性</h6><p>设S层的输入多重集具有可除性$D^{n，m}<em>k​$。S层的输出计算为$S(x)&#x3D;（s_1(x_1)，s_2(x_2)，…，s_m(x_m),(x_1，x_2，…，x_m)∈ X​$。我们现在考虑使得$\bigoplus</em>{x∈X} π_v(S(x))​$结果为未知(unknown)以及0的两种$v​$的子集。因为输出层中每个S盒的输出计算是相互独立的，那么也可以独立地评估可分属性的传播特性，即输出的多重集有$D^{n，m}_{k’}，其中k_i’ &#x3D;\lceil \frac {k_i} d \rceil ​$此外，如果S盒是双射的并且$k_i &#x3D; n​$成立，则$k_i’ &#x3D; n​$成立。</p>
+<h5 id="集合分割属性"><a href="#集合分割属性" class="headerlink" title="集合分割属性"></a>集合分割属性</h5><p>通过对分割性质的向量化，我们可以计算元素取值为$(F^n_2)^m$的多重集，但仅使用向量可分性质仍是不够的，为了简单起见，我们考虑元素取值为$(F_2^8)^2$的多重集X，假设X中元素个数为256，x的两个元素独立地取0到255之间的所有值.我们考虑了对所有$\bigoplus_{x ∈ X}π_u(x) &#x3D; unknown \space or \space 0 $的$u$的集合。</p>
+<p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745848329352.png" alt="1745848329352"></p>
+<p>如上面的事例所示，我们不能用向量除法来表达这个性质。也就是说集合的可分性质是由多个向量的可分性质组合而成。</p>
+<p>设$X​$是其元素取$(F^n_2)^m​$值的多重集，$k^{(j)}（j &#x3D; 1，2，.，q）​$是m维向量，其元素取0和n之间的值。当多重集X具有除法性质$D^{n，m}<em>{ k^{(1)}，k^{(2)}，…，k^{(q)} }​$时，多重集满足以下条件：<br>$$<br>\bigoplus</em>{x \in X}\pi_u(x) &#x3D; \begin {cases} 0 &amp;\text u \notin S_{k^{(1)}}^{n,m} \cup S_{k^{(2)}}^{n,m}\cup …\cup S_{k^{(q)}}^{n,m} \ unknown &amp; u \in S_{k^{(1)}}^{n,m} \cup S_{k^{(2)}}^{n,m}\cup …\cup S_{k^{(q)}}^{n,m} \end{cases}<br>$$</p>
+<p>显然，q &#x3D; 1的集体除法性质与向量除法性质相同。</p>
+<h6 id="传播性-1"><a href="#传播性-1" class="headerlink" title="传播性"></a>传播性</h6><p>设多重集$X$具有$D^{n,m}<em>{k^{(1)} \cup k^{(2)} \cup … \cup k^{(q)}  }$这个可分性质，同样考虑$\bigoplus</em>{x∈X} π_v(S(x))$结果为未知(unknown)以及0的两种$v$的子集。我们可以独立地估计$D^{n，m}<em>{k^{(j)}}$对所有j的传播特性。也就是说，输出的多重集具有$D^{n,m}</em>{k’^{(1)} \cup k‘^{(2)} \cup … \cup k’^{(q)}  }$，其中$k’^{(j)}_i &#x3D;\lceil \frac {k^{(j)}_i} d \rceil$。此外，如果S盒是双射的并且$k^{(j)}_i &#x3D; n$成立，则$k’^{(j)}_i &#x3D; n$成立。</p>
+<p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745850552280.png" alt="1745850552280"></p>
+<h2 id="积分传播在不同加密结果中的效果"><a href="#积分传播在不同加密结果中的效果" class="headerlink" title="积分传播在不同加密结果中的效果"></a>积分传播在不同加密结果中的效果</h2><h3 id="Feistel网络"><a href="#Feistel网络" class="headerlink" title="Feistel网络"></a>Feistel网络</h3><p>$(l,d)​$-Feistel. Feistel网络是设计分组密码最流行的网络之一.当用Feistel网络构造n比特分组密码时，轮函数的输入用两个(n&#x2F;2)比特值表示.此外，在轮函数中使用一个(n&#x2F;2)比特非线性函数F，我们称这个函数为<strong>F-函数</strong>.设$(w_1，w_2)2​$是函数的输入，并且输出被计算为$(z_1,z_2)&#x3D;(F(w_1)\oplus w_2，w_1)​$。我们现在定义$(l,d)-Feistel​$，其F-函数是一个d次的位非线性函数（该函数不限于置换）.图4示出了Feistel网络的轮函数.<img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745850648537.png" alt="1745850648537"></p>
+<p>由于Feistel网络具有“复制”、“替换”和“压缩”，因此我们需要针对它们传播除法性质。“复制”创建F函数的输入，而“替换”通过F函数处理输入，最后，“压缩”通过XOR产生输出的左半部分。图5示出了传播特性的轮廓。</p>
+<h4 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h4><p>设W是一个输入集, $(w1，w2)\in W​$表示输入值。轮函数首先创建$(x_1，x_2，x_3)​$，其中$x_1 &#x3D; w_1,x_2 &#x3D; w_1,x_3 &#x3D; w_2​$,$x_1​$是F-函数的输入，$x_2​$是输出函数的输出的右半部分，$x_3​$是轮函数的右半部分的输入。设X是其元素取$( x_1，x_2，x_3)​$的输出集合，对于所有$(w_1，w_2)∈ W​$。假设输入集合W具有除法性质$D^{l,2}_{ k^{(1)}，k^{(2)},…,k^{(q)}}​$。如果我们使用满足$k^{(j)}_1 \leq u_1​$和$k^{(j)}<em>2 \leq u_2​$，则$\bigoplus</em>{w \in W} \pi_u(w) &#x3D; unknown​$。由于$x_1 &#x3D; x_2​$，如果我们使用满足$k^{(j)}_1 − k’\le v_1，k’ ≤ v_2,k^{(j)}<em>2 &lt; v_3, (0 \le k’ \le k^{(j)}<em>1), \bigoplus</em>{x\in X}\pi_v(x) &#x3D; unknown​$因此，集合X具有$D^{l,3}</em>{[0,k^{(1)}_1,k^{(1)}_2] , [1,k^{(1)}_1-1,k^{(1)}_2],…,[k^{(1)}_1,0,k^{(1)}_2],…,[k^{(q)}_1,0,k^{(q)}_2]}​$</p>
+<h4 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h4><p>F函数是一个度为d的l-bit的函数。设输入集具有可分性质$D^{l,3}<em>{ k^{(1)}，k^{(2)},…,k^{(q)}}​$,根据之前的可分传播性质，则输出集具有可分性质$D^{l,3}</em>{ k’^{(1)}，k’^{(2)},…,k’^{(q)}}​$, $({ k’^{(j)}_1，k’^{(j)}_2,k’^{(j)}_3 }) &#x3D;  (\lceil \frac {k^{(j)}_1} {d} \rceil, k^{(j)}_2,k^{(j)}_3)​$,特别的，对于$k^{(j)}_1 &#x3D; j, k’^{(j)}_1 &#x3D; j​$</p>
+<h4 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h4><p>设输入集为$Y$, $(y_1,y_2,y_3) \in Y$表示输入，其中$y_1$表示F函数的输出，令$y_1 \oplus y_3$, 则输出状态$Z &#x3D; (z_1,z_2) &#x3D; (y_1 \oplus y_3, y_2)$, 评估$Z$的可分性质，将计算<br>$$<br>\bigoplus <em>{(z_1,z_2) \in Z}\pi_v(z_1,z_2) &#x3D; \bigoplus <em>{(z_1,z_2) \in Z}\pi</em>{v_1}(z_1)\times \pi</em>{v_2}(z_2))\<br>&#x3D;\bigoplus <em>{(y_1,y_2,y_3) \in Y}\pi</em>{v_1}(y_1 \oplus y_3)\times \pi_{v_2}(y_2))\<br> &#x3D; \bigoplus <em>{(y_1,y_2,y_3) \in Y}(\bigoplus</em>{c \subseteq v_1}\pi_c(y_1)\times \pi_{v_1 \oplus c}(y_3)\times \pi_{v_2}(y_2)))\<br>  &#x3D; \bigoplus <em>{c \subseteq v_1}(\bigoplus</em>{(y_1,y_2,y_3) \in Y}\pi_c(y_1)\times \pi_{v_1 \oplus c}(y_3)\times \pi_{v_2}(y_2)))\<br>$$<br>其中$c \subseteq v_1 AND \space c \cap v_1 &#x3D; c $, 如果输入集$Y$满足$D^{l,3}<em>{k^{(1)}, k^{(2)}…,k^{(q)} }$, 则输出集Z有可分性质$D^{l,2}</em>{k’^{(j)}, k’^{(j)},…,k’^{(q)} }, (k’^{(j)}_1,k’^{(j)}_2) &#x3D; (k^{(j)}_1 + k^{(j)}_3,k^{(j)}_2) ,(k’^{(j)}_1,k’^{(j)}_2) \in k’^{(j)}$,而如果$(k^{(j)}_1 + k^{(j)}_3) &gt; l$,对应的奇偶效验性为偶，即$\bigoplus _{(z_1,z_2) \in Z}\pi_v(z_1,z_2) &#x3D; 0$</p>
+<h4 id="积分路径搜索算法"><a href="#积分路径搜索算法" class="headerlink" title="积分路径搜索算法"></a>积分路径搜索算法</h4><p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745855827617.png" alt="1745855827617"></p>
+<p>F函数的非线性程度d，决定活动位的传播上限。若输入X位活动，输出活动位数最多为⌈X&#x2F;d⌉</p>
+<h5 id="过程1-FeistelFuncEval-ℓ-d-k₁-k₂"><a href="#过程1-FeistelFuncEval-ℓ-d-k₁-k₂" class="headerlink" title="过程1: FeistelFuncEval(ℓ, d, k₁, k₂)"></a><strong>过程1: FeistelFuncEval(ℓ, d, k₁, k₂)</strong></h5><ul>
+<li><strong>输入</strong>：当前轮的左右部分活动位数$k_1$（左）、$k_2$（右）。</li>
+<li><strong>输出</strong>：下一轮可能的$(k’_1, k’_2)$集合。</li>
+<li>步骤：<ol>
+<li><strong>F函数处理</strong>：左半输入$k₁​$位活动，经过代数度d的F函数后，输出活动位数最多为$⌈k_1&#x2F;d⌉​$。</li>
+<li><strong>右半更新</strong>：新右半部分的活动位数$k’_2 &#x3D; k_2 + ⌈X&#x2F;d⌉$（X为F函数消耗的活动位）。</li>
+<li><strong>左半更新</strong>：新左半部分的活动位数$k’_1 &#x3D; k_1 - X$（原右半未处理部分）。</li>
+<li><strong>遍历X</strong>：遍历X从0到k₁，生成所有可能的(k’_1, k’_2)组合，并筛选L ≤ ℓ的有效结果。</li>
+</ol>
+</li>
+</ul>
+<h5 id="过程2-IntegralPathSearch-ℓ-d-r-k₁-k₂"><a href="#过程2-IntegralPathSearch-ℓ-d-r-k₁-k₂" class="headerlink" title="过程2: IntegralPathSearch(ℓ, d, r, k₁, k₂)"></a><strong>过程2: IntegralPathSearch(ℓ, d, r, k₁, k₂)</strong></h5><ul>
+<li><strong>输入</strong>：初始活动位$k_1, k_2$，目标轮数r。</li>
+<li><strong>输出</strong>：最大可攻击轮数r。</li>
+<li>步骤：<ol>
+<li><strong>初始评估</strong>：调用FeistelFuncEval生成第一轮的k值集合。</li>
+<li>动态规划迭代：<ul>
+<li>每轮处理所有可能的k值组合。</li>
+<li>对每个k值调用FeistelFuncEval生成下一轮的候选k值。</li>
+<li>使用SizeReduce去除冗余k值（如被其他k值包含的子集）。</li>
+</ul>
+</li>
+<li><strong>终止条件</strong>：当所有k值对应的活动位总和D ≤ 1时停止，无法继续传播积分属性。</li>
+</ol>
+</li>
+</ul>
+<p>假设输入的左半部分的$k_1​$位是有效的，其余$l-k_1​$位是常数。此外，设输入的右半部分的$k_2​$位是有效的，其余$l-k2​$位是常数。也就是说，我们准备$2^{k_1 +k_2}​$个选择的明文。输入集具有除法属性$D^{l，2}_{ [k_1，k_2]}​$。</p>
+<p>算法1示出了创建积分函数的路径搜索算法。算法1不限制F-函数为置换。</p>
+<p>如果F函数被限制为置换，则当$X &#x3D; l$ 成立时$L &#x3D; k2 + l$（参见算法1中的第4行）调用SizeReduce，如果存在满足$S^{l，2}<em>{ k^{(i，j)}}\subseteq S^{l，2}</em>{ k^{（i’，j’）}}$的$(i’，j’)$，则消除$k^{(i，j)}$。</p>
+<p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745857432204.png" alt="1745857432204"></p>
+<p>表2显示了在（32，5）-和（64，7）-Feistel上构造r轮积分算子所需的选择明文的数量，其中DES是具有非双射函数的（32，5）-Feistel，Camellia是具有双射函数的（64，7）-Feistel。当我们用$2^D$选择的明文构造积分算子（l，d）-Feistel时，我们使用（k1，k2）满足以下条件。<br>$$<br>(k_1, k_2) &#x3D; \begin {cases} (D − l , l) &amp;\text l ≤ D, \<br>(0, D) &amp; \text  D &lt; l \end {cases}<br>$$<br>为了与我们的积分算子进行比较，我们考虑了两种以前的方法，一种是积分性质的传播特性，另一种是代数次数的估计。我们首先考虑积分性质的传播特性，如果F-函数是非双射函数，传播特性不能构造足够的算子。因此，由积分性质引入的结果仅在F-函数是双射时示出。我们接下来考虑代数次数的估计。不幸的是，由于我们不知道针对Feistel网络的改进的界，我们使用Feistel网络的平凡界。假设明文的左半部分是常数。对于任何r轮$（l，d）$-Feistel，可以观察到函数，将密文的右半部分与明文的右半部分相关联，对于2 ≤ r，度至多为$d^{r-2}$。因此，我们可以用$2^{d^{r−2} + 1}$选择的明文构造r轮积分算子。由于明文的右半部分最多是$l$位的，所以可以用$2^{d^{r−2} + 1} &lt; 2 ^ l$来构造双字节。因此，就我们所尝试的而言，所有由除法性质构造的积分算子都比以前的方法“更好”。我们在附录B中总结了其他（l，d）-Feistel上的积分算子。我们在[36]中已经知道一个“更好”的Camellia上的积分算子，但它是利用Camellia的特殊性质构造的。另一方面，我们的方法是对（l，d）-Feistel的一般区分攻击，从（64，7）-Feistel的结果可以看出，即使Camellia的F-函数是从任意7次函数中选取的，修改后的Camellia也具有6轮积分的可达性。</p>
+<h3 id="SPN网络"><a href="#SPN网络" class="headerlink" title="SPN网络"></a>SPN网络</h3><p>$(l,d,m)-SPN​$。替换置换网络（SPN）是分组密码的另一种重要结构。SPN具有由S层和P层组成的轮函数，并且分组密码通过迭代轮函数来设计。我们现在定义$(l,d,m)-SPN​$，其轮函数在S层具有<strong>m个l-bit位的S盒</strong>并且在P层具有一个**$lm-bit​$**位线性函数。这里，每个S盒是次数为d的双射函数，$(lm)-bit​$位线性函数是次数为1的双射函数。图6显示了SPN的轮函数。目前，已经提出了许多采用$(l,d,m)-SPN​$的分组密码，例如AES ，PRESENT和Serpent]采用(8，7，16), (4，3，16)-和 (4，3，32)-SPN。此外，作为散列函数Rycak中的置换的Rycakf可以被视为（5，2，320）-SPN。</p>
+<p>AES 每个S盒处理8-bit的输入，<strong>高4位作为S盒表的行值</strong>，<strong>低4位作为S盒表的列值</strong>，所以l &#x3D; 8</p>
+<p>AES一共处理128位的明文，同时需要16个S盒来进行，所以m &#x3D; 16</p>
+<p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745858818211.png" alt="1745858818211"></p>
+<h4 id="S-Layer"><a href="#S-Layer" class="headerlink" title="S-Layer"></a>S-Layer</h4><p>假设S层的输入集具有划分属性$D^{l，m}<em>k​$。由于S层由度数为d的m位S盒组成，因此S层的输出集具有$D^{l，m}</em>{k’}​$。<br>$$<br>k_i’ &#x3D;<br>\begin {cases}<br>\lceil \frac {k_i} d \rceil &amp;\text k_i &lt; l \<br>l &amp;\text k_i &#x3D; l</p>
+<p>\end {cases}<br>$$</p>
+<h4 id="form-S-Layer-to-P-Layer"><a href="#form-S-Layer-to-P-Layer" class="headerlink" title="form S-Layer to P-Layer"></a>form S-Layer to P-Layer</h4><p>S层的输出以$(F^l_2)^m​$的值表示，而P-Layer的输入以$F^{lm}_2​$表示。设X为S层的输出集，其元素取$(F^l_2)^m​$。设Y为P-Layer的输入集，其元素取$F^{lm}_2​$值。该变换通常通过简单的按位拼接来实现，即$y &#x3D;（x_1 ||x_2||···||x_m）​$，其中$(x_1，x_2，…，x_m)​$X的值。</p>
+<p>我们现在考虑从$D^{l,m}<em>k \rightarrow D^{lm}</em>{k‘}$的可分性质的转换。<br>$$<br>\bigoplus_{y \in Y}\pi_v(y) &#x3D;<br>\begin {cases}<br>unknown &amp;\text w_v \ge \sum_{i&#x3D;1}^mk_i \<br>0 &amp;\text w_v &lt; \sum_{i&#x3D;1}^mk_i<br>\end{cases}<br>$$<br>所以P-layer的输入具有可分性质$D_{k’}^{lm} , {k’} &#x3D; \sum_{i&#x3D;1}^mk_i​$</p>
+<h4 id="P-layer"><a href="#P-layer" class="headerlink" title="P-layer"></a>P-layer</h4><p>P-Layer由$lm$位线性函数组成。由于线性函数的次数最多为1，因此可分属性没有变化</p>
+<h4 id="from-P-Layer-to-S-Layer"><a href="#from-P-Layer-to-S-Layer" class="headerlink" title="from P-Layer to S-Layer"></a>from P-Layer to S-Layer</h4><p>P-Layer的输出以$F^{lm}<em>2​$表示,S层的输入以$(F^l_2)^m​$的值表示。该变换通常通过简单的位划分来实现，即$(y_1 ||y_2||···||y_m)&#x3D; x​$我们现在考虑从$D^{lm}</em>{k}\rightarrow  D^{l,m}<em>{k’} ​$的可分性质的转换.<br>$$<br>\bigoplus</em>{x \in X}\pi_u(x) &#x3D;<br>\begin {cases}<br>unknown &amp;\text k \le w_u \<br>0 &amp;\text k &gt; w_u<br>\end{cases}<br>$$<br>因此S-Layer的输入是具有可分性质：<br>$$<br>D^{l，m}_{ k’^{(1)}，k’^{(2)}，…，k’^{(q)} }\<br>k’^{(j)}_1 + k’^{(j)}_2+…+k’^{(j)}_m &#x3D; k,(1 \le j \le q)<br>$$</p>
+<h4 id="总体评估"><a href="#总体评估" class="headerlink" title="总体评估"></a>总体评估</h4><p>我们可以通过计算集体可分性质的传播特性来构造积分算子。然而，由于q的大小极大地扩展，因此不可能执行直接的实现。因此，我们展示了更有效的技术。设X是S层的输入集，元素取值为$(F^l_2)^m$。假设输入集具有除法性质$D^{l，m}<em>{ k^{(1)}，k^{(2)}，…，k^{(q)} }$，该可分性质由除法性质$D^{l,m}</em>{k}$划分产生。如果$k &gt;(l-1)m$成立，$k^{(j)}$的至少$(m-lm +k)$个元素必须变为$l$。在这种情况下，其余元素必须变为$l-1$。因为S-Layer通过 $l 以及(l-1)$派生出$l以及\lceil (l-1) &#x2F;d \rceil$因此输出集的可分性质为$D^{l,m}_{k’}$<br>$$<br>k_i’ &#x3D;<br>\begin {cases}<br>\lceil \frac {(l-1)} d \rceil (lm-k) + l(m-lm+k) &amp;\text k &gt; (l-1)m \<br>\lceil \frac k d \rceil &amp;\text k \le (l-1)m</p>
+<p>\end {cases}<br>$$</p>
+<p>这里，如果$k ≤(l−1)m​$成立，我们简单地将$(l,d,m)-SPN​$的轮函数视为一个度为d的m位S盒。</p>
+<h4 id="积分路径搜索"><a href="#积分路径搜索" class="headerlink" title="积分路径搜索"></a>积分路径搜索</h4><p>现在我们考虑$(l,d,m)-SPN$上的积分运算器。我们首先准备一组选择明文，使得第$i$个S盒的输入的$k_i$位是有效的，其余$(l-k_i)$位是常数。即我们准备$2^{ \sum^m_{i&#x3D;1} k_i}$选择明文。</p>
+<p>输入集具有可除性$D^{l，m}_k$。算法2给出了构造积分算子的路径搜索算法。</p>
+<p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745862165861.png" alt="1745862165861"></p>
+<p>实际上就是上述步骤的代码性描述</p>
+<h2 id="传统积分区分器与神经积分区分器"><a href="#传统积分区分器与神经积分区分器" class="headerlink" title="传统积分区分器与神经积分区分器"></a>传统积分区分器与神经积分区分器</h2>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2024/08/15/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2025 qiu-yunhao
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

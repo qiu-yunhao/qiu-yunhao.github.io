@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="动态规划–初见我语文不怎么好，而且最近写的有点题颠覆了我的认知，所以我把动态规划的定义放在最后，那么先用一个例子来引入我印象中的动态规划。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2024/08/15/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="动态规划–初见我语文不怎么好，而且最近写的有点题颠覆了我的认知，所以我把动态规划的定义放在最后，那么先用一个例子来引入我印象中的动态规划。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/22/IzGHQ1.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/22/IzansA.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/22/IzdYtK.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/22/oS37PH.jpg">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/22/oSEm3F.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/22/oSVwzF.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/22/oSZaTI.png">
+<meta property="article:published_time" content="2024-08-15T08:09:58.912Z">
+<meta property="article:modified_time" content="2024-08-15T08:09:58.912Z">
+<meta property="article:author" content="qiu-yunhao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/11/22/IzGHQ1.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">qiu-yunhao</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/%E5%AF%86%E7%A0%81/" style="font-size: 10px;">-密码</a> <a href="/tags/Android-%E8%87%AA%E5%AE%9A%E4%B9%89View/" style="font-size: 10px;">Android&&自定义View</a> <a href="/tags/C-%E5%B8%AE%E5%A4%A7%E4%BD%AC%E4%BB%A3%E4%BC%A0/" style="font-size: 10px;">C 帮大佬代传</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/c-android/" style="font-size: 10px;">c android</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/%E5%AF%86%E7%A0%81/" style="font-size: 20px;">密码</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-动态规划" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2024/08/15/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="article-date">
+  	<time datetime="2024-08-15T08:09:58.912Z" itemprop="datePublished">2024-08-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="动态规划–初见"><a href="#动态规划–初见" class="headerlink" title="动态规划–初见"></a>动态规划–初见</h1><p>我语文不怎么好，而且最近写的有点题颠覆了我的认知，所以我把动态规划的定义放在最后，那么先用一个例子来引入我印象中的动态规划。</p>
+<span id="more"></span>
+<h2 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h2><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/IzGHQ1"><img src="https://z3.ax1x.com/2021/11/22/IzGHQ1.png" alt="IzGHQ1.png"></a></p>
+<p>很明显，这里作为懒人的我们会使用递推(主要是不会递归，对吧)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">fib</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(n&lt;<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> n;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="type">int</span>[] nums = <span class="keyword">new</span> <span class="title class_">int</span>[n+<span class="number">1</span>];</span><br><span class="line">            nums[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">            nums[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt; n+<span class="number">1</span> ;i++)&#123;</span><br><span class="line">                nums[i] = nums[i-<span class="number">1</span>] + nums[i-<span class="number">2</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> nums[n];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>之后再来看看递归：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">fib</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span> || n==<span class="number">2</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">return</span> fib(n-<span class="number">1</span>) + fib(n-<span class="number">2</span>);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过leetcode，我们发现递归的速度比递推要慢很多。</p>
+<p>原因：</p>
+<p>所以这里就是我们传统思想中的动态规划，它规避了对递归中数据的反复调用查询，而选着直接将其储存，这样就在后面要访问这个数据时提高了运算速度。</p>
+<h2 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h2><p>那么接着看一个生活相关的问题：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/IzansA"><img src="https://z3.ax1x.com/2021/11/22/IzansA.png" alt="IzansA.png"></a></p>
+<p>那么我们看到这个题目第一时间是怎么想的？应该是比如 11 应该是</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">11</span> - <span class="number">5</span> = <span class="number">6</span>;</span><br><span class="line"><span class="number">6</span>-<span class="number">5</span> = <span class="number">1</span>;</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p> 这样感觉很不错，那么代码实现一下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">coinChange</span><span class="params">(<span class="type">int</span>[] coins, <span class="type">int</span> amount)</span> &#123;</span><br><span class="line">        Arrays.sort(coins);</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> coins.length-<span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            sum += amount / coins[i];</span><br><span class="line">            amount = amount % coins[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(amount!=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">             <span class="keyword">return</span> sum;</span><br><span class="line">        &#125;       </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后提交！大功告成！提交！QaQ</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/IzdYtK"><img src="https://z3.ax1x.com/2021/11/22/IzdYtK.png" alt="IzdYtK.png"></a></p>
+<p>我只能说！不愧是你，leetcode！</p>
+<p>那么现在来分析一下这个问题出在哪里？</p>
+<p>举个例子：</p>
+<p>如果我们选择的钱币是【1，5，11】没错，这个国家就是这样奇葩,而我们需要兑换的钱币为15</p>
+<p>那我们的代码的选择如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">15</span> - <span class="number">11</span> = <span class="number">4</span>;</span><br><span class="line"><span class="number">4</span> - <span class="number">1</span> = <span class="number">3</span>;</span><br><span class="line"><span class="number">3</span> - <span class="number">1</span> = <span class="number">2</span>;</span><br><span class="line"><span class="number">2</span> - <span class="number">1</span> = <span class="number">1</span>;</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>而实际上是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">15 - 5 = 10;</span><br><span class="line">10 - 5 = 5;</span><br><span class="line">5;</span><br></pre></td></tr></table></figure>
+
+<p>我们的代码的这种策略称为“<strong>贪心</strong>”：假设我们面对的局面是“需要凑出w”，<strong>贪心策略会尽快让w变得更小</strong>。能让w少11就尽量让它少11，这样我们接下来面对的局面就是凑出w-11。而本题中凑完11之后我们要面临凑4的局面，此时凑4的代价是很大的，这里就体现了贪心的局限性，它没有大局观，有点鼠目寸光。</p>
+<p>接下来是动态规划的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">coinChange</span><span class="params">(<span class="type">int</span>[] coins, <span class="type">int</span> amount)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[amount+<span class="number">1</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> amount + <span class="number">1</span>;</span><br><span class="line">        Arrays.fill(dp,max);</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;i &lt;= amount; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; coins.length; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i&gt;=coins[j])</span><br><span class="line">                    dp[i] = Math.min(dp[i - coins[j]] + <span class="number">1</span>,dp[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">return</span> dp[amount] &gt;= max ? -<span class="number">1</span> : dp[amount];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>动态规划中我们使用递推，通过状态转移的方法来对问题进行求解</p>
+<p>我们先解决一下的问题</p>
+<ul>
+<li>怎么设置dp对应的属性</li>
+<li>相应的dp[i]怎么得到 和 如何建立相关的状态转移方程</li>
+</ul>
+<p>这里首先看题目是求相应金额所转换的最小金币数所以就直接用dp[i] 表示i转换相应的金币需要的最小金币。</p>
+<p>然后就来思考这个dp[i]怎么得到</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oS37PH"><img src="https://z3.ax1x.com/2021/11/22/oS37PH.jpg" alt="oS37PH.jpg"></a></p>
+<p>至此解答完毕。</p>
+<h2 id="dp的适用性"><a href="#dp的适用性" class="headerlink" title="dp的适用性"></a>dp的适用性</h2><p>由此我们来看一下动态规划的一些性质：</p>
+<ul>
+<li><p>后无效性</p>
+<p>严格定义：如果给定某一阶段的状态，则在这一阶段以后过程的发展不受这阶段以前各段状态的影响。</p>
+<p>比如要凑出dp[15]，我们的关注点在于如何求出dp[4],dp[10]和dp[14],而我们是利用递推来解题的，也就是说，我们在求出dp[15]之前已经求出了dp[4],dp[10]和dp[14]。而在求出dp[15]时，这个结果对之前的所有的值都没有影响，即“<strong>未来对过去无效</strong>”。</p>
+</li>
+<li><p>最优子结构</p>
+<p>回顾我们对dp[i]的定义：我们记“凑出i所需的<strong>最少</strong>钞票数量”为dp[i].</p>
+<p>dp[i]的定义就已经蕴含了“最优”。利用amount&#x3D;14,10,4的<strong>最优</strong>解，我们即可算出w&#x3D;15的<strong>最优</strong>解。</p>
+<p>大问题的<strong>最优解</strong>可以由小问题的<strong>最优解</strong>推出，这个性质叫做“最优子结构性质”。</p>
+</li>
+</ul>
+<p>那么什么时候可以使1用dp？</p>
+<p>就是<strong>能将大问题拆成几个小问题，且满足无后效性、最优子结构性质</strong></p>
+<h2 id="例3"><a href="#例3" class="headerlink" title="例3"></a>例3</h2><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oSEm3F"><img src="https://z3.ax1x.com/2021/11/22/oSEm3F.png" alt=" "></a></p>
+<p>这道题就很简单了，可以现场想一下刚刚的做题方法，现场试一试，做完我们再继续讲</p>
+<p>下面上解题代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">rob</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        <span class="type">int</span>[] sum = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(n == <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> Math.max(nums[<span class="number">0</span>], nums[<span class="number">1</span>]);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            sum[<span class="number">0</span>] = nums[<span class="number">0</span>];</span><br><span class="line">            sum[<span class="number">1</span>] = Math.max(nums[<span class="number">0</span>], nums[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt; n; i++)&#123;</span><br><span class="line">            sum[i] = Math.max(sum[i-<span class="number">1</span>], sum[i-<span class="number">2</span>] + nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum[n-<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="例4"><a href="#例4" class="headerlink" title="例4"></a>例4</h2><p>那么我们来一道变种题</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oSVwzF"><img src="https://z3.ax1x.com/2021/11/22/oSVwzF.png" alt="oSVwzF.png"></a></p>
+<p>哎，成环了，惊不惊喜，意不意外！</p>
+<p> 那么就是需要化曲为直，来这道题换成上道题，进而来求解这道题。</p>
+<p>我们来分析一下这两道题不同的地方，上面那道是直接一条直线过去，这边成了环，那么偷n-1的时候会对0有影响吗？而且0和n不能同时取到，这会不会导致一些情况漏解？</p>
+<p>想到这里就说明确实是在动脑子了doge，那么怎么解决呢？</p>
+<p>我们作为专业小偷是不回头的，一次性会把东西偷干净，所以无论从哪个点切入都是一样的，偷完了，也不会影响之前偷过的，所以第一个问题解决了。那么下一个，都0和n不能同时取了能漏什么，这个担心是多余的。</p>
+<p>化曲为直部分：正因为0和n不能同时取，所以当选择偷0时，n是不会碰的，而当偷n时，0也是不会碰的，那么就把相应的状况剔除，即为处理<strong>0~n-1</strong>和<strong>1~n</strong>，通过上一题的方法进行求解，再把这两个答案进行比较，即可得到最终答案。</p>
+<p>上代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">rob</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span>[] dp1 = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">        <span class="type">int</span>[] dp2 = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n-<span class="number">1</span>; i++)&#123;</span><br><span class="line">            dp1[i] = Math.max(dp1[(i - <span class="number">1</span> + n)%n],dp1[(i - <span class="number">2</span> + n)%n]+nums[i]);</span><br><span class="line">            dp2[i+<span class="number">1</span>] = Math.max(dp2[i],dp2[( i - <span class="number">1</span> + n ) % n] + nums[i + <span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.max(dp2[n-<span class="number">1</span>],dp1[n-<span class="number">2</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="例5"><a href="#例5" class="headerlink" title="例5"></a>例5</h2><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oSZaTI"><img src="https://z3.ax1x.com/2021/11/22/oSZaTI.png" alt="oSZaTI.png"></a></p>
+<p>现在开始颠覆认知：这道题却不是使用dp，而是使用递归，但标签仍然是动态规划，可以用状态转移的方法来思考</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">integerReplacement</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      <span class="keyword">if</span>(n % <span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> integerReplacement(n/<span class="number">2</span>) + <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">   </span><br><span class="line">            <span class="keyword">return</span> Math.min(integerReplacement(n-<span class="number">1</span>),integerReplacement(n-<span class="number">1</span>)/<span class="number">2</span> + <span class="number">1</span>)+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>就有点颠覆我之前的认知，为此我特地翻了一下leetcode上对动态规划的定义，如下</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">动态规划常常适用于有重叠子问题和最优子结构性质的问题，并且记录所有子问题的结果，因此动态规划方法所耗时间往往远少于朴素解法。</span><br><span class="line"></span><br><span class="line">动态规划有自底向上和自顶向下两种解决问题的方式。自顶向下即记忆化递归，自底向上就是递推。</span><br><span class="line"></span><br><span class="line">使用动态规划解决的问题有个明显的特点，一旦一个子问题的求解得到结果，以后的计算过程就不会修改它，这样的特点叫做无后效性，求解问题的过程形成了一张有向无环图。动态规划只解决每个子问题一次，具有天然剪枝的功能，从而减少计算量。</span><br></pre></td></tr></table></figure>
+
+<p>感觉还是有点抽象，但没有关系，因为我也糊了！QwQ</p>
+<p>我打算写点系列性的东西，所以以后也会有相应的介绍，就且听下回分解？</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/08/15/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/08/15/ios%E4%BF%B1%E4%B9%90%E9%83%A8%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%9F%B9%E8%AE%AD/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ios俱乐部第一次培训</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2025 qiu-yunhao
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
