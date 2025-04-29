@@ -1,219 +1,190 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>base64 | Hexo</title>
-
-  <!-- keywords -->
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Base64​       前言：先唠点为什么写选个。我看到室友他们的项目登录都用到了base64，做了一个简单的安全措施，为这个加密和解密苦不堪言。所以就先讲讲这个东西，让大家以后遇到了也可以从容应对。">
+<!DOCTYPE html><html lang="zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>base64 | Hexo</title><meta name="author" content="qiu-yunhao"><meta name="copyright" content="qiu-yunhao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Base64 ​       前言：先唠点为什么写选个。我看到室友他们的项目登录都用到了base64，做了一个简单的安全措施，为这个加密和解密苦不堪言。所以就先讲讲这个东西，让大家以后遇到了也可以从容应对。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="base64">
 <meta property="og:url" content="http://example.com/2021/04/06/base64/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Base64​       前言：先唠点为什么写选个。我看到室友他们的项目登录都用到了base64，做了一个简单的安全措施，为这个加密和解密苦不堪言。所以就先讲讲这个东西，让大家以后遇到了也可以从容应对。">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://www.elecfans.com/uploads/allimg/171114/2387123-1G114103624322.png">
-<meta property="og:image" content="http://img.rcbqb.com/dt/mvmek3peano.jpg">
+<meta property="og:description" content="Base64 ​       前言：先唠点为什么写选个。我看到室友他们的项目登录都用到了base64，做了一个简单的安全措施，为这个加密和解密苦不堪言。所以就先讲讲这个东西，让大家以后遇到了也可以从容应对。">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
 <meta property="article:published_time" content="2021-04-05T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-08-15T08:09:58.911Z">
+<meta property="article:modified_time" content="2025-04-29T02:38:00.491Z">
 <meta property="article:author" content="qiu-yunhao">
 <meta property="article:tag" content="密码">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.elecfans.com/uploads/allimg/171114/2387123-1G114103624322.png">
-  
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/img/favicon.ico">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-  
-
-  
-<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
-
-  
-<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-
-
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
-<body>
-  <div id="container">
-    <div id="particles-js"></div>
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-				<img lazy-src="" class="js-avatar">
-			
-		</a>
-
-		<hgroup>
-			<h1 class="header-author"><a href="/">qiu-yunhao</a></h1>
-		</hgroup>
-
-		
-
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">Home</a></li>
-				        
-							<li><a href="/archives">Archives</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="half-header-menu">
-						<a class="hide">Home</a>
-						<a>Tags</a>
-						<a>Links</a>
-						<a>About</a>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-						</div>
-						<!-- music -->
-						
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/%E5%AF%86%E7%A0%81/" style="font-size: 10px;">-密码</a> <a href="/tags/Android-%E8%87%AA%E5%AE%9A%E4%B9%89View/" style="font-size: 10px;">Android&&自定义View</a> <a href="/tags/C-%E5%B8%AE%E5%A4%A7%E4%BD%AC%E4%BB%A3%E4%BC%A0/" style="font-size: 10px;">C 帮大佬代传</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/c-android/" style="font-size: 10px;">c android</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/%E5%AF%86%E7%A0%81/" style="font-size: 20px;">密码</a>
-					</div>
-				</section>
-				
-				
-				
-				<section class="switch-part switch-part3">
-					<div id="js-friends">
-					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
-			        
-			        </div>
-				</section>
-				
-
-				
-				
-				<section class="switch-part switch-part4">
-				
-					<div id="js-aboutme">I&#39;m a developer.</div>
-				</section>
-				
-			</div>
-		</div>
-	</header>				
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide"></h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img lazy-src="" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author"></h1>
-			</hgroup>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">Home</a></li>
-		        
-					<li><a href="/archives">Archives</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-      <div class="body-wrap"><article id="post-base64" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/04/06/base64/" class="article-date">
-  	<time datetime="2021-04-05T16:00:00.000Z" itemprop="datePublished">2021-04-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      base64
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "base64",
+  "url": "http://example.com/2021/04/06/base64/",
+  "image": "http://example.com/img/butterfly-icon.png",
+  "datePublished": "2021-04-05T16:00:00.000Z",
+  "dateModified": "2025-04-29T02:38:00.491Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "qiu-yunhao",
+      "url": "http://example.com/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/04/06/base64/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
       
-    </h1>
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
   
-
-      </header>
       
-      <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%86%E7%A0%81/" rel="tag">密码</a></li></ul>
-	</div>
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
 
-        
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
 
-        
-        <div class="clearfix"></div>
-      </div>
-      
+      const theme = saveToLocal.get('theme')
     
-    <div class="article-entry" itemprop="articleBody">
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
       
-        <h1 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h1><p>​       <em>前言：先唠点为什么写选个。我看到室友他们的项目登录都用到了base64，做了一个简单的安全措施，为这个加密和解密苦不堪言。所以就先讲讲这个东西，让大家以后遇到了也可以从容应对。</em></p>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'base64',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><!-- themes/butterfly/layout/includes/head.pug --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false} ] });"></script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hexo</span></a><a class="nav-page-title" href="/"><span class="site-name">base64</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">base64</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-04-05T16:00:00.000Z" title="Created 2021-04-06 00:00:00">2021-04-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-04-29T02:38:00.491Z" title="Updated 2025-04-29 10:38:00">2025-04-29</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>Base64</h1>
+<p>​       <em>前言：先唠点为什么写选个。我看到室友他们的项目登录都用到了base64，做了一个简单的安全措施，为这个加密和解密苦不堪言。所以就先讲讲这个东西，让大家以后遇到了也可以从容应对。</em></p>
 <span id="more"></span>
-
-<h2 id="1-什么是base64"><a href="#1-什么是base64" class="headerlink" title="1.什么是base64"></a>1.什么是base64</h2><p>  百度上给的定义:</p>
+<h2 id="1-什么是base64">1.什么是base64</h2>
+<p>百度上给的定义:</p>
 <blockquote>
 <p><em>Base64是网络上最常见的用于传输8Bit<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%AD%97%E8%8A%82%E7%A0%81/9953683">字节码</a>的编码方式之一，Base64就是一种基于64个可打印字符来表示<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BA%8C%E8%BF%9B%E5%88%B6/361457">二进制</a>数据的方法。可查看RFC2045～RFC2049，上面有MIME的详细规范。</em></p>
 </blockquote>
 <p>好吧，说实话，我也看的不是很懂（doge）</p>
-<p><strong>那用通俗的话讲什么是“base64“：就是像ASCII编码这中相似的东西，因为有64个编码，所以是base64。注入此类还有”base32”等。</strong></p>
+<p><strong>那用通俗的话讲什么是“base64“：就是像ASCII编码这中相似的东西，因为有64个编码，所以是base64。注入此类还有&quot;base32&quot;等。</strong></p>
 <p>下面是base64的编码表：</p>
 <blockquote>
 <p><img src="http://www.elecfans.com/uploads/allimg/171114/2387123-1G114103624322.png" alt="base64编码有什么用？（base64介绍及应用）"></p>
 </blockquote>
-<p>在由此看索引，从0<del>63，一共64个。诸如此类，base32是从0</del>31一共32个。</p>
+<p>在由此看索引，从0~63，一共64个。诸如此类，base32是从0~31一共32个。</p>
 <p>由于计算机是2进制存储，应当以2进制形式看这个表中的索引。</p>
-<h2 id="2-base64的算法"><a href="#2-base64的算法" class="headerlink" title="2.base64的算法"></a>2.base64的算法</h2><ul>
-<li><p><strong>Base64要求把每三个8Bit的字节转换为四个6Bit的字节（3×8 &#x3D; 4×6 &#x3D; 24），然后把6Bit再添两位高位0，组成四个8Bit的字节，也就是说，转换后的字符串理论上将要比原来的长1&#x2F;3。</strong></p>
+<h2 id="2-base64的算法">2.base64的算法</h2>
+<ul>
+<li>
+<p><strong>Base64要求把每三个8Bit的字节转换为四个6Bit的字节（3×8 = 4×6 = 24），然后把6Bit再添两位高位0，组成四个8Bit的字节，也就是说，转换后的字符串理论上将要比原来的长1/3。</strong></p>
 </li>
-<li><p><strong>也可以这样理解base64实际上6个直接存储最大的数是00 111111，最小的是00 000000。这套编码所做就是将字节进行分割而已，每6位一个然后再前面补零</strong></p>
+<li>
+<p><strong>也可以这样理解base64实际上6个直接存储最大的数是00 111111，最小的是00 000000。这套编码所做就是将字节进行分割而已，每6位一个然后再前面补零</strong></p>
 </li>
-<li><p>​                                                               <em>关于这个编码的规则：</em></p>
+<li>
+<p>​                                                               <em>关于这个编码的规则：</em></p>
 </li>
 </ul>
 <p>​                                                                 ①.把3个字节变成4个字节。</p>
@@ -223,7 +194,9 @@
 <p>​                                                                                 <strong>转前 ：s 1 3</strong></p>
 <p>**查ASCII表可知    s→115   ，  1→49   ， 3→51  **</p>
 <p><strong>先转成ASCII：对应 115  49  51</strong></p>
-<p><strong>implementation “android.arch.persistence.room:runtime:1.1.1”<br>annotationProcessor “android.arch.persistence.room:compiler:1.1.1” implementation “android.arch.persistence.room:runtime:1.1.1”<br>annotationProcessor “android.arch.persistence.room:compiler:1.1.1” 2进制： 01110011 00110001 00110011</strong></p>
+<p><strong>implementation &quot;android.arch.persistence.room:runtime:1.1.1&quot;
+annotationProcessor &quot;android.arch.persistence.room:compiler:1.1.1&quot; implementation &quot;android.arch.persistence.room:runtime:1.1.1&quot;
+annotationProcessor &quot;android.arch.persistence.room:compiler:1.1.1&quot; 2进制： 01110011 00110001 00110011</strong></p>
 <p>按照上面的分割方法处理</p>
 <p>​               <strong>011100</strong>|110011|<strong>000100</strong>|110011</p>
 <p>然后才有后面的 011100 110011 000100 110011</p>
@@ -232,14 +205,18 @@
 <p>转换十进制得到 28 51 4 51</p>
 <p><strong>查对下照表 c z E z</strong></p>
 <ul>
-<li><h4 id="那么问题来了：这是位数刚好为6的倍数的情况下的处理，那如果不够怎么办？"><a href="#那么问题来了：这是位数刚好为6的倍数的情况下的处理，那如果不够怎么办？" class="headerlink" title="那么问题来了：这是位数刚好为6的倍数的情况下的处理，那如果不够怎么办？"></a>那么问题来了：这是位数刚好为6的倍数的情况下的处理，那如果不够怎么办？</h4></li>
+<li>
+<h4 id="那么问题来了：这是位数刚好为6的倍数的情况下的处理，那如果不够怎么办？">那么问题来了：这是位数刚好为6的倍数的情况下的处理，那如果不够怎么办？</h4>
+</li>
 </ul>
-<p><strong>此时，需在原数据后面添加1个或2个零值字节，使其字节数是3的倍数。然后，在编码后的字符串后面添加1个或2个等号“&#x3D;”，以表示所添加的零值字节数。解码的时候，会自动去掉。（至于为什么是保证3的倍数就行了，我还不知道……）</strong></p>
+<p><strong>此时，需在原数据后面添加1个或2个零值字节，使其字节数是3的倍数。然后，在编码后的字符串后面添加1个或2个等号“=”，以表示所添加的零值字节数。解码的时候，会自动去掉。（至于为什么是保证3的倍数就行了，我还不知道......）</strong></p>
 <ul>
-<li>这就使base64有个明显的特征，大多数都会以”&#x3D;“结尾</li>
+<li>这就使base64有个明显的特征，大多数都会以”=“结尾</li>
 </ul>
-<h2 id="3-base64的应用区域"><a href="#3-base64的应用区域" class="headerlink" title="3.base64的应用区域"></a>3.base64的应用区域</h2><ul>
-<li><p>base64 最早就是用来邮件传输协议中的，原因是邮件传输协议只支持 ASCII 字符传递，因此如果要传输二进制文件，如：图片、视频是无法实现的。因此 base64 就可以用来将二进制文件内容编码为只包含 ASCII 字符的内容。</p>
+<h2 id="3-base64的应用区域">3.base64的应用区域</h2>
+<ul>
+<li>
+<p>base64 最早就是用来邮件传输协议中的，原因是邮件传输协议只支持 ASCII 字符传递，因此如果要传输二进制文件，如：图片、视频是无法实现的。因此 base64 就可以用来将二进制文件内容编码为只包含 ASCII 字符的内容。</p>
 <ul>
 <li>公钥证书</li>
 </ul>
@@ -251,7 +228,7 @@
 <ul>
 <li>HTTP协议</li>
 </ul>
-<p>​        http协议当中的key value字段，必须进行URLEncode 不然出现的等号可能使解析失败 空格也会使http请求解析出现问题，比如 请求行就是以空格来划分的 POST &#x2F;guowuxin&#x2F;hehe HTTP&#x2F;1.1。</p>
+<p>​        http协议当中的key value字段，必须进行URLEncode 不然出现的等号可能使解析失败 空格也会使http请求解析出现问题，比如 请求行就是以空格来划分的 POST /guowuxin/hehe HTTP/1.1。</p>
 <ul>
 <li>电子邮件（SMTP协议）</li>
 </ul>
@@ -261,94 +238,24 @@
 </ul>
 <p>​        前端在实现页面时，对于一些简单图片，通常会选择将图片内容直接内嵌在页面中，避免不必要的外部资源加载，增大页面加载时间，但是图片数据是二进制数据，该怎么嵌入呢？绝大多数现代浏览器都支持一种名为 Data URLs 的特性，允许使用Base64对图片或其他文件的二进制数据进行编码，将其作为文本字符串嵌入网页中。</p>
 <ul>
-<li><p>进行简单加密</p>
+<li>
+<p>进行简单加密</p>
 <p>将一些密码改的面目全非：比如报考四级的网站，用火狐储存账户信息后，密码长度改变，点击查看后发现密码和输入的不一样，起到了变相保护密码的作用。</p>
 </li>
 </ul>
 </li>
 </ul>
-<h2 id="4-base64的加密与解密"><a href="#4-base64的加密与解密" class="headerlink" title="4.base64的加密与解密"></a>4.base64的加密与解密</h2><ul>
-<li><p>先来康康java中的怎么处理：</p>
+<h2 id="4-base64的加密与解密">4.base64的加密与解密</h2>
+<ul>
+<li>
+<p>先来康康java中的怎么处理：</p>
 <p>幸运的是在看了很多博客后知道java中提供了专门的包来处理base64的加密与解密，所以我们只用导入包java.util.Base64然后再调用其中的方法就行。</p>
 <p>下面上代码</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">import java.util.Base64;</span><br><span class="line"></span><br><span class="line">public class Test</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner in = new Scanner(System.in);</span><br><span class="line">        System.out.println(&quot;请输入您要处理的字符串\n&quot;);</span><br><span class="line">        String base = in.next();</span><br><span class="line">        base64encode(base);</span><br><span class="line">        base64decode(base);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /*base64加密*/</span><br><span class="line">     public static void base64encode(String str)&#123;</span><br><span class="line">        byte []bytes = str.getBytes();</span><br><span class="line">                     // 创建一个byte类型的数组，用于存储读取到的数据；String的getBytes()方法是                         得到一个系统默认的编码格式的字节数组。</span><br><span class="line">        String encode = Base64.getEncoder().encodeToString(bytes);</span><br><span class="line">                     //encode是”编译成密码“的意思</span><br><span class="line">        System.out.println(&quot;base64加密后:&quot;+encode);</span><br><span class="line"></span><br><span class="line">        byte[] decode = Base64.getDecoder().decode(encode);</span><br><span class="line">                     //decode是“解码”的意思</span><br><span class="line">        String decode_code = new String(decode);</span><br><span class="line">        System.out.println(&quot;验证-base64解密后：&quot;+decode_code);</span><br><span class="line">     &#125;</span><br><span class="line">     </span><br><span class="line">     /*base64解密*/</span><br><span class="line">    public static void base64decode(String str)&#123;</span><br><span class="line">        byte []bytes = str.getBytes();</span><br><span class="line">        byte []decode = Base64.getDecoder().decode(str);</span><br><span class="line">        String decode_code = new String(decode);</span><br><span class="line">        System.out.println(&quot;base64解密后：&quot;+decode_code);</span><br><span class="line">        String encode = Base64.getEncoder().encodeToString(decode);</span><br><span class="line">        System.out.println(&quot;验证-base64加密后：&quot;+encode);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>下面用c语言来整的base64的解码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">unsigned char *base64_encode(unsigned char *str)</span><br><span class="line">&#123;</span><br><span class="line">    long len;</span><br><span class="line">    long str_len;</span><br><span class="line">    unsigned char *res;</span><br><span class="line">    int i,j;</span><br><span class="line">//定义base64编码表</span><br><span class="line">    unsigned char *base64_table=&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;;</span><br><span class="line">//计算经过base64编码后的字符串长度</span><br><span class="line">    str_len=strlen(str);</span><br><span class="line">    if(str_len % 3 == 0)</span><br><span class="line">        len=str_len/3*4;</span><br><span class="line">    else</span><br><span class="line">        len=(str_len/3+1)*4;//(余了1或2后都要补位，所以之后长度要+1)</span><br><span class="line">    res=malloc(sizeof(unsigned char)*len+1);//malloc该函数返回一个指针 ，指向已分配大小的内存。如果请求失败，则返回 NULL</span><br><span class="line">    res[len]=&#x27;\0&#x27;;</span><br><span class="line">//以3个8位字符为一组进行编码</span><br><span class="line">    for(i=0,j=0;i&lt;len-2;j+=3,i+=4)</span><br><span class="line">    &#123;</span><br><span class="line">        res[i]=base64_table[str[j]&gt;&gt;2]; //取出第一个字符的前6位并找出对应的结果字符</span><br><span class="line">        res[i+1]=base64_table[(str[j]&amp;0x3)&lt;&lt;4 | (str[j+1]&gt;&gt;4)]; //将第一个字符的后位与第二个字符的前4位进行组合并找到对应的结果字符</span><br><span class="line">        res[i+2]=base64_table[(str[j+1]&amp;0xf)&lt;&lt;2 | (str[j+2]&gt;&gt;6)]; //将第二个字符的后4位与第三个字符的前2位组合并找出对应的结果字符</span><br><span class="line">        res[i+3]=base64_table[str[j+2]&amp;0x3f]; //取出第三个字符的后6位并找出结果字符</span><br><span class="line">    &#125;</span><br><span class="line">    switch(str_len % 3)</span><br><span class="line">    &#123;</span><br><span class="line">        case 1:</span><br><span class="line">            res[i-2]=&#x27;=&#x27;;</span><br><span class="line">            res[i-1]=&#x27;=&#x27;;</span><br><span class="line">            break;</span><br><span class="line">        case 2:</span><br><span class="line">            res[i-1]=&#x27;=&#x27;;</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">unsigned char *base64_decode(unsigned char *code)</span><br><span class="line">&#123;</span><br><span class="line">//根据base64表，以字符找到对应的十进制数据</span><br><span class="line">    int table[]=&#123;</span><br><span class="line">         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,</span><br><span class="line">	     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,</span><br><span class="line">	     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,</span><br><span class="line">	     0, 0, 0, 0, 0, 0, 0,62, 0, 0, 0,63,</span><br><span class="line">        52,53,54,55,56,57,58,59,60,61, 0, 0,</span><br><span class="line">         0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6,</span><br><span class="line">         7, 8, 9,10,11,12,13,14,15,16,17,18,</span><br><span class="line">        19,20,21,22,23,24,25, 0, 0, 0, 0, 0,</span><br><span class="line">         0,26,27,28,29,30,31,32,33,34,35,36,</span><br><span class="line">        37,38,39,40,41,42,43,44,45,46,47,48,</span><br><span class="line">        49,50,51, 0, 0, 0, 0, 0</span><br><span class="line">    	    &#125;;</span><br><span class="line">    long len;</span><br><span class="line">    long str_len;</span><br><span class="line">    unsigned char *res;</span><br><span class="line">    int i,j;</span><br><span class="line">//计算解码后的字符串长度</span><br><span class="line">    len=strlen(code);</span><br><span class="line">//判断编码后的字符串后是否有=</span><br><span class="line">    if(strstr(code,&quot;==&quot;))</span><br><span class="line">        str_len=len/4*3-2;</span><br><span class="line">    else if(strstr(code,&quot;=&quot;))</span><br><span class="line">        str_len=len/4*3-1;</span><br><span class="line">    else</span><br><span class="line">        str_len=len/4;</span><br><span class="line"></span><br><span class="line">    res=malloc(sizeof(unsigned char)*str_len+1);</span><br><span class="line">    res[str_len]=&#x27;\0&#x27;;</span><br><span class="line"></span><br><span class="line">//以4个字符为一位进行解码</span><br><span class="line">    for(i=0,j=0;i &lt; len-2;j+=3,i+=4)</span><br><span class="line">    &#123;</span><br><span class="line">        res[j]=((unsigned char)table[code[i]])&lt;&lt;2 | (((unsigned char)table[code[i+1]])&gt;&gt;4); //取出第一个字符对应base64表的十进制数的前6位与第二个字符对应base64表的十进制数的后2位进行组合  </span><br><span class="line">        res[j+1]=(((unsigned char)table[code[i+1]])&lt;&lt;4) | (((unsigned char)table[code[i+2]])&gt;&gt;2); //取出第二个字符对应base64表的十进制数的后4位与第三个字符对应bas464表的十进制数的后4位进行组合  </span><br><span class="line">        res[j+2]=(((unsigned char)table[code[i+2]])&lt;&lt;6) | ((unsigned char)table[code[i+3]]); //取出第三个字符对应base64表的十进制数的后2位与第4个字符进行组合  </span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>
+<p>下面用c语言来整的base64的解码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">unsigned char *base64_encode(unsigned char *str)</span><br><span class="line">&#123;</span><br><span class="line">    long len;</span><br><span class="line">    long str_len;</span><br><span class="line">    unsigned char *res;</span><br><span class="line">    int i,j;</span><br><span class="line">//定义base64编码表</span><br><span class="line">    unsigned char *base64_table=&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;;</span><br><span class="line">//计算经过base64编码后的字符串长度</span><br><span class="line">    str_len=strlen(str);</span><br><span class="line">    if(str_len % 3 == 0)</span><br><span class="line">        len=str_len/3*4;</span><br><span class="line">    else</span><br><span class="line">        len=(str_len/3+1)*4;//(余了1或2后都要补位，所以之后长度要+1)</span><br><span class="line">    res=malloc(sizeof(unsigned char)*len+1);//malloc该函数返回一个指针 ，指向已分配大小的内存。如果请求失败，则返回 NULL</span><br><span class="line">    res[len]=&#x27;\0&#x27;;</span><br><span class="line">//以3个8位字符为一组进行编码</span><br><span class="line">    for(i=0,j=0;i&lt;len-2;j+=3,i+=4)</span><br><span class="line">    &#123;</span><br><span class="line">        res[i]=base64_table[str[j]&gt;&gt;2]; //取出第一个字符的前6位并找出对应的结果字符</span><br><span class="line">        res[i+1]=base64_table[(str[j]&amp;0x3)&lt;&lt;4 | (str[j+1]&gt;&gt;4)]; //将第一个字符的后位与第二个字符的前4位进行组合并找到对应的结果字符</span><br><span class="line">        res[i+2]=base64_table[(str[j+1]&amp;0xf)&lt;&lt;2 | (str[j+2]&gt;&gt;6)]; //将第二个字符的后4位与第三个字符的前2位组合并找出对应的结果字符</span><br><span class="line">        res[i+3]=base64_table[str[j+2]&amp;0x3f]; //取出第三个字符的后6位并找出结果字符</span><br><span class="line">    &#125;</span><br><span class="line">    switch(str_len % 3)</span><br><span class="line">    &#123;</span><br><span class="line">        case 1:</span><br><span class="line">            res[i-2]=&#x27;=&#x27;;</span><br><span class="line">            res[i-1]=&#x27;=&#x27;;</span><br><span class="line">            break;</span><br><span class="line">        case 2:</span><br><span class="line">            res[i-1]=&#x27;=&#x27;;</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">unsigned char *base64_decode(unsigned char *code)</span><br><span class="line">&#123;</span><br><span class="line">//根据base64表，以字符找到对应的十进制数据</span><br><span class="line">    int table[]=&#123;</span><br><span class="line">         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,</span><br><span class="line">	     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,</span><br><span class="line">	     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,</span><br><span class="line">	     0, 0, 0, 0, 0, 0, 0,62, 0, 0, 0,63,</span><br><span class="line">        52,53,54,55,56,57,58,59,60,61, 0, 0,</span><br><span class="line">         0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6,</span><br><span class="line">         7, 8, 9,10,11,12,13,14,15,16,17,18,</span><br><span class="line">        19,20,21,22,23,24,25, 0, 0, 0, 0, 0,</span><br><span class="line">         0,26,27,28,29,30,31,32,33,34,35,36,</span><br><span class="line">        37,38,39,40,41,42,43,44,45,46,47,48,</span><br><span class="line">        49,50,51, 0, 0, 0, 0, 0</span><br><span class="line">    	    &#125;;</span><br><span class="line">    long len;</span><br><span class="line">    long str_len;</span><br><span class="line">    unsigned char *res;</span><br><span class="line">    int i,j;</span><br><span class="line">//计算解码后的字符串长度</span><br><span class="line">    len=strlen(code);</span><br><span class="line">//判断编码后的字符串后是否有=</span><br><span class="line">    if(strstr(code,&quot;==&quot;))</span><br><span class="line">        str_len=len/4*3-2;</span><br><span class="line">    else if(strstr(code,&quot;=&quot;))</span><br><span class="line">        str_len=len/4*3-1;</span><br><span class="line">    else</span><br><span class="line">        str_len=len/4;</span><br><span class="line"></span><br><span class="line">    res=malloc(sizeof(unsigned char)*str_len+1);</span><br><span class="line">    res[str_len]=&#x27;\0&#x27;;</span><br><span class="line"></span><br><span class="line">//以4个字符为一位进行解码</span><br><span class="line">    for(i=0,j=0;i &lt; len-2;j+=3,i+=4)</span><br><span class="line">    &#123;</span><br><span class="line">        res[j]=((unsigned char)table[code[i]])&lt;&lt;2 | (((unsigned char)table[code[i+1]])&gt;&gt;4); //取出第一个字符对应base64表的十进制数的前6位与第二个字符对应base64表的十进制数的后2位进行组合  </span><br><span class="line">        res[j+1]=(((unsigned char)table[code[i+1]])&lt;&lt;4) | (((unsigned char)table[code[i+2]])&gt;&gt;2); //取出第二个字符对应base64表的十进制数的后4位与第三个字符对应bas464表的十进制数的后4位进行组合  </span><br><span class="line">        res[j+2]=(((unsigned char)table[code[i+2]])&lt;&lt;6) | ((unsigned char)table[code[i+3]]); //取出第三个字符对应base64表的十进制数的后2位与第4个字符进行组合  </span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-
-      
-    </div>
-    
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2021/04/18/Room%E6%95%B0%E6%8D%AE%E5%BA%93/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">&lt;</strong>
-      <div class="article-nav-title">
-        
-          Room--帮大佬代传
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/12/14/%E5%AF%86%E7%A0%81%E5%AD%A6/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">古典密码</div>
-      <strong class="article-nav-caption">&gt;</strong>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-
-
-
-
-</div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-      <div class="footer-left">
-        &copy; 2025 qiu-yunhao
-      </div>
-        <div class="footer-right">
-          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
-        </div>
-    </div>
-  </div>
-</footer>
-    </div>
-    
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-
-
-<script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: false,
-		animate: true,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false
-	}
-</script>
-
-<script src="/js/main.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">qiu-yunhao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2021/04/06/base64/">http://example.com/2021/04/06/base64/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AF%86%E7%A0%81/">密码</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2020/12/14/%E5%AF%86%E7%A0%81%E5%AD%A6/" title="古典密码"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">古典密码</div></div><div class="info-2"><div class="info-item-1">古典密码  base 64加密 凯撒密码（caeser） 摩斯密码（morse） 幂函数加密 栏栅密码（Ralifence） unicode（统一码） 内容中常以&amp;#开头，后面跟上128以内的数字 </div></div></div></a><a class="pagination-related" href="/2021/04/18/Room%E6%95%B0%E6%8D%AE%E5%BA%93/" title="Room--帮大佬代传"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">Room--帮大佬代传</div></div><div class="info-2"><div class="info-item-1">Room数据库  Room与SQLite比较 官网上的介绍  Room提供了一个SQLite之上的抽象层，使得在充分利用SQLite功能的前提下顺畅的访问数据库。 需要写很多公式化的代码在SQL查询与Java对象之间转换。  例子：插入 用SQLite 123456public void insert() &#123;        SQLiteDatabase sqLiteOpenHelper = qbHelper.getWritableDatabase();        String sql = &quot;insert into &quot; + QBHelper.Table_Name + &quot;(ID,name,sex) values(?,?,?)&quot;;        sqLiteOpenHelper.execSQL(sql,new Object[]&#123;2020213482,&quot;邓策渝&quot;,&quot;男&quot;&#125;);        sqLiteOpenHelper.close();   ...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2021/05/15/crypto/" title="冲刺卷RSA"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-15</div><div class="info-item-2">冲刺卷RSA</div></div><div class="info-2"><div class="info-item-1">冲刺卷RSA  1.meg1的e = 3，n也不大，使用rsa小明文攻击处理 12345678import gmpy2n = 123814470394550598363280518848914546938137731026777975885846733672494493975703069760053867471836249473290828799962586855892685902902050630018312939010564945676699712246249820341712155938398068732866646422826619477180434858148938235662092482058999079105450136181685141895955574548671667320167741641072330259009e = 3c =...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">qiu-yunhao</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Base64</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFbase64"><span class="toc-number">1.1.</span> <span class="toc-text">1.什么是base64</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-base64%E7%9A%84%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">2.base64的算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%82%A3%E4%B9%88%E9%97%AE%E9%A2%98%E6%9D%A5%E4%BA%86%EF%BC%9A%E8%BF%99%E6%98%AF%E4%BD%8D%E6%95%B0%E5%88%9A%E5%A5%BD%E4%B8%BA6%E7%9A%84%E5%80%8D%E6%95%B0%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E7%9A%84%E5%A4%84%E7%90%86%EF%BC%8C%E9%82%A3%E5%A6%82%E6%9E%9C%E4%B8%8D%E5%A4%9F%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">那么问题来了：这是位数刚好为6的倍数的情况下的处理，那如果不够怎么办？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-base64%E7%9A%84%E5%BA%94%E7%94%A8%E5%8C%BA%E5%9F%9F"><span class="toc-number">1.3.</span> <span class="toc-text">3.base64的应用区域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-base64%E7%9A%84%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%A7%A3%E5%AF%86"><span class="toc-number">1.4.</span> <span class="toc-text">4.base64的加密与解密</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/29/%E7%A7%AF%E5%88%86%E6%94%BB%E5%87%BB/" title="积分攻击概念理解">积分攻击概念理解</a><time datetime="2025-04-28T16:00:00.000Z" title="Created 2025-04-29 00:00:00">2025-04-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/09/01/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" title="安卓与观察者模式">安卓与观察者模式</a><time datetime="2022-08-31T16:00:00.000Z" title="Created 2022-09-01 00:00:00">2022-09-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/05/07/Animator%E7%9B%B8%E5%85%B3%E4%BB%8B%E7%BB%8D/" title="Android动画Animator与布局">Android动画Animator与布局</a><time datetime="2022-05-06T16:00:00.000Z" title="Created 2022-05-07 00:00:00">2022-05-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/02/25/%E8%87%AA%E5%AE%9A%E4%B9%89View%E6%B5%85%E6%9E%90%EF%BC%881%EF%BC%89/" title="Android 自定义View--定制图表">Android 自定义View--定制图表</a><time datetime="2022-02-24T16:00:00.000Z" title="Created 2022-02-25 00:00:00">2022-02-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/10/30/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88/" title="C语言指针（代传）">C语言指针（代传）</a><time datetime="2021-10-29T16:00:00.000Z" title="Created 2021-10-30 00:00:00">2021-10-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By qiu-yunhao</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

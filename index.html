@@ -1,993 +1,227 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>Hexo</title>
-
-  <!-- keywords -->
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+<!DOCTYPE html><html lang="zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo</title><meta name="author" content="qiu-yunhao"><meta name="copyright" content="qiu-yunhao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
 <meta property="article:author" content="qiu-yunhao">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/img/favicon.ico">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
 
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
   
-  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
 
-  
-<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
 
-  
-<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-
-
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
-<body>
-  <div id="container">
-    <div id="particles-js"></div>
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-				<img lazy-src="" class="js-avatar">
-			
-		</a>
-
-		<hgroup>
-			<h1 class="header-author"><a href="/">qiu-yunhao</a></h1>
-		</hgroup>
-
-		
-
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">Home</a></li>
-				        
-							<li><a href="/archives">Archives</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="half-header-menu">
-						<a class="hide">Home</a>
-						<a>Tags</a>
-						<a>Links</a>
-						<a>About</a>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-						</div>
-						<!-- music -->
-						
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/%E5%AF%86%E7%A0%81/" style="font-size: 10px;">-密码</a> <a href="/tags/Android-%E8%87%AA%E5%AE%9A%E4%B9%89View/" style="font-size: 10px;">Android&&自定义View</a> <a href="/tags/C-%E5%B8%AE%E5%A4%A7%E4%BD%AC%E4%BB%A3%E4%BC%A0/" style="font-size: 10px;">C 帮大佬代传</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/c-android/" style="font-size: 10px;">c android</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/%E5%AF%86%E7%A0%81/" style="font-size: 20px;">密码</a>
-					</div>
-				</section>
-				
-				
-				
-				<section class="switch-part switch-part3">
-					<div id="js-friends">
-					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
-			        
-			        </div>
-				</section>
-				
-
-				
-				
-				<section class="switch-part switch-part4">
-				
-					<div id="js-aboutme">I&#39;m a developer.</div>
-				</section>
-				
-			</div>
-		</div>
-	</header>				
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide"></h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img lazy-src="" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author"></h1>
-			</hgroup>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">Home</a></li>
-		        
-					<li><a href="/archives">Archives</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-      <div class="body-wrap">
-  
-    <article id="post-积分攻击" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2025/04/29/%E7%A7%AF%E5%88%86%E6%94%BB%E5%87%BB/" class="article-date">
-  	<time datetime="2025-04-29T02:10:41.602Z" itemprop="datePublished">2025-04-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
+      const theme = saveToLocal.get('theme')
     
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>tag : crypto</p>
-<p>title :  积分攻击的概念汇总</p>
-<p>date : 2025-4-29</p>
-<h2 id="什么是积分"><a href="#什么是积分" class="headerlink" title="什么是积分"></a>什么是积分</h2><p>此积分非彼积分，我感觉它即是乘积运算和分割&#x2F;分组的性质的一个统称。</p>
-<h3 id="需要理解的前置概念"><a href="#需要理解的前置概念" class="headerlink" title="需要理解的前置概念"></a>需要理解的前置概念</h3><ul>
-<li>$F_2^n$表示<em>n</em>-比特的二元域</li>
-<li>汉明重量$w_a &#x3D; \sum_{i&#x3D;1}^n a[i]$, 其中$a \in F_2^n$, a[i]表示a的第i位</li>
-<li>$S_k^n &#x3D; {a \in F_2^n | k \leq w_a}, S_k^n$是汉明重量至少为k的向量集合</li>
-<li>$S_k^{n,m} &#x3D; {(a_1,a_2,…,a_m) \in (F_2^n)^m | k_i \leq w_{a_i} }, S_k^{n,m}$则是将$S_k^n$扩张到了$k &#x3D; (k_1,k_2,…,k_m)$这种多向量上，也就是说$S_k^{n,m}$表示m个二进制序列构成的向量，其中每一个分量的汉明重量至少为$k_i$</li>
-</ul>
-<!-- 以下是更多内容 -->
-
-<h3 id="位乘积函数"><a href="#位乘积函数" class="headerlink" title="位乘积函数"></a>位乘积函数</h3><h4 id="1-单变量位乘积函数"><a href="#1-单变量位乘积函数" class="headerlink" title="1.单变量位乘积函数"></a>1.单变量位乘积函数</h4><p>对于任意的$u \in F_2^n ​$, 有函数$\pi_u:F_2^n \rightarrow F_2^n​$表示u中值为1的位进行逻辑与运算：<br>$$<br>\pi_u(x) &#x3D; \prod_{i&#x3D;1}^n x[i]^{u[i]}<br>$$<br>例如对于$u &#x3D; {1010}$,则$\pi_u(x) &#x3D; x[0] * x[2]$，具体的运算方式类似与向量的点成，只是将最后合并运算的方法由加法改为了乘法。正如上面表达是所述的那样，u用来选定x的参与运算的位数，对于$u[i] &#x3D; 1$的第i位,对应的$x[i]$参与运算，即$x[i]^1 &#x3D; x[i]^{u[i]}$,对于$u[i] &#x3D; 0$也是同理</p>
-<h4 id="2-多变量位乘积函数"><a href="#2-多变量位乘积函数" class="headerlink" title="2.多变量位乘积函数"></a>2.多变量位乘积函数</h4><p>对于向量$u  &#x3D; (u_1, u_2, u_3,…, u_m) \in (F_2^n)^m$, 函数$\pi_u:（F_2^n）^m \rightarrow (F_2^n)^m$为各个分量的位乘积运算：<br>$$<br>\pi_u(x) &#x3D; \prod_{i &#x3D; 1} ^ m \pi_{u_i}(x_i)<br>$$<br>也就是说，对于$u_i\in F_2^n$，我们可以将其是为一个数，只是它的表现形式为2进制</p>
-<h3 id="布尔函数与代数正规形式"><a href="#布尔函数与代数正规形式" class="headerlink" title="布尔函数与代数正规形式"></a><strong>布尔函数与代数正规形式</strong></h3><h4 id="1-布尔函数"><a href="#1-布尔函数" class="headerlink" title="1.布尔函数"></a>1.布尔函数</h4><p>函数$f:F_2^n\rightarrow F_2$,其代数次数$def(f)$为多项式表示中最高单项式的次数</p>
-<h4 id="2-代数正规形式-ANF"><a href="#2-代数正规形式-ANF" class="headerlink" title="2.代数正规形式(ANF)"></a>2.代数正规形式(ANF)</h4><p>任何布尔函数均可唯一表示为：<br>$$<br>f(x) &#x3D; \oplus_{u\in F_2^n}a_u^f \cdot \pi_u(x)<br>$$<br>若$deg(f) \leq d​$，则对任意的$d &lt; w_u​$的u都有$a_u^f &#x3D; 0​$,其中$a\in F_2^n​$是系数，由f和u共同决定</p>
-<h5 id="具体事例"><a href="#具体事例" class="headerlink" title="具体事例"></a>具体事例</h5><p>假设有一个布尔函数 $f:F_2^3→F_2$，其代数正规形式（ANF）为：<br>$$<br>f(x_1,x_2,x_3)&#x3D;x_1⊕x_1x_2⊕x_2x_3<br>$$<br>这里的多项式包含了3个单项式，分别是$x_1,x_1x_2,x_2x_3$,其中</p>
-<table>
-<thead>
-<tr>
-<th>单项式</th>
-<th>向量u</th>
-<th>汉明重量$w_u$</th>
-<th>对应系数$a_u^f$</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>$x_1$</td>
-<td>$u &#x3D; (1,0,0)$</td>
-<td>$w_u &#x3D; 1$</td>
-<td>$a_u^f &#x3D; 1 $</td>
-</tr>
-<tr>
-<td>$x_1x_2$</td>
-<td>$u &#x3D; (1,1,0)$</td>
-<td>$w_u &#x3D; 2$</td>
-<td>$a_u^f &#x3D; 1$</td>
-</tr>
-<tr>
-<td>$x_2x_3$</td>
-<td>$u &#x3D; (0,1,1)$</td>
-<td>$w_u &#x3D; 2$</td>
-<td>$a_u^f &#x3D; 1$</td>
-</tr>
-</tbody></table>
-<p>上述$f(x_1,x_2,x_3)$函数的最高单项式的次数为2，对应为$x_1x_2或x_2x_3$,即$deg(f) &#x3D; 2$。也就是对于形如$x_1x_2x_3$这样的3次单项式而言，它们的系数为0。</p>
-<p>如此，对于选定的位数向量$u$而言,其汉明重量$w_u$则表示从$x​$中选中的位数的总数。</p>
-<h3 id="积分区分器"><a href="#积分区分器" class="headerlink" title="积分区分器"></a>积分区分器</h3><p>它使用一组选定的明文，其中某些位包含所有可能的值，而另一些位具有一个常量值。相应的密文是通过使用一个加密预言机从该组中的明文中计算出来的。如果多重集的XOR总是为0，我们说这个密码具有积分区分器。</p>
-<h4 id="原始积分性质"><a href="#原始积分性质" class="headerlink" title="原始积分性质"></a>原始积分性质</h4><p>ALL(A): 多重集中每个值都会出现且出现次数相同</p>
-<p>BALANCE(B)：每一个在多重集的文本他们的异或结果为0</p>
-<p>CONSTANT(C)：对于多重集的所有文本，该值为固定常数</p>
-<p>UNKNOWN(U)：无法将多重集与随机对进行区别</p>
-<p>ALL应当式要求在多重集中，选定的位上0和1的出现<strong>次数</strong>相同，即表现为强规律，必须严格遵守。而UNKNOWN则是在表示0与1的出现<strong>概率</strong>相同, 即在多重集中的表现上0与1出现的次数会有不同。</p>
-<h4 id="新的积分性质"><a href="#新的积分性质" class="headerlink" title="新的积分性质"></a>新的积分性质</h4><p>具体定义请参照[1]的3 Division Property - Redefinition of Integral Property部分</p>
-<h5 id="扩展定义ALL-A"><a href="#扩展定义ALL-A" class="headerlink" title="扩展定义ALL(A):"></a>扩展定义ALL(A):</h5><p>对于多重集$X$满足$A$,其包含所有可能的n-bit的值。对于任意$u$满足$w_u&lt;n$,有<br>$$<br>\oplus_{x\in X}\pi_u(x) &#x3D; 0<br>$$<br>但是当$w_u &#x3D; n​$时，异或和转变为1。考虑$\pi_u(x)​$的奇偶校验, 对于满足$w_u &lt; n​$，其奇偶性为均匀的, 而对于$w_u &#x3D; n​$，其奇偶性校验变为未知。</p>
-<h5 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h5><p>简单考虑集合$X$，其中的元素由$0^n$到$1^n$，每个值都只出现一次，集合元素个数记为$N &#x3D; 2^n$, </p>
-<p>从n-bit的随机选取一位， 则 0 和 1的个数都是 $\frac N 2$,则异或和为0</p>
-<p>从n-bit中选取n-1位（这里列举[1,n-1]这种情况，其他情况同理）记多重集合为$X’$，其中$\pi_u(x) &#x3D; 1$,此时x为$1^{n-1}$,对应n-bit数据中的$1^{n-1}0以及{1^n}$,也就是$\pi_u(x) &#x3D; 1$出现了2次, 其他的x中含有0位，所以$\pi_u(x) &#x3D; 0$,出现$N-2$次，两种情况都是偶数次出现个数，总体的异或值为0, 即$\oplus_{x\in X’}\pi_u(x) &#x3D; 0$</p>
-<p>从n-bit 选取$n$位时, 集合即为$X$ , 此时$\pi_u(x) &#x3D; 1$的情况仅对应$1^n$，总数为1， 而$\pi_u(x) &#x3D; 0$，则为含有0位的情况，共有$N-1$次。故最后的$\oplus_{x \in X}\pi_u(x) &#x3D; 1$ </p>
-<h5 id="扩展定义BALANCE-B"><a href="#扩展定义BALANCE-B" class="headerlink" title="扩展定义BALANCE(B):"></a>扩展定义BALANCE(B):</h5><p>对于多重集$X满足$B$,其中集合 $$X$ 的异或和为 0。对于任意$u$满足$w_u &lt;2$有:<br>$$<br>\oplus_{x \in X } \pi_u(x) &#x3D; 0<br>$$<br>而当$w_u \ge 2​$ 其奇偶校验性则为未知</p>
-<h5 id="举例说明"><a href="#举例说明" class="headerlink" title="举例说明"></a>举例说明</h5><p>选择符合传统定义B的集合X &#x3D; {000,001,010,011}, 它们的整体异或和为0</p>
-<p>对于选定的单个元素，每一位的异或和为，而选定2位时，$u &#x3D; 011$, $\oplus_{x \in X}\pi_u(x) &#x3D; 1$</p>
-<h4 id="分割性质"><a href="#分割性质" class="headerlink" title="分割性质"></a>分割性质</h4><p>设$X$是一个多元集($X &#x3D; {x \in F_2^n }$), 并且有一个数字$k$满足$0 \le k \le n $, 当多元集$X$拥有分割性质的时候（符号记为$D_k^n$），他有以下性质：当$w_u &lt; k$时, 对所有的$x \in X$， 它们的奇偶校验性为偶,即$\oplus_{x \in X}\pi_u(x) &#x3D; 0, u \in {F_2^n &#x2F; S_k^n}$, 也就是说对于$u \in S_k^n$, 他们的奇偶校验性为未知。</p>
-<p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745673978428.png" alt="1745673978428"></p>
-<p>也就是说$\pi_u(x)$和的奇偶性，可以用对应的异或和来代替，正如上文所解释的，异或和为0，其奇偶性对应为偶，异或和为1，对应奇偶性为奇。</p>
-<p>$B和U$的基本性质与$D_2^n和D_1^n$,定义相同。但是$A与D_n^n$的定义却不相同；满足$A$的多重集，一定满足$D_n^n$，反之则不然。参考文章[1]使用A来代替$D_n^n$, 这在构造积分算子方面已经足够了。</p>
-<h5 id="相关证明"><a href="#相关证明" class="headerlink" title="相关证明"></a>相关证明</h5><p>关于$U &#x3D; D_1^n$,则 $w_u &lt; 1$, 即$u &#x3D; 0^n$, 因为​$0^0 &#x3D; 1^0 &#x3D; 1$,所以​$\pi_{0^n}(x) &#x3D; \prod x[i] ^ 0 &#x3D; 1$,说明$\pi_u(x)$的取值在$u &#x3D; 0^n$时与$x$无关,故而$\oplus_{x \in X} \pi_u(x) &#x3D; |X| mod2$，呈现出随机的性质</p>
-<p>对于多重集$X &#x3D; {0 {01}^{n-1}} *2$，它仍然满足$D_n^n$的性质，但不包含所有值，不满足A</p>
-<h4 id="分组性质的传播特性"><a href="#分组性质的传播特性" class="headerlink" title="分组性质的传播特性"></a>分组性质的传播特性</h4><p>设S-box的度为d，$X$是一个多重集，其元素的取值为$F_2^n$, $Y$是一个多元的输出集，由$S(x)$计算得到，其中$x\in X$（可以将S盒设为S（x）这样的函数表达式, 它的度就是$d &#x3D; deg(S)$, 具体的计算要使用对应工具）</p>
-<p>若$X​$具有$D_k^n​$的性质，则$u​$被分成了两种子集，一种是$\oplus_{x\in X} \pi_u(x) &#x3D; 0​$，即校验奇偶性为偶；另一种则是$\oplus_{x\in X} \pi_u(x) &#x3D;UNKOWN ​$，即校验奇偶性为奇。若要计算$Y​$的分割性质，也就是计算$\oplus_{s(x) \in Y} \pi_v(S(x))​$的奇偶校验情况。计算$\oplus_{S(x)\in Y}\pi_v(S(x))​$, 等效于$\oplus_{x \in X}{\pi_v∘S}(x)​$, $(π_v∘s) ​$表示函数复合。</p>
-<h5 id="单S盒的分割的传播特性"><a href="#单S盒的分割的传播特性" class="headerlink" title="单S盒的分割的传播特性"></a>单S盒的分割的传播特性</h5><p>对于n-bit的S盒其度为d，记为符号$S(x)$, 输入多重集$X$具有可分性质$D_k^n$, 则输出多重集$Y$也具有可分性质$D_{\lceil \frac k d\rceil}^n$, 特别的，对于输入集$X$具有可分性质$D_n^n$时，输出集$Y$则具有$D_n^n$。</p>
-<h6 id="证明-1"><a href="#证明-1" class="headerlink" title="证明"></a>证明</h6><p>在上面由提到,对于函数$f:F_2^n\rightarrow F_2$,<br>$$<br>f(x) &#x3D; \oplus_{u\in F_2^n}a_u^f \cdot \pi_u(x)<br>$$<br>同理对于${\pi_v∘S}(x)​$也可使使用ANF来表示<br>$$<br>{\pi_v∘S}(x) &#x3D; \oplus_{u \in F_2^n}a_u^{\pi_v∘S}\cdot \pi_u(x)<br>$$<br>所以<br>$$<br>\oplus_{x \in X}{\pi_v∘S}(x) &#x3D; \oplus_{x \in X}(\oplus_{u \in F_2^n}a_u^{\pi_v∘S}\cdot \pi_u(x))<br>$$<br>而u可以依据分割性分成${S_k^n},{F_2^n &#x2F; S_k^n} $ ，对于 $u \in {F_2^n &#x2F; S_k^ n}, \oplus_{x \in X}\pi_u(x) &#x3D; 0$<br>$$<br>\oplus_{x \in X}(\oplus_{u \in F_2^n}a_u^{\pi_v∘S}\cdot\pi_u(x))  &#x3D; \oplus_{u \in F_2^n&#x2F;s_k^n}{a_u^{\pi_v∘S}}(\oplus_{x \in X}\pi_u(x)) \oplus \oplus_{u \in s_k^n}{a_u^{\pi_v∘S}}(\oplus_{x \in X}\pi_u(x)) \<br>&#x3D; 0 \oplus \oplus_{u \in s_k^n}{a_u^{\pi_v∘S}}(\oplus_{x \in X}\pi_u(x)) \<br>&#x3D; \oplus_{u \in s_k^n}{a_u^{\pi_v∘S}}(\oplus_{x \in X}\pi_u(x))<br>$$<br>即<br>$$<br>\oplus_{x \in X}{\pi_v∘S}(x) &#x3D; \oplus_{u \in s_k^n}{a_u^{\pi_v∘S}}(\oplus_{x \in X}\pi_u(x))<br>$$<br>如果对于所有的$u \in S_k^n ​$, 都有$a_u^{\pi_v∘S} &#x3D; 0​$，则$\oplus_{x \in A}{\pi_v∘S}(x) &#x3D; 0​$ , 也就是说，若存在$u \in S_k^n​$, 有$a_u^{\pi_v∘S} &#x3D; 1​$, 会使得$\oplus_{x \in X}{\pi_v∘S}(x) ​$变为UNKOWN</p>
-<p>满足以下性质:</p>
-<ul>
-<li><p>$deg({\pi_v∘S}) \le min{ n-1, w_v \times d }$</p>
-</li>
-<li><p>对于$w_v &lt; n​$， S盒时一个双射置换，则$deg({\pi_v∘S}) \leq n-1​$</p>
-</li>
-</ul>
-<p>对于$\oplus_{x \in X}{\pi_v∘S}(x) &#x3D; \oplus_{u \in s_k^n}{a_u^{\pi_v∘S}}(\oplus_{x \in X}\pi_u(x))​$,  $S_k^n​$就表示汉明重量至少为k,所以就要用考虑满足$w_u\ge k​$的$u​$,  当$w_v \times d &lt; k​$成立时，$a_u^{\pi_v∘S} &#x3D; 0(u \in S_k^n)​$ , 这是因为$deg({\pi_v∘S}) \leq w_v \times d &lt; k​$, 而我们要考虑的$u​$满足$w_u \ge k​$也就是说${\pi_v∘S}​$函数的最高次单项式中参与运算的x的位数是不足k的，也就是无法选出u对应个数的x位所表示的项，故$a_u^{\pi_v∘S} &#x3D; 0(u \in S_k^n)​$</p>
-<p> 所以对于$u \in S_n^k$, ${a_u^{\pi_v∘S}} &#x3D; 1$的必要条件是 $w_v \times d \ge k, 即 w_v \ge \lceil \frac k d \rceil$, 此时$ \oplus_{u \in s_k^n}{a_u^{\pi_v∘S}}(\oplus_{x \in X}\pi_u(x)) &#x3D; UNKNOWN$, 也就是对于输出集$Y$拥有可分性质$D_{\lceil \frac k d \rceil} ^ k$</p>
-<p>现在来考虑对于$u &#x3D; 1 ^ n$的情况，当$w_v &lt; n$时, 因为 $deg({\pi_v∘S}) \leq n-1$, $a_u^{\pi_v∘S} &#x3D; 0, \oplus_{x \in X}{\pi_v∘S}(x)  &#x3D; 0$,所以仅当$v &#x3D; 1^n$的时候 $a_u^{\pi_v∘S} &#x3D;1 , \oplus_{u \in s_k^n}{a_u^{\pi_v∘S}}(\oplus_{x \in X}\pi_u(x)) &#x3D; UNKNOWN$，所以$Y$有可分性质$D_n^n$</p>
-<h6 id="事例说明"><a href="#事例说明" class="headerlink" title="事例说明"></a>事例说明</h6><p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745844190556.png" alt="1745844190556"></p>
-<p>这个S盒的$n &#x3D; 4$， 度$d &#x3D; 2$</p>
-<p>输入集$X$输出集$Y$</p>
-<p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745844285156.png" alt="1745844285156"></p>
-<p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745844309907.png" alt="1745844309907"></p>
-<p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745844335385.png" alt="1745844335385"></p>
-<p>此时我们可以观察到，对于输入集$X​$而言，$\bigoplus_{x \in X} \pi_u(x)  &#x3D; UNKnown​$的划分是很小一部分，但是经过S-box后</p>
-<p>$\bigoplus_{S(x) \in Y} \pi_v(S(x)) &#x3D; Unknown$这个划分已经扩大了。当这个集合扩大到除$u &#x3D; 0^n$以外的泛集时, 即可分性质变成$D_1^n$时，我们无法区分加密文本以及随机对了</p>
-<h5 id="向量化的分割属性"><a href="#向量化的分割属性" class="headerlink" title="向量化的分割属性"></a>向量化的分割属性</h5><p>上节只给出了一个S盒的可除性，但由于实际密码在每一轮中使用多个S盒，仅利用单S盒的性质不能构造整数密码，因此我们将可分性向量化。</p>
-<p>设一个S层是由m个n位d次S盒并行组成的函数，我们考虑了可分性质对S层的传播特性，设X是S层的输入多集，$x ∈ X取（F^n_2)^m​$，向量化是可分性质的自然推广，即u的集合被分成$\bigoplus <em>{x∈X} π_u（x &#x3D; Unknown)​$的子集和$\bigoplus</em>{x∈ X} π_u(x) &#x3D; 0​$子集，其中$u​$是一个m维向量，其元素的值为$F^n_2​$。</p>
-<p>设X是其元素取值为$(F^n_2)^m$的多重集，k是其元素取值在0和n之间的m维向量。当多重集X具有可除性$D^{n，m}<em>k$时，有<br>$$<br>\bigoplus</em>{x \in X}\pi_u(x) &#x3D; \begin {cases} 0 &amp;\text u \notin S_k^{n,m} \ unknown &amp; u \in S_k^{n,m} \end{cases}<br>$$</p>
-<h6 id="传播性"><a href="#传播性" class="headerlink" title="传播性"></a>传播性</h6><p>设S层的输入多重集具有可除性$D^{n，m}<em>k​$。S层的输出计算为$S(x)&#x3D;（s_1(x_1)，s_2(x_2)，…，s_m(x_m),(x_1，x_2，…，x_m)∈ X​$。我们现在考虑使得$\bigoplus</em>{x∈X} π_v(S(x))​$结果为未知(unknown)以及0的两种$v​$的子集。因为输出层中每个S盒的输出计算是相互独立的，那么也可以独立地评估可分属性的传播特性，即输出的多重集有$D^{n，m}_{k’}，其中k_i’ &#x3D;\lceil \frac {k_i} d \rceil ​$此外，如果S盒是双射的并且$k_i &#x3D; n​$成立，则$k_i’ &#x3D; n​$成立。</p>
-<h5 id="集合分割属性"><a href="#集合分割属性" class="headerlink" title="集合分割属性"></a>集合分割属性</h5><p>通过对分割性质的向量化，我们可以计算元素取值为$(F^n_2)^m$的多重集，但仅使用向量可分性质仍是不够的，为了简单起见，我们考虑元素取值为$(F_2^8)^2$的多重集X，假设X中元素个数为256，x的两个元素独立地取0到255之间的所有值.我们考虑了对所有$\bigoplus_{x ∈ X}π_u(x) &#x3D; unknown \space or \space 0 $的$u$的集合。</p>
-<p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745848329352.png" alt="1745848329352"></p>
-<p>如上面的事例所示，我们不能用向量除法来表达这个性质。也就是说集合的可分性质是由多个向量的可分性质组合而成。</p>
-<p>设$X​$是其元素取$(F^n_2)^m​$值的多重集，$k^{(j)}（j &#x3D; 1，2，.，q）​$是m维向量，其元素取0和n之间的值。当多重集X具有除法性质$D^{n，m}<em>{ k^{(1)}，k^{(2)}，…，k^{(q)} }​$时，多重集满足以下条件：<br>$$<br>\bigoplus</em>{x \in X}\pi_u(x) &#x3D; \begin {cases} 0 &amp;\text u \notin S_{k^{(1)}}^{n,m} \cup S_{k^{(2)}}^{n,m}\cup …\cup S_{k^{(q)}}^{n,m} \ unknown &amp; u \in S_{k^{(1)}}^{n,m} \cup S_{k^{(2)}}^{n,m}\cup …\cup S_{k^{(q)}}^{n,m} \end{cases}<br>$$</p>
-<p>显然，q &#x3D; 1的集体除法性质与向量除法性质相同。</p>
-<h6 id="传播性-1"><a href="#传播性-1" class="headerlink" title="传播性"></a>传播性</h6><p>设多重集$X$具有$D^{n,m}<em>{k^{(1)} \cup k^{(2)} \cup … \cup k^{(q)}  }$这个可分性质，同样考虑$\bigoplus</em>{x∈X} π_v(S(x))$结果为未知(unknown)以及0的两种$v$的子集。我们可以独立地估计$D^{n，m}<em>{k^{(j)}}$对所有j的传播特性。也就是说，输出的多重集具有$D^{n,m}</em>{k’^{(1)} \cup k‘^{(2)} \cup … \cup k’^{(q)}  }$，其中$k’^{(j)}_i &#x3D;\lceil \frac {k^{(j)}_i} d \rceil$。此外，如果S盒是双射的并且$k^{(j)}_i &#x3D; n$成立，则$k’^{(j)}_i &#x3D; n$成立。</p>
-<p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745850552280.png" alt="1745850552280"></p>
-<h2 id="积分传播在不同加密结果中的效果"><a href="#积分传播在不同加密结果中的效果" class="headerlink" title="积分传播在不同加密结果中的效果"></a>积分传播在不同加密结果中的效果</h2><h3 id="Feistel网络"><a href="#Feistel网络" class="headerlink" title="Feistel网络"></a>Feistel网络</h3><p>$(l,d)​$-Feistel. Feistel网络是设计分组密码最流行的网络之一.当用Feistel网络构造n比特分组密码时，轮函数的输入用两个(n&#x2F;2)比特值表示.此外，在轮函数中使用一个(n&#x2F;2)比特非线性函数F，我们称这个函数为<strong>F-函数</strong>.设$(w_1，w_2)2​$是函数的输入，并且输出被计算为$(z_1,z_2)&#x3D;(F(w_1)\oplus w_2，w_1)​$。我们现在定义$(l,d)-Feistel​$，其F-函数是一个d次的位非线性函数（该函数不限于置换）.图4示出了Feistel网络的轮函数.<img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745850648537.png" alt="1745850648537"></p>
-<p>由于Feistel网络具有“复制”、“替换”和“压缩”，因此我们需要针对它们传播除法性质。“复制”创建F函数的输入，而“替换”通过F函数处理输入，最后，“压缩”通过XOR产生输出的左半部分。图5示出了传播特性的轮廓。</p>
-<h4 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h4><p>设W是一个输入集, $(w1，w2)\in W​$表示输入值。轮函数首先创建$(x_1，x_2，x_3)​$，其中$x_1 &#x3D; w_1,x_2 &#x3D; w_1,x_3 &#x3D; w_2​$,$x_1​$是F-函数的输入，$x_2​$是输出函数的输出的右半部分，$x_3​$是轮函数的右半部分的输入。设X是其元素取$( x_1，x_2，x_3)​$的输出集合，对于所有$(w_1，w_2)∈ W​$。假设输入集合W具有除法性质$D^{l,2}_{ k^{(1)}，k^{(2)},…,k^{(q)}}​$。如果我们使用满足$k^{(j)}_1 \leq u_1​$和$k^{(j)}<em>2 \leq u_2​$，则$\bigoplus</em>{w \in W} \pi_u(w) &#x3D; unknown​$。由于$x_1 &#x3D; x_2​$，如果我们使用满足$k^{(j)}_1 − k’\le v_1，k’ ≤ v_2,k^{(j)}<em>2 &lt; v_3, (0 \le k’ \le k^{(j)}<em>1), \bigoplus</em>{x\in X}\pi_v(x) &#x3D; unknown​$因此，集合X具有$D^{l,3}</em>{[0,k^{(1)}_1,k^{(1)}_2] , [1,k^{(1)}_1-1,k^{(1)}_2],…,[k^{(1)}_1,0,k^{(1)}_2],…,[k^{(q)}_1,0,k^{(q)}_2]}​$</p>
-<h4 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h4><p>F函数是一个度为d的l-bit的函数。设输入集具有可分性质$D^{l,3}<em>{ k^{(1)}，k^{(2)},…,k^{(q)}}​$,根据之前的可分传播性质，则输出集具有可分性质$D^{l,3}</em>{ k’^{(1)}，k’^{(2)},…,k’^{(q)}}​$, $({ k’^{(j)}_1，k’^{(j)}_2,k’^{(j)}_3 }) &#x3D;  (\lceil \frac {k^{(j)}_1} {d} \rceil, k^{(j)}_2,k^{(j)}_3)​$,特别的，对于$k^{(j)}_1 &#x3D; j, k’^{(j)}_1 &#x3D; j​$</p>
-<h4 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h4><p>设输入集为$Y$, $(y_1,y_2,y_3) \in Y$表示输入，其中$y_1$表示F函数的输出，令$y_1 \oplus y_3$, 则输出状态$Z &#x3D; (z_1,z_2) &#x3D; (y_1 \oplus y_3, y_2)$, 评估$Z$的可分性质，将计算<br>$$<br>\bigoplus <em>{(z_1,z_2) \in Z}\pi_v(z_1,z_2) &#x3D; \bigoplus <em>{(z_1,z_2) \in Z}\pi</em>{v_1}(z_1)\times \pi</em>{v_2}(z_2))\<br>&#x3D;\bigoplus <em>{(y_1,y_2,y_3) \in Y}\pi</em>{v_1}(y_1 \oplus y_3)\times \pi_{v_2}(y_2))\<br> &#x3D; \bigoplus <em>{(y_1,y_2,y_3) \in Y}(\bigoplus</em>{c \subseteq v_1}\pi_c(y_1)\times \pi_{v_1 \oplus c}(y_3)\times \pi_{v_2}(y_2)))\<br>  &#x3D; \bigoplus <em>{c \subseteq v_1}(\bigoplus</em>{(y_1,y_2,y_3) \in Y}\pi_c(y_1)\times \pi_{v_1 \oplus c}(y_3)\times \pi_{v_2}(y_2)))\<br>$$<br>其中$c \subseteq v_1 AND \space c \cap v_1 &#x3D; c $, 如果输入集$Y$满足$D^{l,3}<em>{k^{(1)}, k^{(2)}…,k^{(q)} }$, 则输出集Z有可分性质$D^{l,2}</em>{k’^{(j)}, k’^{(j)},…,k’^{(q)} }, (k’^{(j)}_1,k’^{(j)}_2) &#x3D; (k^{(j)}_1 + k^{(j)}_3,k^{(j)}_2) ,(k’^{(j)}_1,k’^{(j)}_2) \in k’^{(j)}$,而如果$(k^{(j)}_1 + k^{(j)}_3) &gt; l$,对应的奇偶效验性为偶，即$\bigoplus _{(z_1,z_2) \in Z}\pi_v(z_1,z_2) &#x3D; 0$</p>
-<h4 id="积分路径搜索算法"><a href="#积分路径搜索算法" class="headerlink" title="积分路径搜索算法"></a>积分路径搜索算法</h4><p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745855827617.png" alt="1745855827617"></p>
-<p>F函数的非线性程度d，决定活动位的传播上限。若输入X位活动，输出活动位数最多为⌈X&#x2F;d⌉</p>
-<h5 id="过程1-FeistelFuncEval-ℓ-d-k₁-k₂"><a href="#过程1-FeistelFuncEval-ℓ-d-k₁-k₂" class="headerlink" title="过程1: FeistelFuncEval(ℓ, d, k₁, k₂)"></a><strong>过程1: FeistelFuncEval(ℓ, d, k₁, k₂)</strong></h5><ul>
-<li><strong>输入</strong>：当前轮的左右部分活动位数$k_1$（左）、$k_2$（右）。</li>
-<li><strong>输出</strong>：下一轮可能的$(k’_1, k’_2)$集合。</li>
-<li>步骤：<ol>
-<li><strong>F函数处理</strong>：左半输入$k₁​$位活动，经过代数度d的F函数后，输出活动位数最多为$⌈k_1&#x2F;d⌉​$。</li>
-<li><strong>右半更新</strong>：新右半部分的活动位数$k’_2 &#x3D; k_2 + ⌈X&#x2F;d⌉$（X为F函数消耗的活动位）。</li>
-<li><strong>左半更新</strong>：新左半部分的活动位数$k’_1 &#x3D; k_1 - X$（原右半未处理部分）。</li>
-<li><strong>遍历X</strong>：遍历X从0到k₁，生成所有可能的(k’_1, k’_2)组合，并筛选L ≤ ℓ的有效结果。</li>
-</ol>
-</li>
-</ul>
-<h5 id="过程2-IntegralPathSearch-ℓ-d-r-k₁-k₂"><a href="#过程2-IntegralPathSearch-ℓ-d-r-k₁-k₂" class="headerlink" title="过程2: IntegralPathSearch(ℓ, d, r, k₁, k₂)"></a><strong>过程2: IntegralPathSearch(ℓ, d, r, k₁, k₂)</strong></h5><ul>
-<li><strong>输入</strong>：初始活动位$k_1, k_2$，目标轮数r。</li>
-<li><strong>输出</strong>：最大可攻击轮数r。</li>
-<li>步骤：<ol>
-<li><strong>初始评估</strong>：调用FeistelFuncEval生成第一轮的k值集合。</li>
-<li>动态规划迭代：<ul>
-<li>每轮处理所有可能的k值组合。</li>
-<li>对每个k值调用FeistelFuncEval生成下一轮的候选k值。</li>
-<li>使用SizeReduce去除冗余k值（如被其他k值包含的子集）。</li>
-</ul>
-</li>
-<li><strong>终止条件</strong>：当所有k值对应的活动位总和D ≤ 1时停止，无法继续传播积分属性。</li>
-</ol>
-</li>
-</ul>
-<p>假设输入的左半部分的$k_1​$位是有效的，其余$l-k_1​$位是常数。此外，设输入的右半部分的$k_2​$位是有效的，其余$l-k2​$位是常数。也就是说，我们准备$2^{k_1 +k_2}​$个选择的明文。输入集具有除法属性$D^{l，2}_{ [k_1，k_2]}​$。</p>
-<p>算法1示出了创建积分函数的路径搜索算法。算法1不限制F-函数为置换。</p>
-<p>如果F函数被限制为置换，则当$X &#x3D; l$ 成立时$L &#x3D; k2 + l$（参见算法1中的第4行）调用SizeReduce，如果存在满足$S^{l，2}<em>{ k^{(i，j)}}\subseteq S^{l，2}</em>{ k^{（i’，j’）}}$的$(i’，j’)$，则消除$k^{(i，j)}$。</p>
-<p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745857432204.png" alt="1745857432204"></p>
-<p>表2显示了在（32，5）-和（64，7）-Feistel上构造r轮积分算子所需的选择明文的数量，其中DES是具有非双射函数的（32，5）-Feistel，Camellia是具有双射函数的（64，7）-Feistel。当我们用$2^D$选择的明文构造积分算子（l，d）-Feistel时，我们使用（k1，k2）满足以下条件。<br>$$<br>(k_1, k_2) &#x3D; \begin {cases} (D − l , l) &amp;\text l ≤ D, \<br>(0, D) &amp; \text  D &lt; l \end {cases}<br>$$<br>为了与我们的积分算子进行比较，我们考虑了两种以前的方法，一种是积分性质的传播特性，另一种是代数次数的估计。我们首先考虑积分性质的传播特性，如果F-函数是非双射函数，传播特性不能构造足够的算子。因此，由积分性质引入的结果仅在F-函数是双射时示出。我们接下来考虑代数次数的估计。不幸的是，由于我们不知道针对Feistel网络的改进的界，我们使用Feistel网络的平凡界。假设明文的左半部分是常数。对于任何r轮$（l，d）$-Feistel，可以观察到函数，将密文的右半部分与明文的右半部分相关联，对于2 ≤ r，度至多为$d^{r-2}$。因此，我们可以用$2^{d^{r−2} + 1}$选择的明文构造r轮积分算子。由于明文的右半部分最多是$l$位的，所以可以用$2^{d^{r−2} + 1} &lt; 2 ^ l$来构造双字节。因此，就我们所尝试的而言，所有由除法性质构造的积分算子都比以前的方法“更好”。我们在附录B中总结了其他（l，d）-Feistel上的积分算子。我们在[36]中已经知道一个“更好”的Camellia上的积分算子，但它是利用Camellia的特殊性质构造的。另一方面，我们的方法是对（l，d）-Feistel的一般区分攻击，从（64，7）-Feistel的结果可以看出，即使Camellia的F-函数是从任意7次函数中选取的，修改后的Camellia也具有6轮积分的可达性。</p>
-<h3 id="SPN网络"><a href="#SPN网络" class="headerlink" title="SPN网络"></a>SPN网络</h3><p>$(l,d,m)-SPN​$。替换置换网络（SPN）是分组密码的另一种重要结构。SPN具有由S层和P层组成的轮函数，并且分组密码通过迭代轮函数来设计。我们现在定义$(l,d,m)-SPN​$，其轮函数在S层具有<strong>m个l-bit位的S盒</strong>并且在P层具有一个**$lm-bit​$**位线性函数。这里，每个S盒是次数为d的双射函数，$(lm)-bit​$位线性函数是次数为1的双射函数。图6显示了SPN的轮函数。目前，已经提出了许多采用$(l,d,m)-SPN​$的分组密码，例如AES ，PRESENT和Serpent]采用(8，7，16), (4，3，16)-和 (4，3，32)-SPN。此外，作为散列函数Rycak中的置换的Rycakf可以被视为（5，2，320）-SPN。</p>
-<p>AES 每个S盒处理8-bit的输入，<strong>高4位作为S盒表的行值</strong>，<strong>低4位作为S盒表的列值</strong>，所以l &#x3D; 8</p>
-<p>AES一共处理128位的明文，同时需要16个S盒来进行，所以m &#x3D; 16</p>
-<p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745858818211.png" alt="1745858818211"></p>
-<h4 id="S-Layer"><a href="#S-Layer" class="headerlink" title="S-Layer"></a>S-Layer</h4><p>假设S层的输入集具有划分属性$D^{l，m}<em>k​$。由于S层由度数为d的m位S盒组成，因此S层的输出集具有$D^{l，m}</em>{k’}​$。<br>$$<br>k_i’ &#x3D;<br>\begin {cases}<br>\lceil \frac {k_i} d \rceil &amp;\text k_i &lt; l \<br>l &amp;\text k_i &#x3D; l</p>
-<p>\end {cases}<br>$$</p>
-<h4 id="form-S-Layer-to-P-Layer"><a href="#form-S-Layer-to-P-Layer" class="headerlink" title="form S-Layer to P-Layer"></a>form S-Layer to P-Layer</h4><p>S层的输出以$(F^l_2)^m​$的值表示，而P-Layer的输入以$F^{lm}_2​$表示。设X为S层的输出集，其元素取$(F^l_2)^m​$。设Y为P-Layer的输入集，其元素取$F^{lm}_2​$值。该变换通常通过简单的按位拼接来实现，即$y &#x3D;（x_1 ||x_2||···||x_m）​$，其中$(x_1，x_2，…，x_m)​$X的值。</p>
-<p>我们现在考虑从$D^{l,m}<em>k \rightarrow D^{lm}</em>{k‘}$的可分性质的转换。<br>$$<br>\bigoplus_{y \in Y}\pi_v(y) &#x3D;<br>\begin {cases}<br>unknown &amp;\text w_v \ge \sum_{i&#x3D;1}^mk_i \<br>0 &amp;\text w_v &lt; \sum_{i&#x3D;1}^mk_i<br>\end{cases}<br>$$<br>所以P-layer的输入具有可分性质$D_{k’}^{lm} , {k’} &#x3D; \sum_{i&#x3D;1}^mk_i​$</p>
-<h4 id="P-layer"><a href="#P-layer" class="headerlink" title="P-layer"></a>P-layer</h4><p>P-Layer由$lm$位线性函数组成。由于线性函数的次数最多为1，因此可分属性没有变化</p>
-<h4 id="from-P-Layer-to-S-Layer"><a href="#from-P-Layer-to-S-Layer" class="headerlink" title="from P-Layer to S-Layer"></a>from P-Layer to S-Layer</h4><p>P-Layer的输出以$F^{lm}<em>2​$表示,S层的输入以$(F^l_2)^m​$的值表示。该变换通常通过简单的位划分来实现，即$(y_1 ||y_2||···||y_m)&#x3D; x​$我们现在考虑从$D^{lm}</em>{k}\rightarrow  D^{l,m}<em>{k’} ​$的可分性质的转换.<br>$$<br>\bigoplus</em>{x \in X}\pi_u(x) &#x3D;<br>\begin {cases}<br>unknown &amp;\text k \le w_u \<br>0 &amp;\text k &gt; w_u<br>\end{cases}<br>$$<br>因此S-Layer的输入是具有可分性质：<br>$$<br>D^{l，m}_{ k’^{(1)}，k’^{(2)}，…，k’^{(q)} }\<br>k’^{(j)}_1 + k’^{(j)}_2+…+k’^{(j)}_m &#x3D; k,(1 \le j \le q)<br>$$</p>
-<h4 id="总体评估"><a href="#总体评估" class="headerlink" title="总体评估"></a>总体评估</h4><p>我们可以通过计算集体可分性质的传播特性来构造积分算子。然而，由于q的大小极大地扩展，因此不可能执行直接的实现。因此，我们展示了更有效的技术。设X是S层的输入集，元素取值为$(F^l_2)^m$。假设输入集具有除法性质$D^{l，m}<em>{ k^{(1)}，k^{(2)}，…，k^{(q)} }$，该可分性质由除法性质$D^{l,m}</em>{k}$划分产生。如果$k &gt;(l-1)m$成立，$k^{(j)}$的至少$(m-lm +k)$个元素必须变为$l$。在这种情况下，其余元素必须变为$l-1$。因为S-Layer通过 $l 以及(l-1)$派生出$l以及\lceil (l-1) &#x2F;d \rceil$因此输出集的可分性质为$D^{l,m}_{k’}$<br>$$<br>k_i’ &#x3D;<br>\begin {cases}<br>\lceil \frac {(l-1)} d \rceil (lm-k) + l(m-lm+k) &amp;\text k &gt; (l-1)m \<br>\lceil \frac k d \rceil &amp;\text k \le (l-1)m</p>
-<p>\end {cases}<br>$$</p>
-<p>这里，如果$k ≤(l−1)m​$成立，我们简单地将$(l,d,m)-SPN​$的轮函数视为一个度为d的m位S盒。</p>
-<h4 id="积分路径搜索"><a href="#积分路径搜索" class="headerlink" title="积分路径搜索"></a>积分路径搜索</h4><p>现在我们考虑$(l,d,m)-SPN$上的积分运算器。我们首先准备一组选择明文，使得第$i$个S盒的输入的$k_i$位是有效的，其余$(l-k_i)$位是常数。即我们准备$2^{ \sum^m_{i&#x3D;1} k_i}$选择明文。</p>
-<p>输入集具有可除性$D^{l，m}_k$。算法2给出了构造积分算子的路径搜索算法。</p>
-<p><img src="C:\Users\qyh\AppData\Roaming\Typora\typora-user-images\1745862165861.png" alt="1745862165861"></p>
-<p>实际上就是上述步骤的代码性描述</p>
-<h2 id="传统积分区分器与神经积分区分器"><a href="#传统积分区分器与神经积分区分器" class="headerlink" title="传统积分区分器与神经积分区分器"></a>传统积分区分器与神经积分区分器</h2>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-观察者模式" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2024/08/15/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" class="article-date">
-  	<time datetime="2024-08-15T08:09:58.914Z" itemprop="datePublished">2024-08-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h1><p>起因是某个项目中遇到的一个问题: 目前有三个不同的数据库进行加载，量不一样，无法预计哪个先搞完，但三个数据库加载完成后加载的闪屏结束。emmmm，真的恶心，小小年纪背负了不该有的痛苦。学长说这是一个较为复杂的观察者模式，头大！！！但终归还是要学习相关的东西，问题毕竟是要人解决的嘛。。。（原谅我现在才处理）</p>
-<h2 id="什么是观察者模式"><a href="#什么是观察者模式" class="headerlink" title="什么是观察者模式"></a>什么是观察者模式</h2><p><em>定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。</em></p>
-<p><img src="https://s1.328888.xyz/2022/07/27/DzlWK.png" alt="DzlWK.png"></p>
-<h2 id="一对一公平solo"><a href="#一对一公平solo" class="headerlink" title="一对一公平solo"></a>一对一公平solo</h2><p>简而言之，就是一个观察者，一个被观察者。</p>
-<p><img src="http://tva3.sinaimg.cn/large/ceeb653ely8gy0zxdxfv6g208c08ct91.gif"></p>
-<p>你留在女（男）神的聊天页面，等待着她（他）回消息。神么，你没女（男）神的QQ&#x2F;微信？！那你当不了观察者了，关掉吧（bushi）</p>
-<h3 id="初始版"><a href="#初始版" class="headerlink" title="初始版"></a>初始版</h3><p>欢迎来到对抗路（上单孤儿）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Myself</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendMessage</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;回复消息&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Goddess</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> state;</span><br><span class="line">    <span class="keyword">private</span> Myself myself;</span><br><span class="line"></span><br><span class="line">    Goddess(<span class="type">int</span> state)&#123;</span><br><span class="line">        <span class="built_in">this</span>.state = state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setState</span><span class="params">(<span class="type">int</span> state)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(state != <span class="built_in">this</span>.state) &#123;</span><br><span class="line">            <span class="built_in">this</span>.state = state;</span><br><span class="line">            myself.sendMessage();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setObserver</span><span class="params">(Myself myself)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.myself = myself;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">QQ</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        <span class="type">Goddess</span> <span class="variable">goddess</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Goddess</span>(<span class="number">1</span>);</span><br><span class="line">        <span class="type">Myself</span> <span class="variable">myself</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Myself</span>();</span><br><span class="line">        goddess.setObserver(myself);</span><br><span class="line">        goddess.setState(<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="抽象版"><a href="#抽象版" class="headerlink" title="抽象版"></a>抽象版</h3><p>你的女神不知道你到底是什么类，但为了联系，把你弄到一个叫观察者的分组</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Observer</span>&#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">sendMessage</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Myself</span> <span class="keyword">implements</span> <span class="title class_">Observer</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendMessage</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;回复消息&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Goddess</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> state;</span><br><span class="line">    <span class="keyword">private</span> Observer observer;</span><br><span class="line"></span><br><span class="line">    Goddess(<span class="type">int</span> state)&#123;</span><br><span class="line">        <span class="built_in">this</span>.state = state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setState</span><span class="params">(<span class="type">int</span> state)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(state != <span class="built_in">this</span>.state) &#123;</span><br><span class="line">            <span class="built_in">this</span>.state = state;</span><br><span class="line">            observer.sendMessage();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setObserver</span><span class="params">(Observer observer)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.observer = observer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">QQ</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        <span class="type">Goddess</span> <span class="variable">goddess</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Goddess</span>(<span class="number">1</span>);</span><br><span class="line">        <span class="type">Myself</span> <span class="variable">myself</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Myself</span>();</span><br><span class="line">        goddess.setObserver(myself);</span><br><span class="line">        goddess.setState(<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="相关思考"><a href="#相关思考" class="headerlink" title="相关思考"></a>相关思考</h3><p>是不是发现逻辑逻辑有点问题？是你来观察女（男）神，不应该由她来绑定你，应该由你来绑定她&#x2F;他。emmmm咋一听没啥问题，甚至很有道理。那假如观察者有个观察者的List，里面全是被观察者。观察者怎么查看被观察者状态改变呢？</p>
-<h2 id="一对多正义群殴"><a href="#一对多正义群殴" class="headerlink" title="一对多正义群殴"></a>一对多正义群殴</h2><p>也就是一个被观察者可以绑定多个观察者，这种更贴近现实一点。就好像关注的up的动态更新一样。当你关注的up主更新时，会更新你的消息队列一样。当多个up更新，你的消息也会成队列更新。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Observer</span>&#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">update</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Observable</span> &#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="type">int</span> id;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;Observer&gt; observers;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addObserver</span><span class="params">(Observer observer)</span>&#123;</span><br><span class="line">        observers.add(observer);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">removeObserver</span><span class="params">(Observer observer)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> observers.indexOf(observer);</span><br><span class="line">        <span class="keyword">if</span> (index &gt; -<span class="number">1</span>) &#123;</span><br><span class="line">            observers.remove(observer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">notifyAllObservers</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Observer o : observers)&#123;</span><br><span class="line">            o.update(id);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span> <span class="keyword">implements</span> <span class="title class_">Observer</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line"></span><br><span class="line">    User(<span class="type">int</span> id)&#123;</span><br><span class="line">        <span class="built_in">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">(<span class="type">int</span> id)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;用户:&quot;</span> + <span class="built_in">this</span>.id + <span class="string">&quot;收到up&quot;</span> + id + <span class="string">&quot;的最新动态&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Up</span> <span class="keyword">extends</span> <span class="title class_">Observable</span>&#123;</span><br><span class="line">    Up(<span class="type">int</span> id)&#123;</span><br><span class="line">        <span class="built_in">this</span>.id = id;</span><br><span class="line">        <span class="built_in">this</span>.observers = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">showNewVideo</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;更新动态&quot;</span>);</span><br><span class="line">        notifyAllObservers();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Bilibili</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        <span class="type">Up</span> <span class="variable">up</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Up</span>(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span> ; i &lt; <span class="number">10</span> ; i++)&#123;</span><br><span class="line">            <span class="type">User</span> <span class="variable">u</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>(i + <span class="number">1</span>);</span><br><span class="line">            up.addObserver(u);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        up.showNewVideo();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="异步相关"><a href="#异步相关" class="headerlink" title="异步相关"></a>异步相关</h2><p>什么？QwQ这玩意还有异步？！不学了不学了（doge）</p>
-<p><img src="https://pic1.zhimg.com/80/v2-554320105b5b0d75e081a539d3415490_720w.jpg"></p>
-<p>异步非阻塞观察者模式，顾名思义，就是让观察者执行异步，主线程的执行不受它们的执行的影响。</p>
-<h3 id="概念辨析"><a href="#概念辨析" class="headerlink" title="概念辨析"></a>概念辨析</h3><p>我们先来辨析一下同步和异步的区别，同样用刷b站来展示一下</p>
-<ul>
-<li>同步：up主更新视频，你正在刷的视频中断，然后跳到up猪的新视频</li>
-<li>异步：up主更新视频，你正在刷的视频继续，然后头部弹出消息通知(消息不弹更准确一点)</li>
-</ul>
-<p>同步仍需要对应的主线程做出响应，异步状态下就是主线程点点头，表示已阅并不影响当前的工作，就像上述例子，up发完视频之后干自己的事，就属于异步，所有硬币点赞都是观众老爷的事，同步状态下，她说不定闲了，当是观众们怕不是G了。</p>
-<h3 id="plan-1"><a href="#plan-1" class="headerlink" title="plan 1"></a>plan 1</h3><p>让通知由另一条线程处理，就完成了最简单的异步</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">User</span> <span class="keyword">implements</span> <span class="title class_">Observer</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line"></span><br><span class="line">    User(<span class="type">int</span> id)&#123;</span><br><span class="line">        <span class="built_in">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">(<span class="type">int</span> id)</span> &#123;</span><br><span class="line">        <span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="built_in">super</span>.run();</span><br><span class="line">                System.out.println(<span class="string">&quot;用户收到up&quot;</span> + id + <span class="string">&quot;的最新动态&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        thread.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>缺点：</p>
-<ul>
-<li>线程的不断创建开销大，可能炸栈</li>
-<li>每条线程不可控</li>
-</ul>
-<h3 id="plan-2"><a href="#plan-2" class="headerlink" title="plan 2"></a>plan 2</h3><p>使用线程池（Executor）来避免不断的线程的创建和销毁</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Observer</span>&#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">update</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Observable</span> &#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="type">int</span> id;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;Observer&gt; observers;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addObserver</span><span class="params">(Observer observer)</span>&#123;</span><br><span class="line">        observers.add(observer);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">removeObserver</span><span class="params">(Observer observer)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> observers.indexOf(observer);</span><br><span class="line">        <span class="keyword">if</span> (index &gt; -<span class="number">1</span>) &#123;</span><br><span class="line">            observers.remove(observer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">notifyAllObservers</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Observer o : observers)&#123;</span><br><span class="line">            o.update(id);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span> <span class="keyword">implements</span> <span class="title class_">Observer</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line"></span><br><span class="line">    User(<span class="type">int</span> id)&#123;</span><br><span class="line">        <span class="built_in">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">(<span class="type">int</span> id)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;用户收到up&quot;</span> + id + <span class="string">&quot;的最新动态&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Up</span> <span class="keyword">extends</span> <span class="title class_">Observable</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Executor executor;</span><br><span class="line">    Up(<span class="type">int</span> id,Executor executor)&#123;</span><br><span class="line">        <span class="built_in">this</span>.id = id;</span><br><span class="line">        <span class="built_in">this</span>.observers = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="built_in">this</span>.executor = executor;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">showNewVideo</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;更新动态&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span>(Observer o : observers )&#123;</span><br><span class="line">            executor.execute(() -&gt; o.update(id));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setExecutor</span><span class="params">(Executor executor)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.executor = executor;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Bilibili</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        <span class="type">Up</span> <span class="variable">up</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Up</span>(<span class="number">1</span>, Executors.newCachedThreadPool());</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span> ; i &lt; <span class="number">10</span> ; i++)&#123;</span><br><span class="line">            <span class="type">User</span> <span class="variable">u</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>(i + <span class="number">1</span>);</span><br><span class="line">            up.addObserver(u);</span><br><span class="line">        &#125;</span><br><span class="line">        up.showNewVideo();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>缺点：</p>
-<ul>
-<li>代码的耦合性太高，维护起来麻烦</li>
-</ul>
-<h3 id="plan-3"><a href="#plan-3" class="headerlink" title="plan 3"></a>plan 3</h3><p> 使用EventBus来实现，需要额外导入包</p>
-<h2 id="多对一拓展延申"><a href="#多对一拓展延申" class="headerlink" title="多对一拓展延申"></a>多对一拓展延申</h2><p>依据概念貌似没有一个观察者面对多个被观察者，当被观察者都发生变化时，观察者才做出响应。就好像一些安全上的相关东西一样。他会有一定的类似于误差的东西，只有当多个被观察者全部变化时才说明问题的严重性，需要及时处理</p>
-<p><a target="_blank" rel="noopener" href="https://imgloc.com/image/Dz0oJ"><img src="https://s1.328888.xyz/2022/07/27/Dz0oJ.png" alt="Dz0oJ.png"></a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line">    Handler handler;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        <span class="type">TextView</span> <span class="variable">textView</span> <span class="operator">=</span> findViewById(R.id.textView);</span><br><span class="line">        textView.setOnClickListener(v-&gt;&#123;</span><br><span class="line">            v.setBackgroundColor(Color.RED);</span><br><span class="line">        &#125;);</span><br><span class="line">        handler = <span class="keyword">new</span> <span class="title class_">Handler</span>()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleMessage</span><span class="params">(<span class="meta">@NonNull</span> Message msg)</span> &#123;</span><br><span class="line">                <span class="built_in">super</span>.handleMessage(msg);</span><br><span class="line">                System.out.println(<span class="string">&quot;完成更新&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="type">Up</span> <span class="variable">up1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Up</span>(<span class="number">1</span>),up2 = <span class="keyword">new</span> <span class="title class_">Up</span>(<span class="number">2</span>), up3 = <span class="keyword">new</span> <span class="title class_">Up</span>(<span class="number">3</span>);</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">0x100</span>);</span><br><span class="line">        user.addSubjects(up1);</span><br><span class="line">        user.addSubjects(up2);</span><br><span class="line">        user.addSubjects(up3);</span><br><span class="line">        up1.addObserver(user);</span><br><span class="line">        up2.addObserver(user);</span><br><span class="line">        up3.addObserver(user);</span><br><span class="line">        <span class="type">Thread</span> <span class="variable">thread1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TestThread</span>(up1);</span><br><span class="line">        <span class="type">Thread</span> <span class="variable">thread2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TestThread</span>(up2);</span><br><span class="line">        <span class="type">Thread</span> <span class="variable">thread3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TestThread</span>(up3);</span><br><span class="line">        thread1.start();</span><br><span class="line">        thread2.start();</span><br><span class="line">        thread3.start();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">TestThread</span> <span class="keyword">extends</span> <span class="title class_">Thread</span> &#123;</span><br><span class="line">        <span class="keyword">private</span> Up up;</span><br><span class="line">        TestThread(Up up)&#123;</span><br><span class="line">            <span class="built_in">this</span>.up = up;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>().nextInt(<span class="number">10</span>);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                sleep(t * <span class="number">1000</span>);</span><br><span class="line">                System.out.println(up + <span class="string">&quot;在&quot;</span>+ t + <span class="string">&quot;秒时发布动态&quot;</span>);</span><br><span class="line">                up.showNewVideo();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">User</span> <span class="keyword">implements</span> <span class="title class_">Observer</span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line">        <span class="keyword">private</span> List&lt;Observable&gt; subjects;</span><br><span class="line">        <span class="keyword">private</span> Vector&lt;Boolean&gt; simples;</span><br><span class="line">        User(<span class="type">int</span> id)&#123;</span><br><span class="line">            <span class="built_in">this</span>.id = id;</span><br><span class="line">            subjects = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">            simples = <span class="keyword">new</span> <span class="title class_">Vector</span>&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">(Observable observable)</span> &#123;</span><br><span class="line">            <span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>()&#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">                    <span class="built_in">super</span>.run();</span><br><span class="line">                    <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> subjects.indexOf(observable);</span><br><span class="line">                    simples.set(index,<span class="literal">true</span>);</span><br><span class="line">                    <span class="keyword">if</span> (Judge())&#123;</span><br><span class="line">                        handler.sendEmptyMessage(<span class="number">0x10001</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            thread.start();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">synchronized</span> <span class="type">boolean</span> <span class="title function_">Judge</span><span class="params">()</span>&#123;</span><br><span class="line">            <span class="type">boolean</span> <span class="variable">ans</span> <span class="operator">=</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">boolean</span> b : simples)&#123;</span><br><span class="line">                <span class="keyword">if</span>(!b)&#123;</span><br><span class="line">                    ans = <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> ans;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addSubjects</span><span class="params">(Observable observable)</span>&#123;</span><br><span class="line">            subjects.add(observable);</span><br><span class="line">            simples.add(<span class="literal">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Observer</span>&#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">update</span><span class="params">(Observable observable)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Observable</span> &#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="type">int</span> id;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;Observer&gt; observers;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addObserver</span><span class="params">(Observer observer)</span>&#123;</span><br><span class="line">        observers.add(observer);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">removeObserver</span><span class="params">(Observer observer)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> observers.indexOf(observer);</span><br><span class="line">        <span class="keyword">if</span> (index &gt; -<span class="number">1</span>) &#123;</span><br><span class="line">            observers.remove(observer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">notifyAllObservers</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Observer o : observers)&#123;</span><br><span class="line">            o.update(<span class="built_in">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;被观察者&quot;</span> + id ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Up</span> <span class="keyword">extends</span> <span class="title class_">Observable</span>&#123;</span><br><span class="line">    Up(<span class="type">int</span> id)&#123;</span><br><span class="line">        <span class="built_in">this</span>.id = id;</span><br><span class="line">        <span class="built_in">this</span>.observers = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">showNewVideo</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;更新动态&quot;</span>);</span><br><span class="line">        notifyAllObservers();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>代码架构有点乱（懒）</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-动态规划" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2024/08/15/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="article-date">
-  	<time datetime="2024-08-15T08:09:58.912Z" itemprop="datePublished">2024-08-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="动态规划–初见"><a href="#动态规划–初见" class="headerlink" title="动态规划–初见"></a>动态规划–初见</h1><p>我语文不怎么好，而且最近写的有点题颠覆了我的认知，所以我把动态规划的定义放在最后，那么先用一个例子来引入我印象中的动态规划。</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-        <p class="article-more-link">
-          <a  href="/2024/08/15/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#more">learn more >></a>
-        </p>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-ios俱乐部第一次培训" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2024/08/15/ios%E4%BF%B1%E4%B9%90%E9%83%A8%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%9F%B9%E8%AE%AD/" class="article-date">
-  	<time datetime="2024-08-15T08:09:58.912Z" itemprop="datePublished">2024-08-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/08/15/ios%E4%BF%B1%E4%B9%90%E9%83%A8%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%9F%B9%E8%AE%AD/">
-        ios俱乐部第一次培训
-        
-      </a>
-    </h1>
-  
-
-      </header>
       
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
     
-    <div class="article-entry" itemprop="articleBody">
       
-        <p>简单的写点东西</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/" rel="tag">ios</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-        <p class="article-more-link">
-          <a  href="/2024/08/15/ios%E4%BF%B1%E4%B9%90%E9%83%A8%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%9F%B9%E8%AE%AD/#more">learn more >></a>
-        </p>
-      
-    
-  </div>
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
   
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-Animator相关介绍" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2024/08/15/Animator%E7%9B%B8%E5%85%B3%E4%BB%8B%E7%BB%8D/" class="article-date">
-  	<time datetime="2024-08-15T08:09:58.909Z" itemprop="datePublished">2024-08-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>tag : Android</p>
-<p>title :  Android动画Animator与布局</p>
-<p>date : 20222-5-7</p>
-<hr>
-<p>Android动画Animator这部分说难吧，是真的难的离谱，说简单吧，东西又就那么多，以一言概之，G</p>
-<!---more--->
-
-<p>我们学习这部分主要还是用来应对甲方的各种需求，比如对于统计的数据的显示图，如果只是一个图摆那就略显单调。所以我们一般会选择使用动画效果来实现。</p>
-<h2 id="Animator相关介绍"><a href="#Animator相关介绍" class="headerlink" title="Animator相关介绍"></a>Animator相关介绍</h2><p>1.View Animation能做的，Property Animator也能做，View Animation做不到的，Property Animator也能做！比如修改背景颜色，比如View Animation要求使用的对象是一个View对象，而Property Animator却不需要，因为他主要修改的是对象属性。</p>
-<p>2.View Animation交互性不好，比如你对TextView使用了动画从（0，0）点移动到（400，400），虽然视图上textView移动到了（400，400），但是textview的点击响应事件却在（0  ，0）点。关于这点大家可以试验下印象深刻点。而Property Animator却没有这个问题（因为他修改的textview的属性）。</p>
-<h2 id="Animator使用讲解"><a href="#Animator使用讲解" class="headerlink" title="Animator使用讲解"></a>Animator使用讲解</h2><p><img src="https://image.rengwuxian.com/2021/%7Bmon%7D/06/006tKfTcgy1fj7x3rm1xxj30u50laq6y.jpg"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">start() <span class="comment">//开始动画</span></span><br><span class="line">setDuration（）<span class="comment">//设置每次的动画时间，单位ms</span></span><br><span class="line">setRepeatCount() <span class="comment">//设置重复次数</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="自定义View"><a href="#自定义View" class="headerlink" title="自定义View"></a>自定义View</h3><p>我们选择的属性要有对应的set方法，若没有对成员变量初始化，还需要get方法</p>
-<p>我们通过调用ofFloat之类的方法来实现动画效果</p>
-<p>ps：我们的of后面加的数据类型要和set，get操作的数据类型相同</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PieView</span> <span class="keyword">extends</span> <span class="title class_">View</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">score</span> <span class="operator">=</span> <span class="number">78</span>;</span><br><span class="line">    <span class="keyword">private</span> Paint paintText, paintEdge, paintContent;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span>[] colors, standard;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> width, height;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">float</span> radius;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">PieView</span><span class="params">(Context context)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(context);</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">PieView</span><span class="params">(Context context, <span class="meta">@Nullable</span> AttributeSet attrs)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(context, attrs);</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">PieView</span><span class="params">(Context context, <span class="meta">@Nullable</span> AttributeSet attrs, <span class="type">int</span> defStyleAttr)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(context, attrs, defStyleAttr);</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onSizeChanged</span><span class="params">(<span class="type">int</span> w, <span class="type">int</span> h, <span class="type">int</span> oldw, <span class="type">int</span> oldh)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onSizeChanged(w, h, oldw, oldh);</span><br><span class="line">        <span class="built_in">this</span>.width = w;</span><br><span class="line">        <span class="built_in">this</span>.height = h;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">drawEdge</span><span class="params">(Canvas canvas, <span class="type">float</span> r, <span class="type">int</span> color)</span> &#123;</span><br><span class="line">        .</span><br><span class="line">        .</span><br><span class="line">        .</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> &#123;</span><br><span class="line">        .</span><br><span class="line">        .</span><br><span class="line">        .</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onDraw</span><span class="params">(Canvas canvas)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onDraw(canvas);</span><br><span class="line">        .</span><br><span class="line">        .</span><br><span class="line">        .</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">getColor</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; standard.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (getScore() &lt; standard[i]) &#123;</span><br><span class="line">                <span class="keyword">return</span> colors[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getScore</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> score;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setScore</span><span class="params">(<span class="type">int</span> score)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.score = score;</span><br><span class="line">        invalidate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setStandard</span><span class="params">(<span class="type">int</span>[] standard)</span> ;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setColors</span><span class="params">(<span class="type">int</span>[] colors)</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>我们的成员score表示分数，数据类型是int</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">PieView</span> <span class="variable">pie</span> <span class="operator">=</span> findViewById(R.id.pie);</span><br><span class="line"><span class="type">ObjectAnimator</span> <span class="variable">animator</span> <span class="operator">=</span> ObjectAnimator.ofInt(pie,<span class="string">&quot;score&quot;</span>,<span class="number">0</span>,<span class="number">50</span>,<span class="number">99</span>);</span><br><span class="line">animator.setDuration(<span class="number">1000</span>);</span><br><span class="line">animator.setRepeatCount(<span class="number">6</span>);</span><br><span class="line">animator.start();</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="实战演练"><a href="#实战演练" class="headerlink" title="实战演练"></a>实战演练</h2><p>这次打算做个卫星布局，目前的产品比较粗糙，后期有待优化</p>
-<h3 id="相关基础原理"><a href="#相关基础原理" class="headerlink" title="相关基础原理"></a>相关基础原理</h3><p>老规矩了，纯纯的初中初中数学问题，又不是QQ拉红点（doge）</p>
-<p><img src="https://s1.328888.xyz/2022/05/08/4qI3P.jpg" alt="4qI3P.jpg"></p>
-<p>这里就可以用到动画属性了，我们先让布局集中在主布局处，使其成为上下叠加的状态（后期会对此进行优化，简而言之，就是让子布局看不见）然后在调用动画属性，使其移动至目标处（多路并行特效）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">open</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> getChildCount() - <span class="number">1</span> ;</span><br><span class="line">        List&lt;Animator&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="type">View</span> <span class="variable">v</span> <span class="operator">=</span> getChildAt(i);</span><br><span class="line">            <span class="type">int</span> <span class="variable">arc</span> <span class="operator">=</span> <span class="number">90</span> * i / ((n-<span class="number">2</span>) == <span class="number">0</span> ? <span class="number">1</span> : (n-<span class="number">1</span>)) + rollAngel;</span><br><span class="line">            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> (<span class="type">int</span>)Math.cos(Math.toRadians(arc)) * radius;</span><br><span class="line">            <span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> (<span class="type">int</span>)Math.sin(Math.toRadians(arc)) * radius;</span><br><span class="line">            <span class="type">ObjectAnimator</span> <span class="variable">animatorX</span> <span class="operator">=</span> ObjectAnimator.ofFloat(v,<span class="string">&quot;translationX&quot;</span>,<span class="number">0</span>,x);</span><br><span class="line">            <span class="type">ObjectAnimator</span> <span class="variable">animatorY</span> <span class="operator">=</span> ObjectAnimator.ofFloat(v,<span class="string">&quot;translationY&quot;</span>,<span class="number">0</span>,y);</span><br><span class="line">            <span class="type">ObjectAnimator</span> <span class="variable">scaleX</span> <span class="operator">=</span> ObjectAnimator.ofFloat(v,<span class="string">&quot;scaleX&quot;</span>,<span class="number">0f</span>,<span class="number">1</span>);</span><br><span class="line">            <span class="type">ObjectAnimator</span> <span class="variable">scaleY</span> <span class="operator">=</span> ObjectAnimator.ofFloat(v,<span class="string">&quot;scaleY&quot;</span>,<span class="number">0f</span>,<span class="number">1</span>);</span><br><span class="line">            list.add(animatorX);</span><br><span class="line">            list.add(animatorY);</span><br><span class="line">            list.add(scaleX);</span><br><span class="line">            list.add(scaleY);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">AnimatorSet</span> <span class="variable">animatorSet</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AnimatorSet</span>();</span><br><span class="line">        animatorSet.playTogether(list);</span><br><span class="line">        animatorSet.setDuration(<span class="number">1000</span>);</span><br><span class="line">        animatorSet.start();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
-<li>在动态添加视图后，它会被归到子视图当中，并光荣的成为最后一员，因而会在这里进行减一，使得这个主按钮不会加入动画效果</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> getChildCount() - <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><img src="https://s1.328888.xyz/2022/05/08/4q56g.png" alt="4q56g.png">这里是addView不能再onDraw中调用，在onLayout()，onMeasure()的方法中调用貌似也有影响。因为在addView后，父布局会再次测量子布局，再进行相关数值的布局。</li>
-</ul>
-<h3 id="总体代码"><a href="#总体代码" class="headerlink" title="总体代码"></a>总体代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArcButton</span> <span class="keyword">extends</span> <span class="title class_">FrameLayout</span> <span class="keyword">implements</span> <span class="title class_">View</span>.OnClickListener&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">position</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">float</span> width, height, centerX, centerY;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">rollAngel</span> <span class="operator">=</span> <span class="number">0</span>, radius;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> <span class="variable">isCheck</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">private</span> FloatingActionButton button;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ArcButton</span><span class="params">(<span class="meta">@NonNull</span> Context context)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ArcButton</span><span class="params">(<span class="meta">@NonNull</span> Context context, <span class="meta">@Nullable</span> AttributeSet attrs)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(context, attrs);</span><br><span class="line">        <span class="type">TypedArray</span> <span class="variable">attr</span> <span class="operator">=</span> context.obtainStyledAttributes(attrs,R.styleable.ArcButton,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">        button = <span class="keyword">new</span> <span class="title class_">FloatingActionButton</span>(context,attrs);</span><br><span class="line">        button.setOnClickListener(<span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ArcButton</span><span class="params">(<span class="meta">@NonNull</span> Context context, <span class="meta">@Nullable</span> AttributeSet attrs, <span class="type">int</span> defStyleAttr)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(context, attrs, defStyleAttr);</span><br><span class="line">        setOnClickListener(<span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onMeasure</span><span class="params">(<span class="type">int</span> widthMeasureSpec, <span class="type">int</span> heightMeasureSpec)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> getChildCount();<span class="comment">//获取子控件的数量</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            measureChild(getChildAt(i), widthMeasureSpec, heightMeasureSpec);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">super</span>.onMeasure(widthMeasureSpec, heightMeasureSpec);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onFinishInflate</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onFinishInflate();</span><br><span class="line">        initCenterPoint();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * position 选择相对位置</span></span><br><span class="line"><span class="comment">     * = 1 和 其他；为左上角，向右下方向展开</span></span><br><span class="line"><span class="comment">     * = 2；为右上角，向左下角展开</span></span><br><span class="line"><span class="comment">     * = 3；为左下角，向右上角展开</span></span><br><span class="line"><span class="comment">     * = 4；为右下角，向右上角展开</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onSizeChanged</span><span class="params">(<span class="type">int</span> w, <span class="type">int</span> h, <span class="type">int</span> oldw, <span class="type">int</span> oldh)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onSizeChanged(w, h, oldw, oldh);</span><br><span class="line">        width = w;</span><br><span class="line">        height = h;</span><br><span class="line">        <span class="keyword">switch</span> (position) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                rollAngel = <span class="number">90</span>;</span><br><span class="line">                centerX = width * <span class="number">9</span> / <span class="number">10</span>;</span><br><span class="line">                centerY = height / <span class="number">10</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">                rollAngel = <span class="number">270</span>;</span><br><span class="line">                centerX = width / <span class="number">10</span>;</span><br><span class="line">                centerY = height * <span class="number">9</span> / <span class="number">10</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">                rollAngel = <span class="number">180</span>;</span><br><span class="line">                centerX = width * <span class="number">9</span> / <span class="number">10</span>;</span><br><span class="line">                centerY = height * <span class="number">9</span> / <span class="number">10</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                rollAngel = <span class="number">0</span>;</span><br><span class="line">                centerX = width / <span class="number">10</span>;</span><br><span class="line">                centerY = height / <span class="number">10</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        radius = Math.min(w,h)/<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onLayout</span><span class="params">(<span class="type">boolean</span> changed, <span class="type">int</span> left, <span class="type">int</span> top, <span class="type">int</span> right, <span class="type">int</span> bottom)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onLayout(changed, left, top, right, bottom);</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> getChildCount();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n-<span class="number">1</span>; i++) &#123;</span><br><span class="line">            layoutChildView(i);</span><br><span class="line">        &#125;</span><br><span class="line">        layoutMainMenu();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//实现中心按钮的加载</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">initCenterPoint</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//button.setImageResource(R.mipmap.ic_launcher);</span></span><br><span class="line">        addView(button);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">layoutMainMenu</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>,top = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">switch</span> (position) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                top = (<span class="type">int</span>) height / <span class="number">10</span>;</span><br><span class="line">                left = (<span class="type">int</span>) width * <span class="number">9</span> / <span class="number">10</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">                top = (<span class="type">int</span>) height * <span class="number">9</span> / <span class="number">10</span>;</span><br><span class="line">                left = (<span class="type">int</span>) width / <span class="number">10</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">                top = (<span class="type">int</span>) height * <span class="number">9</span> / <span class="number">10</span>;</span><br><span class="line">                left = (<span class="type">int</span>) width * <span class="number">9</span> / <span class="number">10</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                top = (<span class="type">int</span>) height / <span class="number">10</span>;</span><br><span class="line">                left = (<span class="type">int</span>) width / <span class="number">10</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> Math.min(button.getWidth(),button.getHeight())/<span class="number">2</span>;</span><br><span class="line">        button.layout(left ,top ,left + x,top + x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">layoutChildView</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">        <span class="type">View</span> <span class="variable">v</span> <span class="operator">=</span> getChildAt(i);</span><br><span class="line">        <span class="type">int</span> <span class="variable">width_child</span> <span class="operator">=</span> v.getMeasuredWidth();</span><br><span class="line">        <span class="type">int</span> <span class="variable">height_child</span> <span class="operator">=</span> v.getMeasuredHeight();</span><br><span class="line">        v.layout((<span class="type">int</span>) centerX ,(<span class="type">int</span>) centerY, (<span class="type">int</span>) centerX + width_child , (<span class="type">int</span>) centerY + height_child);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//实现展开动画</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">open</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> getChildCount() - <span class="number">1</span> ;</span><br><span class="line">        List&lt;Animator&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="type">View</span> <span class="variable">v</span> <span class="operator">=</span> getChildAt(i);</span><br><span class="line">            <span class="type">int</span> <span class="variable">arc</span> <span class="operator">=</span> <span class="number">90</span> * i / ((n-<span class="number">2</span>) == <span class="number">0</span> ? <span class="number">1</span> : (n-<span class="number">1</span>)) + rollAngel;</span><br><span class="line">            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> (<span class="type">int</span>)Math.cos(Math.toRadians(arc)) * radius;</span><br><span class="line">            <span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> (<span class="type">int</span>)Math.sin(Math.toRadians(arc)) * radius;</span><br><span class="line">            <span class="type">ObjectAnimator</span> <span class="variable">animatorX</span> <span class="operator">=</span> ObjectAnimator.ofFloat(v,<span class="string">&quot;translationX&quot;</span>,<span class="number">0</span>,x);</span><br><span class="line">            <span class="type">ObjectAnimator</span> <span class="variable">animatorY</span> <span class="operator">=</span> ObjectAnimator.ofFloat(v,<span class="string">&quot;translationY&quot;</span>,<span class="number">0</span>,y);</span><br><span class="line">            <span class="type">ObjectAnimator</span> <span class="variable">scaleX</span> <span class="operator">=</span> ObjectAnimator.ofFloat(v,<span class="string">&quot;scaleX&quot;</span>,<span class="number">0f</span>,<span class="number">1</span>);</span><br><span class="line">            <span class="type">ObjectAnimator</span> <span class="variable">scaleY</span> <span class="operator">=</span> ObjectAnimator.ofFloat(v,<span class="string">&quot;scaleY&quot;</span>,<span class="number">0f</span>,<span class="number">1</span>);</span><br><span class="line">            list.add(animatorX);</span><br><span class="line">            list.add(animatorY);</span><br><span class="line">            list.add(scaleX);</span><br><span class="line">            list.add(scaleY);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">AnimatorSet</span> <span class="variable">animatorSet</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AnimatorSet</span>();</span><br><span class="line">        animatorSet.playTogether(list);</span><br><span class="line">        animatorSet.setDuration(<span class="number">1000</span>);</span><br><span class="line">        animatorSet.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onDraw</span><span class="params">(Canvas canvas)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onDraw(canvas);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//实现回收动画</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">close</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> getChildCount() - <span class="number">1</span>;</span><br><span class="line">        List&lt;Animator&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="type">View</span> <span class="variable">v</span> <span class="operator">=</span> getChildAt(i);</span><br><span class="line">            <span class="type">int</span> <span class="variable">arc</span> <span class="operator">=</span> <span class="number">90</span> * i / ((n-<span class="number">1</span>) == <span class="number">0</span> ? <span class="number">1</span> : (n-<span class="number">1</span>)) + rollAngel;</span><br><span class="line">            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> (<span class="type">int</span>)Math.cos(Math.toRadians(arc)) * radius;</span><br><span class="line">            <span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> (<span class="type">int</span>)Math.sin(Math.toRadians(arc)) * radius;</span><br><span class="line">            <span class="type">ObjectAnimator</span> <span class="variable">animatorX</span> <span class="operator">=</span> ObjectAnimator.ofFloat(v,<span class="string">&quot;translationX&quot;</span>,x,<span class="number">0</span>);</span><br><span class="line">            <span class="type">ObjectAnimator</span> <span class="variable">animatorY</span> <span class="operator">=</span> ObjectAnimator.ofFloat(v,<span class="string">&quot;translationY&quot;</span>,y,<span class="number">0</span>);</span><br><span class="line">            <span class="type">ObjectAnimator</span> <span class="variable">scaleX</span> <span class="operator">=</span> ObjectAnimator.ofFloat(v,<span class="string">&quot;scaleX&quot;</span>,<span class="number">1</span>,<span class="number">0f</span>);</span><br><span class="line">            <span class="type">ObjectAnimator</span> <span class="variable">scaleY</span> <span class="operator">=</span> ObjectAnimator.ofFloat(v,<span class="string">&quot;scaleY&quot;</span>,<span class="number">1</span>,<span class="number">0f</span>);</span><br><span class="line">            list.add(animatorX);</span><br><span class="line">            list.add(animatorY);</span><br><span class="line">            list.add(scaleX);</span><br><span class="line">            list.add(scaleY);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">AnimatorSet</span> <span class="variable">animatorSet</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AnimatorSet</span>();</span><br><span class="line">        animatorSet.playTogether(list);</span><br><span class="line">        animatorSet.setDuration(<span class="number">1000</span>);</span><br><span class="line">        animatorSet.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View v)</span> &#123;</span><br><span class="line">        Log.d(<span class="string">&quot;卫星&quot;</span>,<span class="string">&quot;点击&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span>(isCheck)&#123;</span><br><span class="line">            isCheck = <span class="literal">false</span>;</span><br><span class="line">            invalidate();</span><br><span class="line">            close();</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            isCheck = <span class="literal">true</span>;</span><br><span class="line">            invalidate();</span><br><span class="line">            open();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-自定义View浅析（1）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2022/02/25/%E8%87%AA%E5%AE%9A%E4%B9%89View%E6%B5%85%E6%9E%90%EF%BC%881%EF%BC%89/" class="article-date">
-  	<time datetime="2022-02-24T16:00:00.000Z" itemprop="datePublished">2022-02-25</time>
-</a>
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><!-- themes/butterfly/layout/includes/head.pug --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false} ] });"></script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hexo</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">Hexo</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/04/29/%E7%A7%AF%E5%88%86%E6%94%BB%E5%87%BB/" title="积分攻击概念理解">积分攻击概念理解</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-04-28T16:00:00.000Z" title="Created 2025-04-29 00:00:00">2025-04-29</time></span></div><div class="content">什么是积分 此积分非彼积分，我感觉它即是乘积运算和分割/分组的性质的一个统称。 需要理解的前置概念  F2nF_2^nF​2​n​​表示n-比特的二元域 汉明重量wa=∑i=1na[i]w_a = \sum_{i=1}^n a[i]w​a​​=∑​i=1​n​​a[i], 其中a∈F2na \in F_2^na∈F​2​n​​, a[i]表示a的第i位 Skn={a∈F2n∣k≤wa},SknS_k^n = \{a \in F_2^n | k \leq w_a\}, S_k^nS​k​n​​={a∈F​2​n​​∣k≤w​a​​},S​k​n​​是汉明重量至少为k的向量集合 Skn,m={(a1,a2,...,am)∈(F2n)m∣ki≤wai},Skn,mS_k^{n,m} = \{(a_1,a_2,...,a_m) \in (F_2^n)^m | k_i \leq w_{a_i} \},...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2022/09/01/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" title="安卓与观察者模式">安卓与观察者模式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-31T16:00:00.000Z" title="Created 2022-09-01 00:00:00">2022-09-01</time></span></div><div class="content">观察者模式 起因是某个项目中遇到的一个问题: 目前有三个不同的数据库进行加载，量不一样，无法预计哪个先搞完，但三个数据库加载完成后加载的闪屏结束。emmmm，真的恶心，小小年纪背负了不该有的痛苦。学长说这是一个较为复杂的观察者模式，头大！！！但终归还是要学习相关的东西，问题毕竟是要人解决的嘛。。。（原谅我现在才处理）  什么是观察者模式 定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。  一对一公平solo 简而言之，就是一个观察者，一个被观察者。  你留在女（男）神的聊天页面，等待着她（他）回消息。神么，你没女（男）神的QQ/微信？！那你当不了观察者了，关掉吧（bushi） 初始版 欢迎来到对抗路（上单孤儿） 1234567891011121314151617181920212223242526272829303132333435class Myself&#123;    public void sendMessage()&#123;       ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2022/05/07/Animator%E7%9B%B8%E5%85%B3%E4%BB%8B%E7%BB%8D/" title="Android动画Animator与布局">Android动画Animator与布局</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-06T16:00:00.000Z" title="Created 2022-05-07 00:00:00">2022-05-07</time></span></div><div class="content">Android动画Animator这部分说难吧，是真的难的离谱，说简单吧，东西又就那么多，以一言概之，G  我们学习这部分主要还是用来应对甲方的各种需求，比如对于统计的数据的显示图，如果只是一个图摆那就略显单调。所以我们一般会选择使用动画效果来实现。 Animator相关介绍 1.View Animation能做的，Property Animator也能做，View Animation做不到的，Property Animator也能做！比如修改背景颜色，比如View Animation要求使用的对象是一个View对象，而Property Animator却不需要，因为他主要修改的是对象属性。 2.View Animation交互性不好，比如你对TextView使用了动画从（0，0）点移动到（400，400），虽然视图上textView移动到了（400，400），但是textview的点击响应事件却在（0  ，0）点。关于这点大家可以试验下印象深刻点。而Property...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2022/02/25/%E8%87%AA%E5%AE%9A%E4%B9%89View%E6%B5%85%E6%9E%90%EF%BC%881%EF%BC%89/" title="Android 自定义View--定制图表">Android 自定义View--定制图表</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-02-24T16:00:00.000Z" title="Created 2022-02-25 00:00:00">2022-02-25</time></span></div><div class="content">产品的想象永远天马行空，但作为一个苦命的打工人，我们也许现在可以摆摆烂说上一句我不会（QwQ），但以后总不能一直说我不会吧。所以各种花里胡哨的东西我们都要会一点，真正落实产品异想，我们开天。把公屏打在泪目上( Ĭ ^ Ĭ )（ps：这篇博客有点赶，所以对理论的东西基本不进行分析）  分析基础部分主要参考：扔物线 基础 基础不牢，地动山摇！！！血与泪的教训。 我们这里介绍以画图相关的为主，主要将与onDraw相关的东西，剩余的分批次讲解  onDraw(Canvas canvas) onMeasure(int width,int height) onLayout()  对于一个View的流程呢 onMeasure → onLayout →...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2021/10/30/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88/" title="C语言指针（代传）">C语言指针（代传）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-10-29T16:00:00.000Z" title="Created 2021-10-30 00:00:00">2021-10-30</time></span></div><div class="content">C语言指针  问题 什么是字节？什么是内存？什么是地址？什么是指针？什么是指针变量？  为什么需要指针？   指针的使用使得不同区域的代码可以轻易的访问内存数据（主要体现在参数传递上） 1234567891011121314#include&lt;stdio.h&gt;typedef struct soBigStruct&#123;	int a,b,c,d,e;&#125;soBig;void Function(soBig sb);void Function2(soBig *sb);int main()&#123;	soBig sb;	soBig *psb = &amp;sb;    Function(sb);    Function2(2sb);&#125; 因为函数参数传递时是需要在栈内存里新分配相应大小的区域，相较于直接传入占用空间较大的变量，不如传入占用空间较小的指针。   指针使得一些复杂的链接性的数据结构的构建成为可能 1234typedef struct LinkList&#123;	int data;	struct LinkList...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2021/10/30/%E6%9D%82%E4%B9%B1%E6%97%A0%E7%AB%A0/" title="杂乱无章">杂乱无章</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-10-29T16:00:00.000Z" title="Created 2021-10-30 00:00:00">2021-10-30</time></span></div><div class="content">杂乱无章 之前对每个人都进行了采访，你们都打太极给我圆过去，所以我也不知道该给你们讲点啥，你们咋就这么难伺候呢？索性我就随便讲讲了。  1.结构体与类 结构体Struct 结构体的定义 在C语言中，结构体(struct)指的是一种数据结构，是C语言中聚合数据类型(aggregate data type)的一类。结构体可以被声明为变量、指针或数组等，用以实现较复杂的数据结构。结构体同时也是一些元素的集合，这些元素称为结构体的成员(member)，且这些成员可以为不同的类型，成员一般用名字访问。 12345struct Number&#123;    int a;    int b;&#125;  声明的时候直接struct Number num =...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2021/10/08/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="动态规划-初见">动态规划-初见</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-10-07T16:00:00.000Z" title="Created 2021-10-08 00:00:00">2021-10-08</time></span></div><div class="content">动态规划--初见 我语文不怎么好，而且最近写的有点题颠覆了我的认知，所以我把动态规划的定义放在最后，那么先用一个例子来引入我印象中的动态规划。  例1  很明显，这里作为懒人的我们会使用递推(主要是不会递归，对吧) 12345678910111213141516class Solution &#123;    public int fib(int n) &#123;        if(n&lt;2)&#123;            return n;        &#125;else&#123;            int[] nums = new int[n+1];            nums[0] = 0;            nums[1] = 1;            for(int i = 2; i &lt; n+1 ;i++)&#123;                nums[i] = nums[i-1] + nums[i-2];            &#125;            return nums[n];        &#125; ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2021/06/11/%E8%8F%9C%E9%B8%A1%E7%9A%84%E5%88%92%E6%B0%B4%E6%97%A5%E5%B8%B8/" title="菜鸡组会分享">菜鸡组会分享</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-10T16:00:00.000Z" title="Created 2021-06-11 00:00:00">2021-06-11</time></span></div><div class="content">   Visibilty()和Gilde的用法  1.前言 ​        呜呜呜，这是第二遍写了。铁汁们，一定要边写遍保存，不说了（默默按下CTRL+s）在写这个新项目时，让我发现书斋真是个宝库，好多都可以借鉴。上次写了个分享，内容殷实，语言简练，所以承蒙命运眷顾，学期末再来一次（这波叫有是有终  :-)  ），让我自我拯救......由于我能力有限，在写项目的时候疯狂报错，遭受了亿点点挫折，就选择一点近期遇到的问题，分享一下。 2.Visibility() 这个是因为我在处理RecyclerView的单次点击事件时，但打算像原来那样用两个Apadter来处理这个问题，但我在实现的时候在构造器里添加了一个Boolean的属性，而在网络请求时返回的没有这个Boolean，就...反正我感觉自己走进死胡同了。 1.属性   VISIBLE(可见的)   INVISIBLE(不可见的)  控件会占用其空间，但不会显示出来   GONE(隐藏的)  控件不会占用空间，也不会显示出来   2.使用 用setVisibility()来设置就行，例如 12345678910public...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2021/05/15/crypto/" title="冲刺卷RSA">冲刺卷RSA</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-05-14T16:00:00.000Z" title="Created 2021-05-15 00:00:00">2021-05-15</time></span></div><div class="content">冲刺卷RSA  1.meg1的e = 3，n也不大，使用rsa小明文攻击处理 12345678import gmpy2n = 123814470394550598363280518848914546938137731026777975885846733672494493975703069760053867471836249473290828799962586855892685902902050630018312939010564945676699712246249820341712155938398068732866646422826619477180434858148938235662092482058999079105450136181685141895955574548671667320167741641072330259009e = 3c =...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2021/04/18/Room%E6%95%B0%E6%8D%AE%E5%BA%93/" title="Room--帮大佬代传">Room--帮大佬代传</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-04-17T16:00:00.000Z" title="Created 2021-04-18 00:00:00">2021-04-18</time></span></div><div class="content">Room数据库  Room与SQLite比较 官网上的介绍  Room提供了一个SQLite之上的抽象层，使得在充分利用SQLite功能的前提下顺畅的访问数据库。 需要写很多公式化的代码在SQL查询与Java对象之间转换。  例子：插入 用SQLite 123456public void insert() &#123;        SQLiteDatabase sqLiteOpenHelper = qbHelper.getWritableDatabase();        String sql = &quot;insert into &quot; + QBHelper.Table_Name + &quot;(ID,name,sex) values(?,?,?)&quot;;        sqLiteOpenHelper.execSQL(sql,new Object[]&#123;2020213482,&quot;邓策渝&quot;,&quot;男&quot;&#125;);        sqLiteOpenHelper.close();   ...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">qiu-yunhao</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/29/%E7%A7%AF%E5%88%86%E6%94%BB%E5%87%BB/" title="积分攻击概念理解">积分攻击概念理解</a><time datetime="2025-04-28T16:00:00.000Z" title="Created 2025-04-29 00:00:00">2025-04-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/09/01/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" title="安卓与观察者模式">安卓与观察者模式</a><time datetime="2022-08-31T16:00:00.000Z" title="Created 2022-09-01 00:00:00">2022-09-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/05/07/Animator%E7%9B%B8%E5%85%B3%E4%BB%8B%E7%BB%8D/" title="Android动画Animator与布局">Android动画Animator与布局</a><time datetime="2022-05-06T16:00:00.000Z" title="Created 2022-05-07 00:00:00">2022-05-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/02/25/%E8%87%AA%E5%AE%9A%E4%B9%89View%E6%B5%85%E6%9E%90%EF%BC%881%EF%BC%89/" title="Android 自定义View--定制图表">Android 自定义View--定制图表</a><time datetime="2022-02-24T16:00:00.000Z" title="Created 2022-02-25 00:00:00">2022-02-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/10/30/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88/" title="C语言指针（代传）">C语言指针（代传）</a><time datetime="2021-10-29T16:00:00.000Z" title="Created 2021-10-30 00:00:00">2021-10-30</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/C-%E5%B8%AE%E5%A4%A7%E4%BD%AC%E4%BB%A3%E4%BC%A0/" style="font-size: 1.1em; color: #999">C 帮大佬代传</a> <a href="/tags/crypto/" style="font-size: 1.1em; color: #999">crypto</a> <a href="/tags/Android/" style="font-size: 1.5em; color: #99a9bf">Android</a> <a href="/tags/Android-%E8%87%AA%E5%AE%9A%E4%B9%89View/" style="font-size: 1.1em; color: #999">Android&&自定义View</a> <a href="/tags/%E5%AF%86%E7%A0%81/" style="font-size: 1.3em; color: #99a1ac">密码</a> <a href="/tags/c-android/" style="font-size: 1.1em; color: #999">c android</a> <a href="/tags/%E5%AF%86%E7%A0%81/" style="font-size: 1.1em; color: #999">-密码</a> <a href="/tags/android/" style="font-size: 1.3em; color: #99a1ac">android</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      <a class="card-more-btn" href="/archives/"
+            title="View More">
+            <i class="fas fa-angle-right"></i>
+          </a>
     </div>
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/02/25/%E8%87%AA%E5%AE%9A%E4%B9%89View%E6%B5%85%E6%9E%90%EF%BC%881%EF%BC%89/">
-        Android 自定义View--定制图表
-        
-      </a>
-    </h1>
-  
-
-      </header>
+    <ul class="card-archive-list">
       
-    
-    <div class="article-entry" itemprop="articleBody">
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/04/">
+            <span class="card-archive-list-date">
+              April 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
       
-        <p>产品的想象永远天马行空，但作为一个苦命的打工人，我们也许现在可以摆摆烂说上一句我不会（QwQ），但以后总不能一直说我不会吧。所以各种花里胡哨的东西我们都要会一点，真正落实产品异想，我们开天。把公屏打在泪目上( Ĭ ^ Ĭ )（ps：这篇博客有点赶，所以对理论的东西基本不进行分析）</p>
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2022/09/">
+            <span class="card-archive-list-date">
+              September 2022
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
       
-    </div>
-    
-    <div class="article-info article-info-index">
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2022/05/">
+            <span class="card-archive-list-date">
+              May 2022
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
       
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2022/02/">
+            <span class="card-archive-list-date">
+              February 2022
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
       
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-%E8%87%AA%E5%AE%9A%E4%B9%89View/" rel="tag">Android&amp;&amp;自定义View</a></li></ul>
-	</div>
-
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2021/10/">
+            <span class="card-archive-list-date">
+              October 2021
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
       
-
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2021/06/">
+            <span class="card-archive-list-date">
+              June 2021
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
       
-      <div class="clearfix"></div>
-    </div>
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2021/05/">
+            <span class="card-archive-list-date">
+              May 2021
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
       
-        <p class="article-more-link">
-          <a  href="/2022/02/25/%E8%87%AA%E5%AE%9A%E4%B9%89View%E6%B5%85%E6%9E%90%EF%BC%881%EF%BC%89/#more">learn more >></a>
-        </p>
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2021/04/">
+            <span class="card-archive-list-date">
+              April 2021
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
       
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-C语言指针" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/10/30/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88/" class="article-date">
-  	<time datetime="2021-10-29T16:00:00.000Z" itemprop="datePublished">2021-10-30</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/30/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88/">
-        C语言指针（代传）
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="C语言指针"><a href="#C语言指针" class="headerlink" title="C语言指针"></a>C语言指针</h1>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-%E5%B8%AE%E5%A4%A7%E4%BD%AC%E4%BB%A3%E4%BC%A0/" rel="tag">C 帮大佬代传</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-        <p class="article-more-link">
-          <a  href="/2021/10/30/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88/#more">learn more >></a>
-        </p>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-杂乱无章" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/10/30/%E6%9D%82%E4%B9%B1%E6%97%A0%E7%AB%A0/" class="article-date">
-  	<time datetime="2021-10-29T16:00:00.000Z" itemprop="datePublished">2021-10-30</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/30/%E6%9D%82%E4%B9%B1%E6%97%A0%E7%AB%A0/">
-        杂乱无章
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="杂乱无章"><a href="#杂乱无章" class="headerlink" title="杂乱无章"></a>杂乱无章</h1><p>之前对每个人都进行了采访，你们都打太极给我圆过去，所以我也不知道该给你们讲点啥，你们咋就这么难伺候呢？索性我就随便讲讲了。</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c-android/" rel="tag">c android</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-        <p class="article-more-link">
-          <a  href="/2021/10/30/%E6%9D%82%E4%B9%B1%E6%97%A0%E7%AB%A0/#more">learn more >></a>
-        </p>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-菜鸡的划水日常" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/06/11/%E8%8F%9C%E9%B8%A1%E7%9A%84%E5%88%92%E6%B0%B4%E6%97%A5%E5%B8%B8/" class="article-date">
-  	<time datetime="2021-06-10T16:00:00.000Z" itemprop="datePublished">2021-06-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/06/11/%E8%8F%9C%E9%B8%A1%E7%9A%84%E5%88%92%E6%B0%B4%E6%97%A5%E5%B8%B8/">
-        菜鸡组会分享
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li></li>
-</ul>
-<h1 id="Visibilty-和Gilde的用法"><a href="#Visibilty-和Gilde的用法" class="headerlink" title="Visibilty()和Gilde的用法"></a>Visibilty()和Gilde的用法</h1>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-        <p class="article-more-link">
-          <a  href="/2021/06/11/%E8%8F%9C%E9%B8%A1%E7%9A%84%E5%88%92%E6%B0%B4%E6%97%A5%E5%B8%B8/#more">learn more >></a>
-        </p>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-crypto" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/05/15/crypto/" class="article-date">
-  	<time datetime="2021-05-14T16:00:00.000Z" itemprop="datePublished">2021-05-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/15/crypto/">
-        冲刺卷RSA
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="冲刺卷RSA"><a href="#冲刺卷RSA" class="headerlink" title="冲刺卷RSA"></a>冲刺卷RSA</h1>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%86%E7%A0%81/" rel="tag">密码</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-        <p class="article-more-link">
-          <a  href="/2021/05/15/crypto/#more">learn more >></a>
-        </p>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
-</div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-      <div class="footer-left">
-        &copy; 2025 qiu-yunhao
-      </div>
-        <div class="footer-right">
-          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
-        </div>
-    </div>
-  </div>
-</footer>
-    </div>
-    
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-
-
-<script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: false,
-		animate: true,
-		isHome: true,
-		isPost: false,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false
-	}
-</script>
-
-<script src="/js/main.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">12</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-04-29T03:40:00.610Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By qiu-yunhao</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
