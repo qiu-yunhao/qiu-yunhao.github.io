@@ -1,0 +1,473 @@
+:root,
+:root[data-theme='default'] {
+  color-scheme: light;
+  --bg-page: #f4f7fb;
+  --bg-surface: #ffffff;
+  --bg-soft: #eef4ff;
+  --bg-header: rgba(255, 255, 255, 0.86);
+  --text-primary: #132238;
+  --text-secondary: #425466;
+  --text-muted: #6b7a8c;
+  --border-default: #dbe4f0;
+  --border-strong: #bdd0ea;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-soft: #dbeafe;
+  --accent-contrast: #ffffff;
+  --shadow-sm: 0 10px 24px rgba(37, 99, 235, 0.12);
+  --shadow-md: 0 18px 44px rgba(15, 23, 42, 0.08);
+  --theme-backdrop:
+    linear-gradient(180deg, #fbfdff 0%, #eef5ff 56%, #f4f7fb 100%),
+    linear-gradient(118deg, rgba(191, 219, 254, 0.34) 0%, transparent 32%, transparent 74%, rgba(219, 234, 254, 0.24) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.42) 0%, transparent 24%, rgba(255, 255, 255, 0.34) 46%, transparent 70%);
+  --theme-overlay:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12), transparent 24%, transparent 78%, rgba(255, 255, 255, 0.08) 100%),
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0,
+      rgba(255, 255, 255, 0) 52px,
+      rgba(255, 255, 255, 0.2) 52px,
+      rgba(255, 255, 255, 0.2) 54px,
+      transparent 54px,
+      transparent 132px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(37, 99, 235, 0.02) 0,
+      rgba(37, 99, 235, 0.02) 1px,
+      transparent 1px,
+      transparent 124px
+    );
+  --theme-deco-primary-bg:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.92) 0 30%, rgba(191, 219, 254, 0.48) 30% 58%, transparent 58%);
+  --theme-deco-primary-width: 18rem;
+  --theme-deco-primary-height: 18rem;
+  --theme-deco-primary-top: 9vh;
+  --theme-deco-primary-right: -3rem;
+  --theme-deco-primary-bottom: auto;
+  --theme-deco-primary-left: auto;
+  --theme-deco-primary-radius: 50%;
+  --theme-deco-primary-clip: none;
+  --theme-deco-primary-filter: blur(2px);
+  --theme-deco-primary-opacity: 0.78;
+  --theme-deco-primary-transform: rotate(0deg);
+  --theme-deco-secondary-bg:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.56), rgba(191, 219, 254, 0.18));
+  --theme-deco-secondary-width: 16rem;
+  --theme-deco-secondary-height: 22rem;
+  --theme-deco-secondary-top: 26vh;
+  --theme-deco-secondary-right: auto;
+  --theme-deco-secondary-bottom: auto;
+  --theme-deco-secondary-left: -4rem;
+  --theme-deco-secondary-radius: 1.75rem;
+  --theme-deco-secondary-clip: polygon(0 12%, 100% 0, 100% 88%, 0 100%);
+  --theme-deco-secondary-filter: blur(0);
+  --theme-deco-secondary-opacity: 0.56;
+  --theme-deco-secondary-transform: rotate(-8deg);
+  --theme-deco-outline-bg:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 62%);
+  --theme-deco-outline-width: 10rem;
+  --theme-deco-outline-height: 10rem;
+  --theme-deco-outline-top: auto;
+  --theme-deco-outline-right: 4vw;
+  --theme-deco-outline-bottom: 8vh;
+  --theme-deco-outline-left: auto;
+  --theme-deco-outline-radius: 50%;
+  --theme-deco-outline-clip: none;
+  --theme-deco-outline-border: rgba(191, 219, 254, 0.44);
+  --theme-deco-outline-opacity: 0.48;
+  --theme-deco-outline-transform: rotate(0deg);
+  --theme-card-glaze:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.72)),
+    linear-gradient(135deg, rgba(219, 234, 254, 0.22), transparent 52%);
+  --theme-header-glaze:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.34), transparent 30%, rgba(191, 219, 254, 0.16) 100%);
+  --theme-main-accent:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent 24%);
+  --hero-title-fill: linear-gradient(180deg, #0f3d91 0%, #2563eb 52%, #74a8ff 100%);
+  --hero-copy-glaze:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.72)),
+    radial-gradient(circle at top right, rgba(147, 197, 253, 0.3), transparent 32%);
+  --hero-card-glaze:
+    linear-gradient(180deg, rgba(239, 246, 255, 0.92), rgba(255, 255, 255, 0.86)),
+    radial-gradient(circle at top, rgba(96, 165, 250, 0.18), transparent 28%);
+  --hero-frame-pattern:
+    linear-gradient(90deg, rgba(37, 99, 235, 0.05) 0, rgba(37, 99, 235, 0.05) 1px, transparent 1px, transparent 36px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.2), transparent 42%);
+  --hero-button-glow: rgba(37, 99, 235, 0.22);
+  --hero-pill-bg: rgba(255, 255, 255, 0.78);
+  --hero-scene-disc-bg:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.98) 0 36%, rgba(191, 219, 254, 0.78) 36% 62%, transparent 62%);
+  --hero-scene-disc-width: 10rem;
+  --hero-scene-disc-height: 10rem;
+  --hero-scene-disc-top: 2.25rem;
+  --hero-scene-disc-right: 2.5rem;
+  --hero-scene-disc-bottom: auto;
+  --hero-scene-disc-left: auto;
+  --hero-scene-disc-radius: 50%;
+  --hero-scene-disc-clip: none;
+  --hero-scene-disc-transform: rotate(0deg);
+  --hero-scene-disc-opacity: 0.82;
+  --hero-scene-band-bg:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(191, 219, 254, 0.28));
+  --hero-scene-band-width: 18rem;
+  --hero-scene-band-height: 4rem;
+  --hero-scene-band-top: auto;
+  --hero-scene-band-right: -1rem;
+  --hero-scene-band-bottom: 3rem;
+  --hero-scene-band-left: auto;
+  --hero-scene-band-radius: 999px;
+  --hero-scene-band-clip: polygon(0 36%, 100% 0, 100% 64%, 0 100%);
+  --hero-scene-band-transform: rotate(-4deg);
+  --hero-scene-band-opacity: 0.7;
+  --hero-scene-mark-bg:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(37, 99, 235, 0.14));
+  --hero-scene-mark-width: 7rem;
+  --hero-scene-mark-height: 11rem;
+  --hero-scene-mark-top: auto;
+  --hero-scene-mark-right: 9rem;
+  --hero-scene-mark-bottom: -1rem;
+  --hero-scene-mark-left: auto;
+  --hero-scene-mark-radius: 1.5rem;
+  --hero-scene-mark-clip: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+  --hero-scene-mark-transform: rotate(8deg);
+  --hero-scene-mark-opacity: 0.5;
+  --hero-card-deco-bg:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.38), rgba(37, 99, 235, 0.1));
+  --hero-card-deco-clip: polygon(0 100%, 34% 38%, 52% 66%, 66% 18%, 82% 54%, 100% 0, 100% 100%);
+  --section-shell-glaze:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.72)),
+    linear-gradient(135deg, rgba(219, 234, 254, 0.18), transparent 58%);
+  --section-inner-glaze:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(239, 246, 255, 0.88));
+  --chip-glaze:
+    linear-gradient(180deg, rgba(219, 234, 254, 0.66), rgba(255, 255, 255, 0.8));
+  --chip-border: rgba(191, 219, 254, 0.9);
+  --interactive-shadow: 0 18px 36px rgba(37, 99, 235, 0.16);
+  --header-shell-glaze:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.44), transparent 48%),
+    linear-gradient(90deg, rgba(191, 219, 254, 0.18), transparent 38%, rgba(255, 255, 255, 0.2) 100%);
+  --header-pill-glaze:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(239, 246, 255, 0.88));
+  --header-pill-border: rgba(191, 219, 254, 0.72);
+  --header-pill-shadow: 0 12px 28px rgba(37, 99, 235, 0.12);
+  --header-pill-active-glaze:
+    linear-gradient(180deg, rgba(37, 99, 235, 0.96), rgba(59, 130, 246, 0.88));
+  --header-pill-active-text: #ffffff;
+  --header-accent-bar:
+    linear-gradient(90deg, rgba(37, 99, 235, 0.18), rgba(191, 219, 254, 0.08));
+}
+
+:root[data-theme='forest'] {
+  color-scheme: light;
+  --bg-page: #f1f6f0;
+  --bg-surface: #fcfdf9;
+  --bg-soft: #e8f0e4;
+  --bg-header: rgba(252, 253, 249, 0.9);
+  --text-primary: #1f2d22;
+  --text-secondary: #4a5d4d;
+  --text-muted: #6d7e6f;
+  --border-default: #d4e0d0;
+  --border-strong: #b8cbb4;
+  --accent: #2f6b3b;
+  --accent-hover: #24552e;
+  --accent-soft: #dcebdc;
+  --accent-contrast: #ffffff;
+  --shadow-sm: 0 10px 24px rgba(47, 107, 59, 0.14);
+  --shadow-md: 0 18px 44px rgba(31, 45, 34, 0.08);
+  --theme-backdrop:
+    linear-gradient(180deg, #fbfdf9 0%, #eef5ea 56%, #f1f6f0 100%),
+    linear-gradient(135deg, rgba(220, 235, 220, 0.28) 0%, transparent 34%, transparent 72%, rgba(184, 203, 180, 0.14) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 26%, rgba(255, 255, 255, 0.12) 58%, transparent 80%);
+  --theme-overlay:
+    repeating-linear-gradient(
+      135deg,
+      rgba(47, 107, 59, 0.018) 0,
+      rgba(47, 107, 59, 0.018) 1px,
+      transparent 2px,
+      transparent 96px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08), transparent 30%, transparent 70%, rgba(255, 255, 255, 0.06) 100%);
+  --theme-deco-primary-bg:
+    linear-gradient(180deg, rgba(47, 107, 59, 0.16), rgba(47, 107, 59, 0.04));
+  --theme-deco-primary-width: 24rem;
+  --theme-deco-primary-height: 18rem;
+  --theme-deco-primary-top: auto;
+  --theme-deco-primary-right: 0;
+  --theme-deco-primary-bottom: 0;
+  --theme-deco-primary-left: auto;
+  --theme-deco-primary-radius: 0;
+  --theme-deco-primary-clip: polygon(8% 100%, 34% 42%, 50% 72%, 64% 28%, 82% 68%, 100% 18%, 100% 100%);
+  --theme-deco-primary-filter: blur(0);
+  --theme-deco-primary-opacity: 0.68;
+  --theme-deco-primary-transform: translateY(0);
+  --theme-deco-secondary-bg:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(220, 235, 220, 0.08));
+  --theme-deco-secondary-width: 9rem;
+  --theme-deco-secondary-height: 28rem;
+  --theme-deco-secondary-top: 10vh;
+  --theme-deco-secondary-right: auto;
+  --theme-deco-secondary-bottom: auto;
+  --theme-deco-secondary-left: -1rem;
+  --theme-deco-secondary-radius: 1.5rem;
+  --theme-deco-secondary-clip: polygon(0 0, 100% 8%, 82% 100%, 0 92%);
+  --theme-deco-secondary-filter: blur(0);
+  --theme-deco-secondary-opacity: 0.52;
+  --theme-deco-secondary-transform: rotate(8deg);
+  --theme-deco-outline-bg:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 56%);
+  --theme-deco-outline-width: 8.5rem;
+  --theme-deco-outline-height: 8.5rem;
+  --theme-deco-outline-top: auto;
+  --theme-deco-outline-right: 5vw;
+  --theme-deco-outline-bottom: 9vh;
+  --theme-deco-outline-left: auto;
+  --theme-deco-outline-radius: 1rem;
+  --theme-deco-outline-clip: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  --theme-deco-outline-border: rgba(184, 203, 180, 0.44);
+  --theme-deco-outline-opacity: 0.42;
+  --theme-deco-outline-transform: rotate(8deg);
+  --theme-card-glaze:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.66), rgba(252, 253, 249, 0.78)),
+    linear-gradient(135deg, rgba(220, 235, 220, 0.22), transparent 55%),
+    repeating-linear-gradient(
+      135deg,
+      rgba(47, 107, 59, 0.016) 0,
+      rgba(47, 107, 59, 0.016) 2px,
+      transparent 2px,
+      transparent 12px
+    );
+  --theme-header-glaze:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.24), transparent 28%, rgba(220, 235, 220, 0.18) 100%);
+  --theme-main-accent:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 22%);
+  --hero-title-fill: linear-gradient(180deg, #1f3d22 0%, #2f6b3b 56%, #76ab7e 100%);
+  --hero-copy-glaze:
+    linear-gradient(135deg, rgba(252, 253, 249, 0.94), rgba(252, 253, 249, 0.76)),
+    radial-gradient(circle at top right, rgba(134, 239, 172, 0.18), transparent 30%);
+  --hero-card-glaze:
+    linear-gradient(180deg, rgba(236, 245, 233, 0.92), rgba(252, 253, 249, 0.86)),
+    radial-gradient(circle at top, rgba(47, 107, 59, 0.16), transparent 28%);
+  --hero-frame-pattern:
+    repeating-linear-gradient(
+      135deg,
+      rgba(47, 107, 59, 0.045) 0,
+      rgba(47, 107, 59, 0.045) 2px,
+      transparent 2px,
+      transparent 18px
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 46%);
+  --hero-button-glow: rgba(47, 107, 59, 0.2);
+  --hero-pill-bg: rgba(252, 253, 249, 0.78);
+  --hero-scene-disc-bg:
+    radial-gradient(circle at center, rgba(252, 253, 249, 0.92) 0 34%, rgba(220, 235, 220, 0.38) 34% 58%, transparent 58%);
+  --hero-scene-disc-width: 8.5rem;
+  --hero-scene-disc-height: 8.5rem;
+  --hero-scene-disc-top: 2.8rem;
+  --hero-scene-disc-right: 2.8rem;
+  --hero-scene-disc-bottom: auto;
+  --hero-scene-disc-left: auto;
+  --hero-scene-disc-radius: 50%;
+  --hero-scene-disc-clip: none;
+  --hero-scene-disc-transform: rotate(0deg);
+  --hero-scene-disc-opacity: 0.68;
+  --hero-scene-band-bg:
+    linear-gradient(180deg, rgba(47, 107, 59, 0.22), rgba(47, 107, 59, 0.06));
+  --hero-scene-band-width: 18rem;
+  --hero-scene-band-height: 7rem;
+  --hero-scene-band-top: auto;
+  --hero-scene-band-right: -1.2rem;
+  --hero-scene-band-bottom: 2.2rem;
+  --hero-scene-band-left: auto;
+  --hero-scene-band-radius: 0;
+  --hero-scene-band-clip: polygon(0 100%, 18% 58%, 34% 78%, 48% 36%, 64% 66%, 82% 18%, 100% 48%, 100% 100%);
+  --hero-scene-band-transform: rotate(0deg);
+  --hero-scene-band-opacity: 0.78;
+  --hero-scene-mark-bg:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(220, 235, 220, 0.08));
+  --hero-scene-mark-width: 4rem;
+  --hero-scene-mark-height: 15rem;
+  --hero-scene-mark-top: auto;
+  --hero-scene-mark-right: 10rem;
+  --hero-scene-mark-bottom: -1.6rem;
+  --hero-scene-mark-left: auto;
+  --hero-scene-mark-radius: 999px;
+  --hero-scene-mark-clip: polygon(16% 0, 100% 6%, 84% 100%, 0 94%);
+  --hero-scene-mark-transform: rotate(7deg);
+  --hero-scene-mark-opacity: 0.46;
+  --hero-card-deco-bg:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.32), rgba(47, 107, 59, 0.1));
+  --hero-card-deco-clip: polygon(0 100%, 18% 66%, 32% 78%, 48% 40%, 62% 58%, 78% 20%, 100% 0, 100% 100%);
+  --section-shell-glaze:
+    linear-gradient(145deg, rgba(252, 253, 249, 0.92), rgba(252, 253, 249, 0.74)),
+    linear-gradient(135deg, rgba(220, 235, 220, 0.2), transparent 58%);
+  --section-inner-glaze:
+    linear-gradient(180deg, rgba(252, 253, 249, 0.8), rgba(236, 245, 233, 0.88));
+  --chip-glaze:
+    linear-gradient(180deg, rgba(220, 235, 220, 0.68), rgba(252, 253, 249, 0.82));
+  --chip-border: rgba(184, 203, 180, 0.92);
+  --interactive-shadow: 0 18px 36px rgba(47, 107, 59, 0.14);
+  --header-shell-glaze:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.28), transparent 48%),
+    linear-gradient(90deg, rgba(220, 235, 220, 0.18), transparent 40%, rgba(255, 255, 255, 0.16) 100%);
+  --header-pill-glaze:
+    linear-gradient(180deg, rgba(252, 253, 249, 0.94), rgba(236, 245, 233, 0.9));
+  --header-pill-border: rgba(184, 203, 180, 0.78);
+  --header-pill-shadow: 0 12px 28px rgba(47, 107, 59, 0.1);
+  --header-pill-active-glaze:
+    linear-gradient(180deg, rgba(47, 107, 59, 0.94), rgba(76, 135, 86, 0.88));
+  --header-pill-active-text: #ffffff;
+  --header-accent-bar:
+    linear-gradient(90deg, rgba(47, 107, 59, 0.16), rgba(220, 235, 220, 0.08));
+}
+
+:root[data-theme='sunset'] {
+  color-scheme: light;
+  --bg-page: #fff6ee;
+  --bg-surface: #fffdfa;
+  --bg-soft: #fff0e1;
+  --bg-header: rgba(255, 253, 250, 0.9);
+  --text-primary: #33211c;
+  --text-secondary: #6a4e46;
+  --text-muted: #8d6d64;
+  --border-default: #eed5c4;
+  --border-strong: #dfb69a;
+  --accent: #dd6b20;
+  --accent-hover: #c05621;
+  --accent-soft: #fde6d6;
+  --accent-contrast: #ffffff;
+  --shadow-sm: 0 10px 24px rgba(221, 107, 32, 0.15);
+  --shadow-md: 0 18px 44px rgba(51, 33, 28, 0.08);
+  --theme-backdrop:
+    linear-gradient(180deg, #fffdf9 0%, #fff2e3 48%, #fff6ee 100%),
+    linear-gradient(0deg, rgba(251, 146, 60, 0.14) 0%, rgba(251, 146, 60, 0.04) 28%, transparent 54%),
+    linear-gradient(135deg, rgba(255, 237, 213, 0.22) 0%, transparent 26%, transparent 70%, rgba(251, 146, 60, 0.1) 100%);
+  --theme-overlay:
+    repeating-linear-gradient(
+      0deg,
+      rgba(221, 107, 32, 0.024) 0,
+      rgba(221, 107, 32, 0.024) 1px,
+      transparent 2px,
+      transparent 64px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08), transparent 24%, transparent 76%, rgba(255, 255, 255, 0.04) 100%);
+  --theme-deco-primary-bg:
+    radial-gradient(circle at center, rgba(255, 244, 214, 0.94) 0 34%, rgba(251, 146, 60, 0.32) 34% 58%, transparent 58%);
+  --theme-deco-primary-width: 18rem;
+  --theme-deco-primary-height: 18rem;
+  --theme-deco-primary-top: auto;
+  --theme-deco-primary-right: 6vw;
+  --theme-deco-primary-bottom: 14vh;
+  --theme-deco-primary-left: auto;
+  --theme-deco-primary-radius: 50%;
+  --theme-deco-primary-clip: none;
+  --theme-deco-primary-filter: blur(1px);
+  --theme-deco-primary-opacity: 0.82;
+  --theme-deco-primary-transform: translateY(0);
+  --theme-deco-secondary-bg:
+    linear-gradient(180deg, rgba(255, 214, 170, 0.36), rgba(251, 146, 60, 0.1));
+  --theme-deco-secondary-width: 28rem;
+  --theme-deco-secondary-height: 7rem;
+  --theme-deco-secondary-top: auto;
+  --theme-deco-secondary-right: auto;
+  --theme-deco-secondary-bottom: 18vh;
+  --theme-deco-secondary-left: -2rem;
+  --theme-deco-secondary-radius: 999px;
+  --theme-deco-secondary-clip: polygon(0 24%, 100% 0, 100% 76%, 0 100%);
+  --theme-deco-secondary-filter: blur(0);
+  --theme-deco-secondary-opacity: 0.5;
+  --theme-deco-secondary-transform: rotate(-3deg);
+  --theme-deco-outline-bg:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 56%);
+  --theme-deco-outline-width: 12rem;
+  --theme-deco-outline-height: 12rem;
+  --theme-deco-outline-top: auto;
+  --theme-deco-outline-right: -1rem;
+  --theme-deco-outline-bottom: 8vh;
+  --theme-deco-outline-left: auto;
+  --theme-deco-outline-radius: 50%;
+  --theme-deco-outline-clip: polygon(0 0, 100% 0, 100% 52%, 0 52%);
+  --theme-deco-outline-border: rgba(255, 214, 170, 0.5);
+  --theme-deco-outline-opacity: 0.5;
+  --theme-deco-outline-transform: rotate(0deg);
+  --theme-card-glaze:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(255, 253, 250, 0.84)),
+    linear-gradient(135deg, rgba(253, 230, 214, 0.26), transparent 54%),
+    linear-gradient(0deg, rgba(251, 113, 133, 0.045), transparent 42%);
+  --theme-header-glaze:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.24), transparent 24%, rgba(251, 146, 60, 0.18) 100%);
+  --theme-main-accent:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 18%);
+  --hero-title-fill: linear-gradient(180deg, #7a2d12 0%, #dd6b20 52%, #f29a56 100%);
+  --hero-copy-glaze:
+    linear-gradient(135deg, rgba(255, 253, 250, 0.92), rgba(255, 248, 242, 0.76)),
+    radial-gradient(circle at top right, rgba(251, 146, 60, 0.24), transparent 32%);
+  --hero-card-glaze:
+    linear-gradient(180deg, rgba(255, 241, 227, 0.92), rgba(255, 253, 250, 0.86)),
+    radial-gradient(circle at top, rgba(251, 113, 133, 0.16), transparent 26%);
+  --hero-frame-pattern:
+    linear-gradient(0deg, rgba(221, 107, 32, 0.05) 0, rgba(221, 107, 32, 0.05) 2px, transparent 2px, transparent 24px),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.14), transparent 44%);
+  --hero-button-glow: rgba(221, 107, 32, 0.22);
+  --hero-pill-bg: rgba(255, 253, 250, 0.78);
+  --hero-scene-disc-bg:
+    radial-gradient(circle at center, rgba(255, 242, 205, 0.96) 0 38%, rgba(251, 146, 60, 0.58) 38% 62%, transparent 62%);
+  --hero-scene-disc-width: 10.5rem;
+  --hero-scene-disc-height: 10.5rem;
+  --hero-scene-disc-top: auto;
+  --hero-scene-disc-right: 3.4rem;
+  --hero-scene-disc-bottom: 4rem;
+  --hero-scene-disc-left: auto;
+  --hero-scene-disc-radius: 50%;
+  --hero-scene-disc-clip: none;
+  --hero-scene-disc-transform: rotate(0deg);
+  --hero-scene-disc-opacity: 0.86;
+  --hero-scene-band-bg:
+    linear-gradient(180deg, rgba(255, 214, 170, 0.4), rgba(251, 146, 60, 0.1));
+  --hero-scene-band-width: 21rem;
+  --hero-scene-band-height: 3.6rem;
+  --hero-scene-band-top: auto;
+  --hero-scene-band-right: -1rem;
+  --hero-scene-band-bottom: 2.6rem;
+  --hero-scene-band-left: auto;
+  --hero-scene-band-radius: 999px;
+  --hero-scene-band-clip: polygon(0 40%, 100% 0, 100% 68%, 0 100%);
+  --hero-scene-band-transform: rotate(-2deg);
+  --hero-scene-band-opacity: 0.72;
+  --hero-scene-mark-bg:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(251, 113, 133, 0.08));
+  --hero-scene-mark-width: 12rem;
+  --hero-scene-mark-height: 12rem;
+  --hero-scene-mark-top: auto;
+  --hero-scene-mark-right: -2rem;
+  --hero-scene-mark-bottom: -3rem;
+  --hero-scene-mark-left: auto;
+  --hero-scene-mark-radius: 50%;
+  --hero-scene-mark-clip: polygon(0 0, 100% 0, 100% 54%, 0 54%);
+  --hero-scene-mark-transform: rotate(0deg);
+  --hero-scene-mark-opacity: 0.52;
+  --hero-card-deco-bg:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(221, 107, 32, 0.1));
+  --hero-card-deco-clip: polygon(0 100%, 100% 100%, 100% 64%, 0 44%);
+  --section-shell-glaze:
+    linear-gradient(145deg, rgba(255, 253, 250, 0.9), rgba(255, 248, 242, 0.74)),
+    linear-gradient(135deg, rgba(253, 230, 214, 0.22), transparent 58%);
+  --section-inner-glaze:
+    linear-gradient(180deg, rgba(255, 253, 250, 0.8), rgba(255, 241, 227, 0.9));
+  --chip-glaze:
+    linear-gradient(180deg, rgba(253, 230, 214, 0.72), rgba(255, 253, 250, 0.82));
+  --chip-border: rgba(223, 182, 154, 0.92);
+  --interactive-shadow: 0 18px 36px rgba(221, 107, 32, 0.16);
+  --header-shell-glaze:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.24), transparent 48%),
+    linear-gradient(90deg, rgba(253, 230, 214, 0.18), transparent 38%, rgba(255, 255, 255, 0.14) 100%);
+  --header-pill-glaze:
+    linear-gradient(180deg, rgba(255, 253, 250, 0.94), rgba(255, 241, 227, 0.9));
+  --header-pill-border: rgba(223, 182, 154, 0.8);
+  --header-pill-shadow: 0 12px 28px rgba(221, 107, 32, 0.12);
+  --header-pill-active-glaze:
+    linear-gradient(180deg, rgba(221, 107, 32, 0.96), rgba(242, 154, 86, 0.9));
+  --header-pill-active-text: #ffffff;
+  --header-accent-bar:
+    linear-gradient(90deg, rgba(221, 107, 32, 0.18), rgba(253, 230, 214, 0.08));
+}

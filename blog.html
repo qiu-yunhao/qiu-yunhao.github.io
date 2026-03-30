@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog | Cosmos of Thoughts</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+</head>
+<body class="blog-page">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="profile">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Avatar" class="avatar">
+            <h2>Alex Starlight</h2>
+            <p>Cosmic Dreamer & Tech Explorer</p>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" data-view="home">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-view="hobbies">
+                    <i class="fas fa-heart"></i>
+                    <span>My Hobbies</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-view="articles">
+                    <i class="fas fa-newspaper"></i>
+                    <span>My Articles</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-view="projects">
+                    <i class="fas fa-code"></i>
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-view="gallery">
+                    <i class="fas fa-images"></i>
+                    <span>Gallery</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-view="about">
+                    <i class="fas fa-user-astronaut"></i>
+                    <span>About Me</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="contact-info">
+            <h3>Contact Me</h3>
+            <div class="contact-item">
+                <i class="fab fa-qq"></i>
+                <span>QQ: 123456789</span>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-weixin"></i>
+                <span>WeChat: starlight_alex</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <span>Phone: +86 138 0013 8000</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>Email: alex@cosmos.blog</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Shanghai, China</span>
+            </div>
+        </div>
+    </aside>
+    
+    <!-- Main Content Area -->
+    <main class="main-content" id="mainContent">
+        <!-- Home View (default) -->
+        <div class="content-view" id="homeView">
+            <div class="content-header">
+                <h1>Welcome to My Cosmos</h1>
+                <p>Explore my thoughts, projects, and adventures under the digital stars</p>
+            </div>
+            
+            <div class="welcome-section">
+                <div class="welcome-card">
+                    <h2><i class="fas fa-rocket"></i> Latest Adventures</h2>
+                    <p>Recently I've been exploring the intersection of art and technology, creating interactive star maps using Three.js and WebGL.</p>
+                    <a href="#" class="read-more" data-view="projects">View Projects <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="welcome-card">
+                    <h2><i class="fas fa-feather-alt"></i> Recent Writings</h2>
+                    <p>My latest article discusses the philosophy of digital minimalism in an increasingly connected world.</p>
+                    <a href="#" class="read-more" data-view="articles">Read Articles <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="welcome-card">
+                    <h2><i class="fas fa-star"></i> Current Obsession</h2>
+                    <p>Astrophotography with Raspberry Pi and DIY telescope mounts. Capturing the cosmos from my backyard.</p>
+                    <a href="#" class="read-more" data-view="hobbies">Explore Hobbies <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="quote-section">
+                <blockquote>
+                    <p>"We are all in the gutter, but some of us are looking at the stars."</p>
+                    <footer>— Oscar Wilde</footer>
+                </blockquote>
+            </div>
+        </div>
+        
+        <!-- Hobbies View -->
+        <div class="content-view" id="hobbiesView" style="display: none;">
+            <div class="content-header">
+                <h1>My Hobbies</h1>
+                <p>Passions that light up my universe</p>
+            </div>
+            
+            <div class="hobbies-grid">
+                <div class="hobby-card">
+                    <div class="hobby-icon">
+                        <i class="fas fa-camera-retro"></i>
+                    </div>
+                    <h3>Astrophotography</h3>
+                    <p>Capturing the beauty of night sky, from Milky Way to distant nebulae.</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Music Composition</h3>
+                    <p>Creating ambient space music with synthesizers and digital audio workstations.</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Sci‑Fi Reading</h3>
+                    <p>Exploring speculative futures through novels by Asimov, Le Guin, and Liu Cixin.</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-icon">
+                        <i class="fas fa-hiking"></i>
+                    </div>
+                    <h3>Mountain Hiking</h3>
+                    <p>Seeking high altitudes for clearer skies and breathtaking vistas.</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>DIY Electronics</h3>
+                    <p>Building weather stations, telescope controllers, and IoT gadgets.</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Cosmic Cooking</h3>
+                    <p>Experimenting with molecular gastronomy to create 'alien' desserts.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Articles List View -->
+        <div class="content-view" id="articlesView" style="display: none;">
+            <div class="content-header">
+                <h1>My Articles</h1>
+                <p>Thoughts, tutorials, and stories from my journey</p>
+            </div>
+            
+            <div class="articles-list" id="articlesList">
+                <!-- Articles will be loaded dynamically by JavaScript -->
+            </div>
+        </div>
+        
+        <!-- Article Detail View -->
+        <div class="content-view" id="articleDetailView" style="display: none;">
+            <a href="#" class="back-button" id="backToArticles">
+                <i class="fas fa-arrow-left"></i> Back to Articles
+            </a>
+            <div class="article-detail">
+                <div class="article-header">
+                    <h1 id="articleTitle">Article Title</h1>
+                    <div class="article-meta">
+                        <span><i class="far fa-calendar"></i> <span id="articleDate">January 1, 2023</span></span>
+                        <span><i class="far fa-clock"></i> <span id="articleReadTime">5 min read</span></span>
+                        <span><i class="far fa-folder"></i> <span id="articleCategory">Technology</span></span>
+                    </div>
+                    <div class="article-tags" id="articleTags">
+                        <span class="tag">JavaScript</span>
+                    </div>
+                </div>
+                <div class="article-content" id="articleContent">
+                    <!-- Markdown content will be rendered here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Projects View -->
+        <div class="content-view" id="projectsView" style="display: none;">
+            <div class="content-header">
+                <h1>My Projects</h1>
+                <p>Code, design, and experiments that bring ideas to life</p>
+            </div>
+            <p>Coming soon... A showcase of my open‑source projects and creative coding experiments.</p>
+        </div>
+        
+        <!-- Gallery View -->
+        <div class="content-view" id="galleryView" style="display: none;">
+            <div class="content-header">
+                <h1>Gallery</h1>
+                <p>Visual memories and artistic creations</p>
+            </div>
+            <p>Coming soon... A collection of my astrophotography, digital art, and travel photos.</p>
+        </div>
+        
+        <!-- About View -->
+        <div class="content-view" id="aboutView" style="display: none;">
+            <div class="content-header">
+                <h1>About Me</h1>
+                <p>Who I am and what drives me</p>
+            </div>
+            <div class="about-content">
+                <p>Hello! I'm Alex, a passionate developer, writer, and stargazer based in Shanghai. I believe that technology and creativity can together illuminate the unknown, much like stars piercing through the night sky.</p>
+                <p>This blog is my personal cosmos—a space where I share my technical explorations, philosophical musings, and artistic endeavors. Each article is a star in this constellation, a point of light in the vast digital universe.</p>
+                <p>When I'm not coding or writing, you'll find me on my rooftop with a telescope, in a café with a notebook, or hiking in the mountains chasing clear skies.</p>
+                <p>Feel free to reach out if you'd like to collaborate, discuss ideas, or just talk about the cosmos!</p>
+            </div>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
