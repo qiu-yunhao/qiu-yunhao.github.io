@@ -54,7 +54,7 @@
 
         <p v-if="docError" class="doc-feedback error">{{ docError }}</p>
         <p v-else-if="isLoadingDoc" class="doc-feedback">正在加载 GitHub README...</p>
-        <MarkdownRenderer v-else-if="activeContent" :content="activeContent" />
+        <MarkdownRenderer v-else-if="activeContent" :content="activeContent" :base-url="activeDocBaseUrl" />
         <p v-else class="doc-feedback">这个文档暂时还没有内容。</p>
       </section>
 
@@ -120,12 +120,24 @@ const activeDocSourceLabel = computed(() => {
   return activeDoc.value.source === 'remote' ? 'GitHub README' : 'Local Markdown'
 })
 
+const activeDocBaseUrl = computed(() => {
+  if (!activeDoc.value?.url) {
+    return ''
+  }
+
+  try {
+    return new URL('.', activeDoc.value.url).toString()
+  } catch {
+    return ''
+  }
+})
+
 const docHeadings = computed(() => {
   if (!activeContent.value) {
     return []
   }
 
-  return parseMarkdown(activeContent.value).headings
+  return parseMarkdown(activeContent.value, { baseUrl: activeDocBaseUrl.value }).headings
 })
 
 watch(

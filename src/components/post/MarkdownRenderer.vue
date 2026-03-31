@@ -11,9 +11,13 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  baseUrl: {
+    type: String,
+    default: '',
+  },
 })
 
-const rendered = computed(() => parseMarkdown(props.content))
+const rendered = computed(() => parseMarkdown(props.content, { baseUrl: props.baseUrl }))
 </script>
 
 <style scoped>
@@ -179,11 +183,48 @@ const rendered = computed(() => parseMarkdown(props.content))
 }
 
 .markdown-body :deep(img) {
-  display: block;
+  display: inline-block;
   max-width: 100%;
   height: auto;
-  margin: 1.4rem auto;
+  margin: 0;
   border-radius: 1rem;
+}
+
+.markdown-body :deep(p > img:only-child) {
+  display: block;
+  margin: 1.4rem 0;
+}
+
+.markdown-body :deep(table) {
+  width: 100%;
+  margin: 1.2rem 0;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid var(--border-default);
+  background: var(--bg-soft);
+}
+
+.markdown-body :deep(th),
+.markdown-body :deep(td) {
+  padding: 0.8rem 0.95rem;
+  border-bottom: 1px solid var(--border-default);
+  text-align: left;
+  vertical-align: top;
+}
+
+.markdown-body :deep(th) {
+  color: var(--text-primary);
+  background: var(--chip-glaze);
+  font-weight: 700;
+}
+
+.markdown-body :deep(td) {
+  color: var(--text-secondary);
+}
+
+.markdown-body :deep(tr:last-child td) {
+  border-bottom: 0;
 }
 
 .markdown-body :deep(blockquote) {
