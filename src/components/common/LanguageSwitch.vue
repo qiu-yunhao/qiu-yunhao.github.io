@@ -28,20 +28,26 @@ const localeOptions = computed(() => [
 <style scoped>
 .switch-group {
   display: inline-flex;
-  padding: 4px;
+  padding: 5px;
   border: 1px solid var(--header-pill-border);
   border-radius: 999px;
   background: var(--header-pill-glaze);
   box-shadow: var(--header-pill-shadow);
+  backdrop-filter: blur(10px);
 }
 
 .switch-button {
   border: 0;
   background: transparent;
   color: var(--text-secondary);
-  padding: 8px 12px;
+  min-width: 52px;
+  padding: 9px 13px;
   border-radius: 999px;
   font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   cursor: pointer;
   transition:
     background-color 0.2s ease,

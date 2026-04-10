@@ -30,26 +30,31 @@ const themeOptions = computed(() =>
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 4px 4px 4px 12px;
+  padding: 5px 6px 5px 13px;
   border: 1px solid var(--header-pill-border);
   border-radius: 999px;
   background: var(--header-pill-glaze);
   color: var(--text-secondary);
   box-shadow: var(--header-pill-shadow);
+  backdrop-filter: blur(10px);
 }
 
 .theme-label {
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .theme-select {
   border: 0;
   border-radius: 999px;
-  padding: 8px 12px;
+  padding: 9px 13px;
   background: rgba(255, 255, 255, 0.48);
   color: var(--text-primary);
   font: inherit;
+  font-size: 13px;
+  font-weight: 700;
   cursor: pointer;
   outline: none;
 }

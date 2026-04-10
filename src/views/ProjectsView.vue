@@ -1,7 +1,22 @@
 <template>
   <section class="page">
-    <h1>{{ t('projectsPage.title') }}</h1>
-    <p class="lead">{{ t('projectsPage.lead') }}</p>
+    <section class="page-hero">
+      <div class="page-hero-main">
+        <p class="page-kicker">PROJECT INDEX</p>
+        <h1>{{ t('projectsPage.title') }}</h1>
+        <p class="lead">{{ t('projectsPage.lead') }}</p>
+      </div>
+
+      <aside class="page-hero-side">
+        <h2>{{ t('projectsPage.summaryTitle') }}</h2>
+        <p>{{ t('projectsPage.summaryLead') }}</p>
+        <ul class="page-hero-list">
+          <li>{{ summaryLines.total }}</li>
+          <li>{{ summaryLines.docs }}</li>
+          <li>{{ summaryLines.stack }}</li>
+        </ul>
+      </aside>
+    </section>
 
     <div class="projects-grid">
       <RouterLink
@@ -31,17 +46,46 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useLocale } from '@/composables/useLocale'
 import { projects as projectList } from '@/data/projects'
 
 const { t } = useLocale()
 
+const docCount = computed(() => projectList.reduce((total, project) => total + project.docs.length, 0))
+const stackCount = computed(() => new Set(projectList.flatMap((project) => project.stacks)).size)
+const summaryLines = computed(() => ({
+  total: t('projectsPage.summary.total', { count: projectList.length }),
+  docs: t('projectsPage.summary.docs', { count: docCount.value }),
+  stack: t('projectsPage.summary.stack', { count: stackCount.value }),
+}))
+
 const getProjectName = (project) => project.name ?? t(project.nameKey)
 const getProjectDescription = (project) => project.description ?? t(project.descriptionKey)
 </script>
 
 <style scoped>
+.page-hero-main {
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero-main::before {
+  content: '';
+  position: absolute;
+  right: 1.6rem;
+  bottom: 1.4rem;
+  width: 10rem;
+  height: 10rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24), color-mix(in srgb, var(--accent) 14%, transparent));
+  clip-path: polygon(50% 0, 100% 18%, 82% 100%, 22% 80%, 0 20%);
+  opacity: 0.46;
+  transform: rotate(10deg);
+  pointer-events: none;
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -49,6 +93,7 @@ const getProjectDescription = (project) => project.description ?? t(project.desc
 }
 
 .project-card {
+  position: relative;
   display: grid;
   gap: 16px;
   min-height: 280px;
@@ -62,6 +107,19 @@ const getProjectDescription = (project) => project.description ?? t(project.desc
     transform 0.2s ease,
     border-color 0.2s ease,
     box-shadow 0.2s ease;
+}
+
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 auto;
+  width: 9rem;
+  height: 5rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22), color-mix(in srgb, var(--accent-soft) 88%, transparent));
+  clip-path: polygon(0 76%, 18% 58%, 32% 66%, 52% 42%, 70% 58%, 88% 46%, 100% 52%, 100% 100%, 0 100%);
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .project-card:hover {

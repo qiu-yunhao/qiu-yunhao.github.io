@@ -17,6 +17,6 @@ import TechStack from '@/components/home/TechStack.vue';
 <style scoped>
 .home-page {
   display: grid;
-  gap: 32px;
+  gap: 36px;
 }
 </style>

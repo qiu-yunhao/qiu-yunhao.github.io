@@ -5,6 +5,8 @@
         <span class="hero-scene-disc"></span>
         <span class="hero-scene-band"></span>
         <span class="hero-scene-mark"></span>
+        <span class="hero-scene-trail"></span>
+        <span class="hero-scene-particles"></span>
       </div>
 
       <p class="eyebrow">{{ t('home.hero.eyebrow') }}</p>
@@ -15,32 +17,52 @@
         <RouterLink class="primary-btn" to="/posts">{{ t('home.hero.primaryAction') }}</RouterLink>
         <RouterLink class="secondary-btn" to="/projects">{{ t('home.hero.secondaryAction') }}</RouterLink>
       </div>
+
+      <dl class="hero-metrics">
+        <div class="hero-metric" v-for="item in heroMetrics" :key="item.label">
+          <dt>{{ item.value }}</dt>
+          <dd>{{ item.label }}</dd>
+        </div>
+      </dl>
     </div>
 
-    <div class="hero-card">
+    <div class="hero-card hero-focus-card">
       <p class="hero-card-label">{{ t('home.focusCard.label') }}</p>
       <h2>{{ t('home.focusCard.title') }}</h2>
-      <ul>
-        <li v-for="item in focusItems" :key="item">{{ item }}</li>
-      </ul>
+      <FocusBookmark
+        :title="t('home.focusCard.title')"
+        :subtitle="t('home.focusCard.subtitle')"
+        :hint="t('home.focusCard.hint')"
+        :tags="t('home.focusCard.tags')"
+        :items="focusItems"
+      />
     </div>
   </section>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useLocale } from '@/composables/useLocale'
+import { posts } from '@/data/posts'
+import { projects } from '@/data/projects'
+import { techStack } from '@/data/techStack'
 
+const FocusBookmark = defineAsyncComponent(() => import('@/components/home/FocusBookmark.vue'))
 const { t } = useLocale()
 const focusItems = computed(() => t('home.focusCard.items'))
+const heroMetrics = computed(() => [
+  { value: posts.length, label: t('home.metrics.posts') },
+  { value: projects.length, label: t('home.metrics.projects') },
+  { value: techStack.length, label: t('home.metrics.stack') },
+])
 </script>
 
 <style scoped>
 .hero {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
-  gap: 24px;
+  gap: 26px;
   align-items: stretch;
   position: relative;
 }
@@ -49,11 +71,11 @@ const focusItems = computed(() => t('home.focusCard.items'))
 .hero-card {
   position: relative;
   overflow: hidden;
-  padding: 32px;
+  padding: 36px;
   background: var(--bg-surface);
   border: 1px solid var(--border-default);
-  border-radius: 20px;
-  box-shadow: var(--shadow-md);
+  border-radius: 30px;
+  box-shadow: 0 30px 72px rgba(15, 23, 42, 0.09);
 }
 
 .hero-copy {
@@ -62,6 +84,15 @@ const focusItems = computed(() => t('home.focusCard.items'))
 
 .hero-card {
   background-image: var(--hero-card-glaze);
+}
+
+.hero-focus-card {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 12px;
+  align-content: stretch;
+  min-height: 100%;
+  padding: 18px;
 }
 
 .hero-copy::before,
@@ -109,7 +140,9 @@ const focusItems = computed(() => t('home.focusCard.items'))
 
 .hero-scene-disc,
 .hero-scene-band,
-.hero-scene-mark {
+.hero-scene-mark,
+.hero-scene-trail,
+.hero-scene-particles {
   position: absolute;
   display: block;
 }
@@ -156,6 +189,33 @@ const focusItems = computed(() => t('home.focusCard.items'))
   opacity: var(--hero-scene-mark-opacity);
 }
 
+.hero-scene-trail {
+  right: 2rem;
+  bottom: 1.6rem;
+  width: 14rem;
+  height: 4rem;
+  background:
+    linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent-soft) 86%, white) 18%, transparent 82%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.16) 0 1px, transparent 1px 18px);
+  clip-path: polygon(0 76%, 20% 60%, 38% 70%, 56% 46%, 74% 62%, 100% 52%, 100% 76%, 0 100%);
+  opacity: 0.5;
+  transform: rotate(-4deg);
+}
+
+.hero-scene-particles {
+  top: 2rem;
+  right: 5rem;
+  width: 8rem;
+  height: 8rem;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(255, 255, 255, 0.72) 0 1.1px, transparent 1.7px),
+    radial-gradient(circle at 72% 24%, color-mix(in srgb, var(--accent) 44%, white) 0 1.2px, transparent 1.8px),
+    radial-gradient(circle at 42% 76%, rgba(255, 255, 255, 0.5) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 84% 70%, color-mix(in srgb, var(--accent-soft) 90%, white) 0 1.4px, transparent 2px);
+  opacity: 0.7;
+  animation: hero-particles 16s linear infinite alternate;
+}
+
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -175,9 +235,11 @@ const focusItems = computed(() => t('home.focusCard.items'))
 
 h1 {
   margin: 0 0 16px;
-  font-size: 46px;
-  line-height: 1.15;
-  max-width: 11ch;
+  font-family: var(--font-display);
+  font-size: clamp(52px, 6vw, 78px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  max-width: 8ch;
   position: relative;
   z-index: 1;
   background-image: var(--hero-title-fill);
@@ -188,10 +250,10 @@ h1 {
 
 .hero-text {
   margin: 0;
-  font-size: 18px;
-  line-height: 1.8;
+  font-size: clamp(18px, 1.6vw, 21px);
+  line-height: 1.9;
   color: var(--text-secondary);
-  max-width: 56ch;
+  max-width: 46ch;
   position: relative;
   z-index: 1;
 }
@@ -199,9 +261,46 @@ h1 {
 .hero-actions {
   display: flex;
   gap: 12px;
-  margin-top: 24px;
+  margin-top: 28px;
   position: relative;
   z-index: 1;
+}
+
+.hero-metrics {
+  margin: 34px 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-metric {
+  margin: 0;
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--bg-surface) 82%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border-default) 86%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.hero-metric dt,
+.hero-metric dd {
+  margin: 0;
+}
+
+.hero-metric dt {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.hero-metric dd {
+  margin-top: 4px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .primary-btn,
@@ -209,9 +308,12 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 18px;
-  border-radius: 12px;
-  font-weight: 600;
+  min-height: 48px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
@@ -259,35 +361,24 @@ h1 {
   margin: 0 0 12px;
   position: relative;
   z-index: 1;
+  font-size: clamp(28px, 3vw, 38px);
+  line-height: 1.08;
 }
 
-.hero-card ul {
-  margin: 0;
-  padding-left: 0;
-  list-style: none;
-  color: var(--text-secondary);
-  line-height: 1.8;
-  display: grid;
-  gap: 10px;
-  position: relative;
-  z-index: 1;
+.hero-focus-card .hero-card-label,
+.hero-focus-card h2 {
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
-.hero-card li {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 10px;
-  align-items: start;
-}
+@keyframes hero-particles {
+  from {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
 
-.hero-card li::before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  margin-top: 0.5em;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 16%, transparent);
+  to {
+    transform: translate3d(-10px, 8px, 0) rotate(6deg);
+  }
 }
 
 @media (max-width: 768px) {
@@ -297,10 +388,15 @@ h1 {
 
   h1 {
     font-size: 34px;
+    max-width: none;
   }
 
   .hero-actions {
     flex-wrap: wrap;
+  }
+
+  .hero-metrics {
+    grid-template-columns: 1fr;
   }
 
   .hero-copy::after {

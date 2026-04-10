@@ -31,6 +31,16 @@ const state = reactive({
 const resolveMessage = (locale, key) =>
   key.split('.').reduce((value, part) => value?.[part], messages[locale])
 
+const interpolateMessage = (message, params = {}) => {
+  if (typeof message !== 'string' || !params || typeof params !== 'object') {
+    return message
+  }
+
+  return message.replace(/\{(\w+)\}/g, (match, token) =>
+    Object.prototype.hasOwnProperty.call(params, token) ? String(params[token]) : match,
+  )
+}
+
 const applyLocale = (locale) => {
   state.locale = messages[locale] ? locale : DEFAULT_LOCALE
 
@@ -51,7 +61,10 @@ export const useLocale = () => {
     applyLocale(nextLocale)
   }
 
-  const t = (key) => resolveMessage(state.locale, key) ?? key
+  const t = (key, params) => {
+    const message = resolveMessage(state.locale, key)
+    return interpolateMessage(message ?? key, params)
+  }
 
   return {
     locale,

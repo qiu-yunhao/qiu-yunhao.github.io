@@ -32,6 +32,9 @@
           v-if="heroCategory.cover && !failedImages.has(heroCategory.cover)"
           :src="heroCategory.cover"
           :alt="heroCategory.alt"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
           @error="markImageFailed(heroCategory.cover)"
         />
         <div v-else class="image-fallback hero-fallback">
@@ -68,6 +71,8 @@
               v-if="item.cover && !failedImages.has(item.cover)"
               :src="item.cover"
               :alt="item.alt"
+              loading="lazy"
+              decoding="async"
               @error="markImageFailed(item.cover)"
             />
             <div v-else class="image-fallback">
@@ -129,6 +134,53 @@ const markImageFailed = (src) => {
   gap: 24px;
 }
 
+.about-copy,
+.about-hero,
+.gallery-card {
+  position: relative;
+}
+
+.about-copy::after,
+.about-hero::after,
+.gallery-card::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+}
+
+.about-copy::after {
+  inset: auto 1.4rem 1.4rem auto;
+  width: 10rem;
+  height: 4.6rem;
+  background:
+    linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent-soft) 82%, white) 24%, transparent 82%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.16) 0 1px, transparent 1px 18px);
+  clip-path: polygon(0 72%, 18% 56%, 34% 64%, 50% 42%, 68% 56%, 84% 48%, 100% 54%, 100% 74%, 0 100%);
+  opacity: 0.46;
+}
+
+.about-hero::after {
+  right: 0;
+  bottom: 0;
+  width: 8rem;
+  height: 8rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), color-mix(in srgb, var(--accent) 14%, transparent));
+  clip-path: polygon(0 100%, 18% 66%, 34% 78%, 52% 42%, 70% 58%, 88% 18%, 100% 0, 100% 100%);
+  opacity: 0.46;
+}
+
+.gallery-card::after {
+  right: 0.8rem;
+  top: 0.8rem;
+  width: 4.8rem;
+  height: 4.8rem;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.58) 0 1.1px, transparent 1.7px),
+    radial-gradient(circle at 72% 28%, color-mix(in srgb, var(--accent) 34%, white) 0 1.2px, transparent 1.8px),
+    radial-gradient(circle at 42% 76%, rgba(255, 255, 255, 0.42) 0 1px, transparent 1.6px);
+  opacity: 0.76;
+}
+
 .about-intro {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -147,6 +199,7 @@ const markImageFailed = (src) => {
 
 .about-meta {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
 
@@ -281,11 +334,14 @@ const markImageFailed = (src) => {
 .gallery-section {
   display: grid;
   gap: 16px;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 1200px;
 }
 
 .gallery-heading {
   display: grid;
   gap: 8px;
+  padding: 0 4px;
 }
 
 .gallery-heading h2,
@@ -373,6 +429,10 @@ const markImageFailed = (src) => {
 
 @media (max-width: 960px) {
   .about-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .about-meta {
     grid-template-columns: 1fr;
   }
 

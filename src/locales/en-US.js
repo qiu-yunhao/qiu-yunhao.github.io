@@ -6,9 +6,11 @@ export default {
     about: 'About',
     theme: 'Theme',
     language: 'Language',
+    status: 'Work in progress',
   },
   footer: {
     builtWith: 'Built with Vue 3.',
+    tagline: 'A running archive of study notes, shipped experiments, and lessons learned from real implementation work.',
   },
   language: {
     zhCN: '中',
@@ -30,7 +32,26 @@ export default {
     focusCard: {
       label: 'Now',
       title: 'Current Focus',
-      items: ['Building the blog', 'Deploying to GitHub Pages', 'Cleaning up components and page structure'],
+      subtitle: 'cryptanalysis / intelligent systems',
+      hint: 'Drag the bookmark to feel the fold, wrinkles, and spring-back.',
+      tags: ['Cryptanalysis', 'Intelligent Systems'],
+      items: [
+        {
+          tag: 'Crypto',
+          title: 'Neural-distinguisher-assisted symmetric cryptanalysis',
+          note: 'Studying differential signals, structural weaknesses, and how learning-based methods can sharpen classical analysis.',
+        },
+        {
+          tag: 'Interface',
+          title: 'Vibe coding and Android / Vue dual-stack interface experiments',
+          note: 'Combining rapid prototyping, mobile interaction ideas, and web component systems into a smoother expression workflow.',
+        },
+        {
+          tag: 'Agents',
+          title: 'Reinforcement learning, agent systems, and tool orchestration',
+          note: 'Continuing to connect policy optimization, planning, memory, and tool use into a steadier working model.',
+        },
+      ],
     },
     latestPosts: {
       eyebrow: 'LATEST POSTS',
@@ -46,6 +67,11 @@ export default {
       eyebrow: 'TECH STACK',
       title: 'Current Stack',
       description: 'These are the tools I practice with most often and write about the most.',
+    },
+    metrics: {
+      posts: 'posts',
+      projects: 'projects',
+      stack: 'stack items',
     },
   },
   about: {
@@ -70,6 +96,14 @@ export default {
   postsPage: {
     title: 'Posts',
     lead: 'This page collects my technical writing, study notes, and debugging logs.',
+    summaryTitle: 'Reading Overview',
+    summaryLead: 'The archive is organized to make scattered notes easier to revisit, with emphasis on real problems, decisions, and retrospectives.',
+    summary: {
+      total: '{count} entries currently available',
+      categories: 'Grouped across {count} browsing categories',
+      latest: 'Latest dated update: {title}',
+      latestFallback: 'Some migrated posts still need their dates restored',
+    },
     filters: {
       all: 'All',
       vue: 'Vue 3',
@@ -80,6 +114,13 @@ export default {
   projectsPage: {
     title: 'Projects',
     lead: 'This page showcases my project practice, stack choices, and implementation highlights.',
+    summaryTitle: 'Project Overview',
+    summaryLead: 'Each project keeps not just the outcome, but also process notes, structure details, and supporting documentation.',
+    summary: {
+      total: '{count} projects showcased',
+      docs: '{count} project documents collected',
+      stack: '{count} core technologies represented',
+    },
     blogTitle: 'Personal Tech Blog',
     blogText: 'Built with Vue 3 and Vite, with GitHub Pages deployment planned next.',
     moreTitle: 'More Projects',

@@ -8,6 +8,9 @@
           v-if="category.cover && !failedImages.has(category.cover)"
           :src="category.cover"
           :alt="category.alt"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
           @error="markImageFailed(category.cover)"
         />
         <div v-else class="detail-fallback">
@@ -34,7 +37,14 @@
       <div class="detail-grid" :class="detailGridClass">
         <article class="detail-image-card card" v-for="image in displayedImages" :key="image.id">
           <div class="detail-card-media">
-            <img v-if="!failedImages.has(image.src)" :src="image.src" :alt="image.alt" @error="markImageFailed(image.src)" />
+            <img
+              v-if="!failedImages.has(image.src)"
+              :src="image.src"
+              :alt="image.alt"
+              loading="lazy"
+              decoding="async"
+              @error="markImageFailed(image.src)"
+            />
             <div v-else class="detail-mini-fallback">
               <span class="fallback-kicker">PHOTO</span>
               <strong>{{ t(category.titleKey) }}</strong>
@@ -57,7 +67,14 @@
           :to="{ name: 'about-gallery-detail', params: { slug: item.slug } }"
         >
           <div class="detail-card-media">
-            <img v-if="item.cover && !failedImages.has(item.cover)" :src="item.cover" :alt="item.alt" @error="markImageFailed(item.cover)" />
+            <img
+              v-if="item.cover && !failedImages.has(item.cover)"
+              :src="item.cover"
+              :alt="item.alt"
+              loading="lazy"
+              decoding="async"
+              @error="markImageFailed(item.cover)"
+            />
             <div v-else class="detail-mini-fallback">
               <span class="fallback-kicker">PHOTO</span>
               <strong>{{ t(item.titleKey) }}</strong>
@@ -93,7 +110,7 @@ const { locale, t } = useLocale()
 const failedImages = reactive(new Set())
 
 const category = computed(() => aboutGallery.find((item) => item.slug === route.params.slug))
-const displayedImages = computed(() => category.value?.images ?? [])
+const displayedImages = computed(() => category.value?.images.slice(1) ?? [])
 const relatedCategories = computed(() => aboutGallery.filter((item) => item.slug !== route.params.slug && !item.featured))
 
 const detailGridClass = computed(() => {
@@ -187,6 +204,8 @@ const markImageFailed = (src) => {
 .detail-more {
   display: grid;
   gap: 16px;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 1200px;
 }
 
 .detail-more-header h2 {
