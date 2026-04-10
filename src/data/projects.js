@@ -3,6 +3,9 @@ import blogStructureContent from '@/content/projects/personal-blog/structure.md?
 import weatherOverviewContent from '@/content/projects/weather/overview.md?raw'
 import weatherRequirementsContent from '@/content/projects/weather/requirements.md?raw'
 import weatherArchitectureContent from '@/content/projects/weather/architecture.md?raw'
+import easyGameOverviewContent from '@/content/projects/easy-game/overview.md?raw'
+import easyGameRuntimeFlowContent from '@/content/projects/easy-game/runtime-flow.md?raw'
+import easyGameRunningNotesContent from '@/content/projects/easy-game/running-notes.md?raw'
 
 export const projects = [
   {
@@ -72,6 +75,45 @@ export const projects = [
         source: 'remote',
         url: 'https://raw.githubusercontent.com/qiu-yunhao/weather/main/README.md',
         description: '保留仓库原始 README，方便查看完整说明、截图和工程细节。',
+      },
+    ],
+  },
+  {
+    slug: 'easy-game',
+    name: 'easy_game',
+    description:
+      '一个面向修仙题材互动叙事的 Python 项目，用 Graph 编排剧情规划、角色行动、导演调度、玩家输入解析、旁白生成、记忆压缩和存档查询。',
+    stacks: ['Python', 'LLM Agent', 'LangGraph', 'SQLAlchemy', 'Web UI'],
+    githubUrl: 'https://github.com/qiu-yunhao/easy_game',
+    readmeUrl: 'https://raw.githubusercontent.com/qiu-yunhao/easy_game/main/README.md',
+    docs: [
+      {
+        slug: 'overview',
+        label: '项目概览',
+        source: 'local',
+        content: easyGameOverviewContent,
+        description: '介绍 easy_game 的项目定位、核心能力、模块拆分和作品集展示重点。',
+      },
+      {
+        slug: 'runtime-flow',
+        label: '运行流程',
+        source: 'local',
+        content: easyGameRuntimeFlowContent,
+        description: '梳理 GameState、Graph 子图、一轮故事推进和 Agent 回退逻辑。',
+      },
+      {
+        slug: 'running-notes',
+        label: '运行与测试',
+        source: 'local',
+        content: easyGameRunningNotesContent,
+        description: '整理运行模式、依赖安装、命令行 Demo、Web Demo、工具系统和测试覆盖。',
+      },
+      {
+        slug: 'readme',
+        label: 'README',
+        source: 'remote',
+        url: 'https://raw.githubusercontent.com/qiu-yunhao/easy_game/main/README.md',
+        description: '保留仓库原始 README，方便对照项目代码与最新说明。',
       },
     ],
   },
