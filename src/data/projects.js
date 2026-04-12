@@ -109,6 +109,13 @@ export const projects = [
         description: '整理运行模式、依赖安装、命令行 Demo、Web Demo、工具系统和测试覆盖。',
       },
       {
+        slug: 'detailed-design',
+        label: '详细设计',
+        source: 'remote',
+        url: 'https://raw.githubusercontent.com/qiu-yunhao/easy_game/main/%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1.md',
+        description: '关联仓库中的《详细设计.md》，直接展示更完整的架构、状态模型、工具系统和持久化设计。',
+      },
+      {
         slug: 'readme',
         label: 'README',
         source: 'remote',

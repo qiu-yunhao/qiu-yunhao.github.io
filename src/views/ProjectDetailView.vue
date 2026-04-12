@@ -53,7 +53,7 @@
         </div>
 
         <p v-if="docError" class="doc-feedback error">{{ docError }}</p>
-        <p v-else-if="isLoadingDoc" class="doc-feedback">正在加载 GitHub README...</p>
+        <p v-else-if="isLoadingDoc" class="doc-feedback">正在加载 GitHub 文档...</p>
         <MarkdownRenderer v-else-if="activeContent" :content="activeContent" :base-url="activeDocBaseUrl" />
         <p v-else class="doc-feedback">这个文档暂时还没有内容。</p>
       </section>
@@ -117,7 +117,7 @@ const activeDocSourceLabel = computed(() => {
     return ''
   }
 
-  return activeDoc.value.source === 'remote' ? 'GitHub README' : 'Local Markdown'
+  return activeDoc.value.source === 'remote' ? 'GitHub Markdown' : 'Local Markdown'
 })
 
 const activeDocBaseUrl = computed(() => {
@@ -157,7 +157,7 @@ watch(
     }
 
     if (!doc.url) {
-      docError.value = '这个 README 还没有配置远程地址。'
+      docError.value = '这个文档还没有配置远程地址。'
       return
     }
 
@@ -172,7 +172,7 @@ watch(
 
       activeContent.value = await response.text()
     } catch (error) {
-      docError.value = 'GitHub README 加载失败。请检查仓库地址、raw 链接或网络访问权限。'
+      docError.value = 'GitHub 文档加载失败。请检查仓库地址、raw 链接或网络访问权限。'
     } finally {
       isLoadingDoc.value = false
     }

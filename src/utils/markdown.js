@@ -159,8 +159,20 @@ const buildTableHtml = (headerLine, separatorLine, bodyLines, options) => {
   return `<table><thead><tr>${headerHtml}</tr></thead><tbody>${bodyHtml}</tbody></table>`
 }
 
+const buildMermaidBlock = (code) =>
+  [
+    '<div class="mermaid-diagram">',
+    `<div class="mermaid">${escapeHtml(code)}</div>`,
+    '</div>',
+  ].join('')
+
 const highlightCodeBlock = (code, language) => {
   const normalizedLanguage = language.toLowerCase()
+
+  if (normalizedLanguage === 'mermaid') {
+    return buildMermaidBlock(code)
+  }
+
   const highlighted = normalizedLanguage && hljs.getLanguage(normalizedLanguage)
     ? hljs.highlight(code, { language: normalizedLanguage, ignoreIllegals: true }).value
     : hljs.highlightAuto(code).value

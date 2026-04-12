@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "highlight.js": "^11.11.1",
+    "mermaid": "^11.14.0",
     "three": "^0.183.2",
     "vue": "^3.5.30",
     "vue-router": "^5.0.4"

@@ -1,10 +1,11 @@
 <template>
-  <div class="markdown-body" v-html="rendered.html"></div>
+  <div ref="markdownRoot" class="markdown-body" v-html="rendered.html"></div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { parseMarkdown } from '@/utils/markdown'
+import { renderMermaidDiagrams } from '@/utils/mermaid'
 
 const props = defineProps({
   content: {
@@ -17,7 +18,25 @@ const props = defineProps({
   },
 })
 
+const markdownRoot = ref(null)
 const rendered = computed(() => parseMarkdown(props.content, { baseUrl: props.baseUrl }))
+
+const syncMermaid = async () => {
+  await nextTick()
+  await renderMermaidDiagrams(markdownRoot.value)
+}
+
+onMounted(() => {
+  syncMermaid()
+})
+
+watch(
+  () => rendered.value.html,
+  () => {
+    syncMermaid()
+  },
+  { flush: 'post' },
+)
 </script>
 
 <style scoped>
@@ -193,6 +212,37 @@ const rendered = computed(() => parseMarkdown(props.content, { baseUrl: props.ba
 .markdown-body :deep(p > img:only-child) {
   display: block;
   margin: 1.4rem 0;
+}
+
+.markdown-body :deep(.mermaid-diagram) {
+  margin: 1.4rem 0;
+  padding: 1rem;
+  overflow-x: auto;
+  border: 1px solid var(--border-default);
+  border-radius: 1rem;
+  background: var(--bg-soft);
+}
+
+.markdown-body :deep(.mermaid) {
+  display: grid;
+  min-width: max-content;
+  justify-content: center;
+}
+
+.markdown-body :deep(.mermaid svg) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.markdown-body :deep(.mermaid-failed) {
+  display: block;
+}
+
+.markdown-body :deep(.mermaid-fallback-title) {
+  margin: 0 0 0.8rem;
+  color: var(--text-secondary);
 }
 
 .markdown-body :deep(table) {
